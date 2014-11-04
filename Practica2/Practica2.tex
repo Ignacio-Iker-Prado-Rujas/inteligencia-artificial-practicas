@@ -115,8 +115,21 @@ SLD es la heurística de línea recta, que elige la ciudad que está más cerca 
 
 \begin{section}{Librerías y definiciones de estado para el puzzle de 8 }
 
+Para el problema del puzle de 8 se utiliza un array de enteros de tamaño 9, sencillo pero efectivo. El rango de valores para el vector es $0\le i \le 8$ (sin repeticiones), y de este modo el cero corresponde al hueco en el puzle. El resto de casillas se corresponden 1-1 con su representación gráfica, leído de izquierda a derecha y de arriba a abajo. Además, se define en \texttt{EightPuzzleBoard.java} en el paquete \texttt{aima.core.enviroment.eightpuzzle} como array privado de enteros. También es importante notar que en función de desde donde se llame al constructor de esta clase, se pasa como parámetro un vector diferente (en función de la dificultad). 
 
+\begin{figure}[!h]
+		\begin{center}
+			%\hspace{-0.5cm}
+			\includegraphics[scale=0.65]{puzle8}
+			\caption{Puzle de 8 correspondiente a \texttt{state = new int$[] \{ 1, 2, 5, 3, 4, 0, 6, 7, 8 \}$}.}
+		\end{center}
+	\end{figure}
 \end{section}
+
+En cuanto a los operadores que trabajan con el estado, \textit{se centran en el hueco} y hay cuatro: \texttt{moveGapLeft()}, \texttt{moveGapUp()}, \texttt{moveGapRight()}, \texttt{moveGapDown()}. Hacen lo propio, tras comprobar que pueden hacer el movimiento pedido con \texttt{CanMoveGap()} calculan en qué posición está el hueco y cambian sus coordenadas en el mapa hacia la izquierda, arriba, derecha o abajo respectivamente. Para ello simplemente hacen un \textit{``swap''}, guardando (por ejemplo para el primer caso) el valor situado a la izquierda del cero, poniéndolo a la derecha y escribiendo un cero a la izquierda. Es interesante ver como transforman un tablero $3\times 3$ en un vector lineal de 9 posiciones. Dadas las coordenadas $(x,y)$ la posición correspondiente en el vector es $3x + y$ (contando como (1,1) la esquina inferior izquierda donde está el 6 en la imagen), y así por ejemplo, en la figura vemos que 7 está en las coordenadas $(2,1)\implies 3\cdot 2 + 1 = 7$, luego \texttt{state[7] = 7}. Esto se consigue mediante las funciones \texttt{getAbsPosition()} y \texttt{setValue()}, en la misma clase que la comentada anteriormente.
+
+En el paquete \texttt{aima.core.environment.eightpuzzle} se encuentra la clase donde se calcula el número de fichas descolocadas: \texttt{MisplacedTilleHeuristicFunction.java}.
+
 
 
 \begin{section}{Librerías y definiciones de estado para el mapa }
