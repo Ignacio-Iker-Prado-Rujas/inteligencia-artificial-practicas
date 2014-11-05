@@ -102,7 +102,32 @@ Luego, en cuanto a las demos, aparecen algunas aplicaciones nuevas, pero creemos
 \end{section}
 
 \begin{section}{AimaDemoApp: Desde Arad hasta Bucharest}
-SLD es la heurística de línea recta, que elige la ciudad que está más cerca en línea recta del objetivo.
+
+
+%3) Ejecuta AimaDemoApp en modo aplicación para la búsqueda de caminos en el mapa de Rumanía, desde Arad a Bucharest, utilizando la búsqueda en profundidad, en anchura y el algoritmo A* con la heurística de la distancia en línea recta. Haz una tabla con los resultados obtenidos con cada algoritmo e incorpórala a la memoria. Interpreta y discute los resultados. ¿Por qué el algoritmo de búsqueda en anchura no obtiene el camino mínimo?
+	
+SLD es la heurística de línea recta, que elige la ciudad que está más cerca en línea recta del objetivo. En el cuadro adjunto podemos ver como se desarrolla el algoritmo en cada caso. Cabe destacar también que en el primero se expanden 10 nodos, mientras que en el segundo y en el tercero son 5.
+
+El algoritmo de la búsqueda en anchura no encuentra el camino mínimo porque %, ¿por qué Kike?
+
+	\begin{table}	
+		\begin{center}
+			\begin{tabular}{|c||c|c|c|c|}
+				\hline \textbf{Arad-Bucarest}	& \textbf{Depth First} 	& \textbf{Breadth First} 	& $A^*$ \\ \hline \hline
+				\textbf{Step 1} 			&  	Timisoara - 118	& Sibiu - 140			& Sibiu - 140			\\ \hline 
+				\textbf{Step 2} 			&  	Lugoj - 229		& Fagaras - 239		& RimnicuVilcea - 220	\\ \hline 
+				\textbf{Step 3} 			&  	Mehadia - 299		& Bucarest - 450		& Pitesti - 317			\\ \hline 
+				\textbf{Step 4} 			&  	Dobreta - 374		& -					& Bucarest - 418		\\ \hline 
+				\textbf{Step 5} 			&  	Craiova - 494		& -					& -					\\ \hline 
+				\textbf{Step 6} 			&  	Pitesti - 632		& -					& - 					\\ \hline 
+				\textbf{Step 7} 			&  	Bucharest - 733	& -					& -					\\ \hline \hline
+				\textbf{Total} 			&  	733 in 7 steps		&  450 in 3 steps		& 418 in 4 steps		\\ \hline 
+
+			\end{tabular}
+		\caption{Para la búsqueda de caminos en el mapa desde Arad hasta Bucarest, comparación entre la búsqueda en profundidad, en anchura y el $A^*$ con SLD.}
+		\end{center}
+	\end{table}
+
 
 \end{section}
 
@@ -148,6 +173,10 @@ En el paquete \texttt{aima.core.environment.eightpuzzle} se encuentra la clase d
 	Russell, S.; Norvig, P, \\
 	\emph{Artificial Intelligence, a modern aproach}.\\
 	New Jersey: Pearson, 2010.
+	
+\bibitem{clase}
+	Apuntes y transparencias de Inteligencia Artificial, \\
+	Doble Grado Matemáticas - Ing. Informática, U.C.M., 2014-2015.
 
 \end{thebibliography}
 
