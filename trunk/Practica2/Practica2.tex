@@ -77,22 +77,12 @@
 
 \begin{section}{Introducción: AimaDemoApp}
 
-Para esta primera parte, tras haber importado el proyecto a Eclipse, hemos ejecutado el fichero \texttt{AimaDemoApp.java}, probando las distintas posibilidades que ofrece. Tiene dos modos: \textit{Applications} y \textit{Demos}, y la principal diferencia está en que en la primera disponemos de una interfaz gráfica, útil para comprender mejor qué esta haciendo el algoritmo correspondiente. 
+Para esta primera parte, tras haber importado el proyecto a Eclipse, hemos ejecutado el fichero \texttt{AimaDemoApp.java}, probando las distintas posibilidades que ofrece. Tiene dos modos: \textit{Applications} y \textit{Demos}, y la principal diferencia está en que en la primera disponemos de una interfaz gráfica, útil para comprender mejor qué está haciendo el algoritmo correspondiente. 
 
-La primera aplicación que podemos usar es para el coloreado de mapas mediante \textit{backtracking} con distintas heurísticas. Es muy interesante ejecutar la aplicación paso a paso, para ver como se desarrolla el árbol. Además, hay algunos juegos como el puzzle de 8, el 3 en raya, las $n$-reinas y el conecta 4. Los algoritmos que utilizan son los habituales, con algunas variaciones en la heurística: minimax, poda $\alpha-\beta$, búsqueda en anchura, búsqueda en profundidad, $A^*$, voraz... Además, incluye una aplicación para encontrar el camino mínimo entre dos nodos de un grafo, que aquí es un mapa de Rumanía y otro de Australia. %Por ultimo, ni puta idea de que concha es la útlima app.
+La primera aplicación que podemos usar es para el coloreado de mapas mediante \textit{backtracking} con distintas heurísticas. Es muy interesante ejecutar la aplicación paso a paso, para ver como se desarrolla el árbol. Además, hay algunos juegos como el puzzle de 8, el 3 en raya, las $n$-reinas y el conecta 4. Los algoritmos que utilizan son los habituales, con algunas variaciones en la heurística: minimax, poda $\alpha-\beta$, búsqueda en anchura, búsqueda en profundidad, $A^*$, voraz... Además, incluye una aplicación para encontrar el camino mínimo entre dos nodos de un grafo, que aquí es un mapa de Rumanía y otro de Australia. 
 
 Luego, en cuanto a las demos, aparecen algunas aplicaciones nuevas, pero creemos que tiene menos interés porque sólo puedes ver el resultado final y tratar de interpretarlo, y no puedes modificar parámetros como en las aplicaciones anteriores, o incluso interferir en los juegos haciendo el movimiento que quieras. 
 
-	\begin{table}	
-		\begin{center}
-			\begin{tabular}{|c||c|c|c|c|}
-				\hline	Petaqueo	& \texttt{del} 	& \texttt{bueno} 	& \texttt{every} & \texttt{day}\\ \hline \hline
-				\textbf{Vale} 	&  	4,8 ms	& 	2 ms	 & 	0,7 ms		& 6 ms	  \\ \hline 
-				\textbf{Kike?}  	&  	3,5 ms	& 	2,7 ms	 & 	3 ms		& 5,8 ms	 \\ \hline 				
-			\end{tabular}
-		\caption{Esto es un guión de tabla.}
-		\end{center}
-	\end{table}
 
 \end{section}
 
@@ -108,15 +98,15 @@ Luego, en cuanto a las demos, aparecen algunas aplicaciones nuevas, pero creemos
 				\textbf{A*(MisplacedTile)}  			&  	30			& 	95920	 			& 	23489			& 23530 \\ \hline 		
 				\textbf{A*(Manhattan)}  				&  	30			& 	10439	 			& 	5101			& 5102 \\ \hline 		
 			\end{tabular}
-		\caption{Tabla del puzzle de 8 extremo}
+		\caption{Tabla del puzzle de 8 extremo, comparando distintos algoritmos.}
 		\end{center}
 	\end{table}
 	
-		La búsqueda en anchura, debido a que en este problema el coste es uniforme, encuentra la solución en mínima profundidad. Pero como puede verse en maxQueueSize el coste en memoria, debido a que 
-		debemos mantener todo un nivel de nodos abiertos, es muy elevado. Esto hace que si la solución estuviese a más distancia sería imposible almacenar todos los nodos necesarios.
-		El método voraz en este caso encuentra una solución en muchos pasos, pero a cambio expande pocos nodos y almacena pocos en memoria. Al ser un problema sencillo el método voraz puede ser una buena opción, 
-		basta añadir una buena heurística como la Manhattan, para que encontreemos la solucón en pocos pasos y expandiendo pocos nodos.
-		La búsqueda $A^*$ encuentra la solución en 30 pasos expandiendo muchos nodos y almacenando en la cola muchos estados, el uso de la heurística Manhattan mejora el funcionamiento pero aún así hay que almacenar demasiados estados. 
+		Debido a que en este problema el coste es uniforme, la búsqueda en anchura encuentra la solución en mínima profundidad. Pero como puede verse en \texttt{maxQueueSize} el coste en memoria es muy elevado debido a que 
+		debemos mantener todo un nivel de nodos abiertos. Esto hace que si la solución estuviese a más distancia sería imposible almacenar todos los nodos necesarios.
+		El método voraz en este caso encuentra una solución en muchos pasos, pero a cambio expande pocos nodos y almacena pocos en memoria. Al ser un problema sencillo, el método voraz puede ser una buena opción, 
+		basta añadir una buena heurística como la Manhattan, para que encontremos la solución en pocos pasos y expandiendo pocos nodos.
+		La búsqueda $A^*$ encuentra la solución en 30 pasos expandiendo muchos nodos y almacenando en la cola muchos estados. El uso de la heurística Manhattan mejora el funcionamiento pero aún así hay que almacenar demasiados estados. 
 		
 		En este tipo de juego, que es sencillo, el método voraz parece ser el mejor. A esta conclusión se llega también jugando al juego, pues si haces numerosos movimientos acercando cada número a su posición, sin pensar demasiado se acaba llegando a la
 		 solución en relativamente pocos pasos. En juegos más complicados, o buscando la mejor solución, el uso del algoritmo voraz ya no nos resultará tan útil.
@@ -125,9 +115,6 @@ Luego, en cuanto a las demos, aparecen algunas aplicaciones nuevas, pero creemos
 
 \begin{section}{AimaDemoApp: Desde Arad hasta Bucharest}
 
-
-%3) Ejecuta AimaDemoApp en modo aplicación para la búsqueda de caminos en el mapa de Rumanía, desde Arad a Bucharest, utilizando la búsqueda en profundidad, en anchura y el algoritmo A* con la heurística de la distancia en línea recta. Haz una tabla con los resultados obtenidos con cada algoritmo e incorpórala a la memoria. Interpreta y discute los resultados. ¿Por qué el algoritmo de búsqueda en anchura no obtiene el camino mínimo?
-	
 SLD es la heurística de línea recta, que elige la ciudad que está más cerca en línea recta del objetivo. En el cuadro adjunto podemos ver como se desarrolla el algoritmo en cada caso. Cabe destacar también que en el primero se expanden 10 nodos, mientras que en el segundo y en el tercero son 5.
 
 El algoritmo de la búsqueda en anchura no encuentra el camino mínimo porque está a nivel 7, y la búsqueda en anchura termina cuando encuentra la solución en el nivel 3. Podría reprogramarse para que encontrara la solución óptima pero para ello tendría que recorrer 
@@ -163,9 +150,9 @@ todo el árbol de soluciones. También podría buscarse la solución óptima has
 				\hline	Búsqueda					& \texttt{pathCostl} 	& \texttt{nodesExpanded}	& \texttt{queueSize} 	& \texttt{maxQueueSize}\\ \hline \hline
 				\textbf{Búsqueda en profundidad} 		& 	304			& 	10365				& 	1288			& 1290	  \\ \hline 
 				\textbf{Coste uniforme}  				&  	31			& 	94454	 			& 	192			& 300	 \\ \hline 	
-				\textbf{A^*}  					&  	31			& 	23136	 			& 	395			& 521	 \\ \hline 	
+				\textbf{A*}  					&  	31			& 	23136	 			& 	395			& 521	 \\ \hline 	
 			\end{tabular}
-		\caption{Tabla del puzzle de 8 extremo}
+		\caption{Tabla sobre el camino entre Altheim y Leibi, comparando algoritmos.}
 		\end{center}
 	\end{table}
 	La búsqueda en profundidad como podemos ver, encuentra un camino largo  y que da un rodeo innecesario. Esto se debe a la forma que sigue la búsqueda, a pesar del SLD, extiende el nodo que encuentra primero, por lo que va dando un rodeo hacia la ciudad destino. No obstante, esto hace que expanda pocos nodos pues es una búsqueda muy directa. Evidentemente no encuentra una solución ni mínimamente óptima, que está muy lejos de las obtenidas por el resto de algoritmos. Además el coste en espacio que obtenemos es bastante elevado, lo que es extraño en la búsqueda en profundidad que expande pocos nodos al mismo tiempo.
@@ -194,10 +181,10 @@ En el paquete \texttt{aima.core.environment.eightpuzzle} se encuentra la clase d
 
 
 \begin{section}{Librerías y definiciones de estado para el mapa }
-	El programa concreto lo tenemos en el paquete `aima.core.environment.map'', además de las clases abstractas que comparten todos. Y su parte gráfica está en `aima.gui.applications.search.map'. El estado se guarda en la clase 
-	MapEnvironment que hereda de AbstractEnvironment. En MapEnvironment se guarda el mapa, la localización, la distancia recorrida y una instancia de `MapEnvironmentState' que tiene los datos sobre la localización concreta en el mapa.
+	El programa concreto lo tenemos en el paquete \texttt{aima.core.environment.map}, además de las clases abstractas que comparten todos. En cuanto a su parte gráfica, se encuentra en \texttt{aima.gui.applications.search.map}. El estado se guarda en la clase 
+	\texttt{MapEnvironment} que hereda de \texttt{AbstractEnvironment}. En \texttt{MapEnvironment} se guarda el mapa, la localización, la distancia recorrida y una instancia de \texttt{MapEnvironmentState} que tiene los datos sobre la localización concreta en el mapa.
 	
-	El operador es el MoveToAction, que se encarga de actualizar la localización del Agent, MapFunctionFactory es la clase que gestiona el movimiento, usando Search y MapAgent, cambiando así el estado en MapEnvironment.
+	El operador es el \texttt{MoveToAction}, que se encarga de actualizar la localización del \texttt{Agent}, \texttt{MapFunctionFactory} es la clase que gestiona el movimiento, usando \texttt{Search} y \texttt{MapAgent}, cambiando así el estado en \texttt{MapEnvironment}.
 
 \end{section}
 
