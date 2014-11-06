@@ -16,7 +16,7 @@
 			-Postcondición: (4, Y).
 		
 		*VA4->Vaciar la jarra de 4.
-			-Precondiciones: (X, Y) : X > 4.
+			-Precondiciones: (X, Y) : X > 0.
 			-Postcondición: (0, Y).
 
 		*VE4->verter la jarra 4 en la 3.
