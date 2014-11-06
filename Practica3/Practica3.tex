@@ -80,51 +80,42 @@
 \end{section}
 
 \begin{section}{Búsqueda en anchura}
-JarrasBFSDemo-->
-Action[name==Llenar jarra 3]
-Action[name==Verter jarra 3]
-Action[name==Llenar jarra 3]
-Action[name==Verter jarra 3]
-Action[name==Vaciar jarra 4]
-Action[name==Verter jarra 3]
-pathCost : 6.0
-nodesExpanded : 11
-queueSize : 1
-maxQueueSize : 3
 
 
 \end{section}
 
 \begin{section}{Búsqueda en profundidad (limitada)}
-JarrasDLSDemo-->
-Action[name==Llenar jarra 3]
-Action[name==Vaciar jarra 3]
-Action[name==Llenar jarra 3]
-Action[name==Verter jarra 3]
-Action[name==Llenar jarra 3]
-Action[name==Verter jarra 3]
-Action[name==Vaciar jarra 4]
-Action[name==Verter jarra 3]
-pathCost : 8.0
-nodesExpanded : 107
+
 
 
 \end{section}
 
 \begin{section}{Búsqueda $A*$ con heurística \textit{Kiker}}
 
-JarrasAStarDemo-->
-Action[name==Llenar jarra 4]
-Action[name==Verter jarra 4]
-Action[name==Vaciar jarra 3]
-Action[name==Verter jarra 4]
-Action[name==Llenar jarra 4]
-Action[name==Verter jarra 4]
-pathCost : 6.0
-nodesExpanded : 11
-queueSize : 1
-maxQueueSize : 3
 
+\end{section}
+\begin{section}{Búsqueda $A*$ con heurística \textit{Jarras}}
+
+
+\end{section}
+\begin{section}{Notas}
+	Una heurística (informática) es admisible si nunca sobreestima el costo de alcanzar el objetivo, o sea, 
+que en el punto actual la estimación del costo de alcanzar el objetivo nunca es mayor que el menor costo posible.
+
+	Una heurística $h(n)$ es consistente si, para todo nodo $n$ y todo sucesor $n'$ de $n$ generado por cualquier acción $A$, el costo estimado de alcanzar el objetivo desde $n$ no es mayor que el costo de obtener $n'$ más el costo estimado de obtener el objetivo desde $n'$.
+
+	Una heurística $h'(n)$ es consistente si, para cada nodo $n$ y cada sucesor $n'$ de $n$, el coste 
+	estimado de alcanzar el objetivo desde $n$ no es mayor que el coste real de 
+	alcanzar $n'$ más el coste estimado de alcanzar el objetivo desde $n'$.
+		\begin{itemize}
+		\item  $h'(n) <= c(n, n') + h'(n')$ (desigualdad triangular).
+		\item  $h'$  ha de ser localmente consistente con el coste de los arcos.
+		\item Toda heurística consistente también es admisible (pero no al revés).
+		\item Si $h'$ es consistente entonces los valores de $f'$ a lo largo de cualquier 
+		camino no disminuyen ($f'$ monótona no decreciente).
+		\end{itemize}
+
+h(n) \le c(n, A, n') + h(n')
 \end{section}
 \begin{thebibliography}{9}
 

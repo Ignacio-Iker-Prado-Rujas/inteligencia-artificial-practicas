@@ -7,7 +7,6 @@ import aima.core.search.framework.GraphSearch;
 import aima.core.search.framework.Problem;
 import aima.core.search.framework.Search;
 import aima.core.search.framework.SearchAgent;
-import aima.core.search.framework.TreeSearch;
 import aima.core.search.informed.AStarSearch;
 import aima.core.search.uninformed.BreadthFirstSearch;
 import aima.core.search.uninformed.DepthFirstSearch;
@@ -25,7 +24,7 @@ public class JarrasDemo {
 	}
 
 	private static void JarrasBFSDemo(){
-		System.out.println("\nJarrasBFSDemo-->");
+		System.out.println("\nJarrasBFSDemo(Anchura)-->");
 		try{
 			// Crear un objeto Problem con la representación de estados y operadores
 			Problem problem = new Problem(estadoInicial, 
@@ -53,7 +52,7 @@ public class JarrasDemo {
 	
 	
 	private static void JarrasDLSDemo(){
-		System.out.println("\nJarrasDLSDemo(9)-->");
+		System.out.println("\nJarrasDLSDemo(Profundidad limitada(9))-->");
 		try{
 			// Crear un objeto Problem con la representación de estados y operadores
 			Problem problem = new Problem(estadoInicial, 
@@ -78,7 +77,7 @@ public class JarrasDemo {
 		}
 	}
 	private static void JarrasDFSDemo(){
-		System.out.println("\nJarrasDFSDemo-->");
+		System.out.println("\nJarrasDFSDemo(Profundidad)-->");
 		try{
 			// Crear un objeto Problem con la representación de estados y operadores
 			Problem problem = new Problem(estadoInicial, 
@@ -103,7 +102,7 @@ public class JarrasDemo {
 		}
 	}
 	private static void JarrasAStarDemo(){
-		System.out.println("\nJarrasAStarDemo-->");
+		System.out.println("\nJarrasAStarDemo(Kiker heuristic)-->");
 		try{
 			// Crear un objeto Problem con la representación de estados y operadores
 			Problem problem = new Problem(estadoInicial, 
@@ -115,6 +114,7 @@ public class JarrasDemo {
 			// Búsqueda en anchura
 			Search search = new AStarSearch(new GraphSearch(),
 					new KikerHeuristicFunction());
+			//Esta heurística no es admisible.
 			
 			// Creamos el agente de búsqueda
 			SearchAgent agent = new SearchAgent(problem, search);
@@ -129,7 +129,7 @@ public class JarrasDemo {
 		}
 	}
 	private static void JarrasAStarDemo2(){
-		System.out.println("\nJarrasAStarDemo2-->");
+		System.out.println("\nJarrasAStarDemo2(Jarras heuristic)-->");
 		try{
 			// Crear un objeto Problem con la representación de estados y operadores
 			Problem problem = new Problem(estadoInicial, 
