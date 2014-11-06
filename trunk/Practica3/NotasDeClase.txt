@@ -1,0 +1,31 @@
+
+
+	Notas del día 6-11-2014
+
+	Problema de las jarras.
+
+	*Vaciar jarra totalmente.
+	*Llenar jarra totalmente.
+	*Verter una jarra en la otra. No se derrama ninuna gota.
+	Estado = (X, Y)  E_inicial = (0, 0) E_objetivo(2, Y)
+	Operaciones:
+		Precondiciones y poscondiciones:
+		
+		*LL4->Llenar la jarra de 4.
+			-Precondiciones: (X, Y) : X < 4.
+			-Postcondición: (4, Y).
+		
+		*VA4->Vaciar la jarra de 4.
+			-Precondiciones: (X, Y) : X > 4.
+			-Postcondición: (0, Y).
+
+		*VE4->verter la jarra 4 en la 3.
+			-Precondiciones: (X, Y) : X > 0, Y < 3.
+			-Postcondiciones: (X', Y') : 
+					& (X + Y) <= 3 Final: X'= 0, Y' = X + Y.
+					& (X + Y) > 3 Final: X'= X - (3 - Y), Y'= 3.
+					&Ambos casos pueden juntarse 
+					en un caso usando el mínimo:
+						Y' = min(3, X + 4).
+						X'= X-(Y'- Y).
+						
