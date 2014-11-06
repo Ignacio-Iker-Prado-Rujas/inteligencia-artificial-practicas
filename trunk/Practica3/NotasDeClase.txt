@@ -28,4 +28,6 @@
 					en un caso usando el mínimo:
 						Y' = min(3, X + 4).
 						X'= X-(Y'- Y).
-						
+		
+
+		
