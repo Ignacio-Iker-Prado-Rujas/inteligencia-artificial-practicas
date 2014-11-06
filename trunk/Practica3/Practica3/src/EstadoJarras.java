@@ -17,6 +17,41 @@ public class EstadoJarras {
 		this.jarra4 = jarra4;
 	}	
 	
+	public void llenarJarra3(){
+		jarra3 = TAM_JARRA_3;
+	}	
+	public void vaciarJarra3(){
+		jarra3 = 0;
+	}
+	public void verterJarra3(){
+		//Vertemos lo que quepa en jarra4
+		if(jarra4 + jarra3 <= TAM_JARRA_4){
+			//En este caso cabe jarra3 entera en jarra4
+			jarra4 = jarra4 + jarra3;
+			jarra3 = 0;
+		}else{
+			//En este caso no cabe jarra3 entera.
+			//
+			jarra3 = jarra3 - (TAM_JARRA_4 - jarra3); 
+			jarra4 = TAM_JARRA_4;
+		}
+	}
+	
+	public void llenarJarra4(){
+		jarra4 = TAM_JARRA_4;
+	}
+	public void vaciarJarra4(){
+		jarra4 = 0;
+	}
+	public void verterJarra4(){
+		if(jarra4 + jarra3 <= TAM_JARRA_3){
+			jarra3 = jarra4 + jarra3;
+			jarra4 = 0;
+		}else{
+			jarra4 = jarra4 - (TAM_JARRA_3 - jarra3);
+			jarra3 = TAM_JARRA_3;
+		}
+	}
 	public int getJarra3(){
 		return jarra3;
 	}
@@ -36,4 +71,6 @@ public class EstadoJarras {
 	public static Action VA4 = new DynamicAction("Vaciar jarra 4"); 
 	public static Action VE4 = new DynamicAction("Verter jarra 4"); 
 	
+	private static int TAM_JARRA_3 = 3;
+	private static int TAM_JARRA_4 = 4;
 }
