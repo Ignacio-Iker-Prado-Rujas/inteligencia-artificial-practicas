@@ -3,16 +3,22 @@ import java.util.List;
 import java.util.Properties;
 
 import aima.core.agent.Action;
+import aima.core.environment.eightpuzzle.ManhattanHeuristicFunction;
+import aima.core.search.framework.GraphSearch;
 import aima.core.search.framework.Problem;
 import aima.core.search.framework.Search;
 import aima.core.search.framework.SearchAgent;
+import aima.core.search.informed.AStarSearch;
 import aima.core.search.uninformed.BreadthFirstSearch;
+import aima.core.search.uninformed.DepthLimitedSearch;
 
 
 public class JarrasDemo {
 
 	public static void main(String[] args) {
 		JarrasBFSDemo();
+		JarrasDLSDemo();
+		JarrasAStarDemo();
 	}
 
 	private static void JarrasBFSDemo(){
@@ -40,6 +46,61 @@ public class JarrasDemo {
 			exception.printStackTrace(); 
 		}
 	}
+	
+	private static void JarrasDLSDemo(){
+		System.out.println("\nJarrasDLSDemo-->");
+		try{
+			// Crear un objeto Problem con la representación de estados y operadores
+			Problem problem = new Problem(estadoInicial, 
+				JarrasFunctionFactory.getActionsFunction(), 
+				JarrasFunctionFactory.getResultFunction(),
+				new JarrasGoalTest(), 
+				new DefaultStepCostFunction());
+			
+			// Búsqueda en anchura
+			Search search = new DepthLimitedSearch(9);;
+			
+			// Creamos el agente de búsqueda
+			SearchAgent agent = new SearchAgent(problem, search);
+			
+			// Escribimos la solución encontrada (operadores aplicados).
+			printActions(agent.getActions());
+			
+			// Informamos sobre los recursos utilizados.
+			printInstrumentation(agent.getInstrumentation());
+		}catch (Exception exception){
+			exception.printStackTrace(); 
+		}
+	}
+	
+	private static void JarrasAStarDemo(){
+		System.out.println("\nJarrasAStarDemo-->");
+		try{
+			// Crear un objeto Problem con la representación de estados y operadores
+			Problem problem = new Problem(estadoInicial, 
+				JarrasFunctionFactory.getActionsFunction(), 
+				JarrasFunctionFactory.getResultFunction(),
+				new JarrasGoalTest(), 
+				new DefaultStepCostFunction());
+			
+			// Búsqueda en anchura
+			Search search = new AStarSearch(new GraphSearch(),
+					new KikerHeuristicFunction());
+			
+			// Creamos el agente de búsqueda
+			SearchAgent agent = new SearchAgent(problem, search);
+			
+			// Escribimos la solución encontrada (operadores aplicados).
+			printActions(agent.getActions());
+			
+			// Informamos sobre los recursos utilizados.
+			printInstrumentation(agent.getInstrumentation());
+		}catch (Exception exception){
+			exception.printStackTrace(); 
+		}
+	}
+	
+	
 	
 	private static void printActions(List<Action> actions) {
 		for (int i = 0; i < actions.size(); i++) {
