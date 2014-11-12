@@ -50,7 +50,7 @@
 	\includegraphics[scale=0.45]{robotHonda}}
 \author{Enrique Ballesteros Horcajo\\
 	Ignacio Iker Prado Rujas}
-\date{\Today}
+\date{12 de Noviembre de 2014}
 \maketitle
 
 \newpage
@@ -81,16 +81,99 @@
 
 \textit{\textbf{Define formalmente las distintas condiciones que hacen que un estado sea peligroso y representa los 4 primeros niveles del espacio de estados sin incluir los estados peligrosos.}}
 
-\textit{\textbf{El ejercicio se podrá realizar de manera individual o como grupo de prácticas.}}
 
-En \url{http://freeweb.siol.net/danej/riverIQGame.swf} se puede encontrar la aplicación animada.
+Los elementos a tener en cuenta son:
 
+\begin{itemize}
+
+	\item Un policía.
+
+	\item Un ladrón.
+	
+	\item Dos niñas.
+	
+	\item Una madre.
+
+	\item Dos niños.
+	
+	\item Un padre. 
+	
+	\item Una balsa (para dos).
+
+\end{itemize}
+
+Lo importante es en qué lado de la orilla se encuentran los actores, luego definimos el estado en función de eso. El estado es una 7-tupla, donde el dominio es el conjunto $\{0,1,2\}$:
+
+$$\boxed{(policia, ladron, NNO, padre, NNA, madre, balsa)}$$
+
+NNO es el número de niños en a orilla izquierda del río, mientras que NNA es el número de niñas en la orilla izquierda del río. En cuanto al resto de elementos:
+
+\begin{itemize}
+
+	\item \textbf{0 en la entrada $i-$ésima}: El elemento $i$-ésimo se encuentra en la orilla derecha (orilla objetivo). 
+
+	\item \textbf{1 en la entrada $i-$ésima}: El elemento $i$-ésimo se encuentra en la orilla izquierda (orilla inicial).
+
+	\item \textbf{2 en la entrada $i-$ésima}: Sólo permitido en las entradas de la tupla correspondientes a $NNO$ y $NNA$. Significa que hay dos niños/as en la orilla inicial.
+
+\end{itemize}
+
+En cuanto a los operadores, son 11 y suponemos que cada viaje de la balsa cuesta 1:
+
+\begin{itemize}
+
+	\item \texttt{cruzaP}: El policía cruza en la balsa.
+
+	\item \texttt{cruzaPL}: El policía y el ladrón cruzan en la balsa
+
+	\item \texttt{cruzaPA}: El padre cruza en la balsa.
+	
+	\item \texttt{cruzaPANO}: El padre y un niño cruzan en la balsa.
+	
+	\item \texttt{cruzaM}: La madre cruza en la balsa.
+	
+	\item \texttt{cruzaMNA}: La madre y una niña cruzan en la balsa.
+	
+	\item \texttt{cruzaPAM}: El padre y la madre cruzan en la balsa.
+	
+	\item \texttt{cruzaPNO}: El policía y un niño cruzan en la balsa.
+	
+	\item \texttt{cruzaPNA}: El policía y una niña cruzan en la balsa.
+	
+	\item \texttt{cruzaPPA}: El policía y el padre cruzan en la balsa.
+	
+	\item \texttt{cruzaPM}: El policía y la madre cruzan en la balsa.
+
+\end{itemize}
 
 	
-\section{Conclusiones}
+	Peligros:
+	\begin{itemize}
+		\item El ladrón está sin el policía: solo es peligroso si hay alguien con él:
+			\begin{itemize}
+			\item El ladrón está en el lado derecho:
+			
+				(policia $>$ ladron)$\land$((NNO $<$ 2) $\lor$ (NNA $<$ 2) $\lor$ (padre $<$ 1) $\lor$ (madre $<$ 1))
+				
+			\item El ladrón está en el lado izquierdo:
+			
+				(policia $<$ ladron)$\land$((NNO $>$ 0) $\lor$ (NNA $>$ 0) $\lor$ (padre $>$ 0) $\lor$ (madre $>$ 0))
+		\end{itemize}
+		
+		\item El padre está con alguna niña y la madre no está, o la madre está con algún niño y el padre no está:
+			
+				(padre $>$ madre)$\land$((NNO $<$ 2) $\lor$ (NNA $>$ 0) )
+			
+				(padre $<$ madre)$\land$((NNO $>$ 0) $\lor$ (NNA $<$ 2) )
+	
+		
+	
+	\end{itemize}
 
-
-
+	Árbol de estados no peligrosos:
+\begin{center}
+\includegraphics[scale=0.65]{arbol.png}
+\end{center}
 	
 \begin{thebibliography}{9}
 
@@ -104,7 +187,7 @@ En \url{http://freeweb.siol.net/danej/riverIQGame.swf} se puede encontrar la apl
 	Doble Grado Matemáticas - Ing. Informática, U.C.M., 2014-2015.
 
 \end{thebibliography}
-
+\end{section}
 
 \end{document}
 
