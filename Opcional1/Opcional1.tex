@@ -21,7 +21,7 @@
 \renewcommand{\thepage}{\arabic{page}}% Arabic page numbers\fancyhead{}
 \pagestyle{fancy}
 \fancyfoot{}
-\fancyhead[LO,RE]{Práctica 3}	%encabezado de pares: nombre de la sección
+\fancyhead[LO,RE]{Ejercicio opcional 1}	%encabezado de pares: nombre de la sección
 \fancyfoot[LE,RO]{\thepage}	%abajo a izqda en pares, derecha en impares: numero de pagina
 %\fancyhead[LE]{\nouppercase{\leftmark}} %cuadro izquierdo de pagina par: parte y contador
 \fancyfoot[CE]{Inteligencia Artificial} 
@@ -45,7 +45,7 @@
 \begin{document} 
 \title{\Huge{\textsc{Inteligencia Artificial}} \\
 	\vspace{0.7cm}
-	 \textsc{\Large{Práctica 3}} \\
+	 \textsc{\Large{Ejercicio opcional 1}} \\
 	\vspace{1.5cm}
 	\includegraphics[scale=0.45]{robotHonda}}
 \author{Enrique Ballesteros Horcajo\\
@@ -75,48 +75,23 @@
 
 
 
-\begin{section}{Introducción: Jarras Demo}
+\begin{section}{Problema del test chino}
 
-\end{section}
+\textit{\textbf{Dado el problema del test chino, descrito en la transparencia 21 del tema 2.1, represéntalo como espacio de estados. Para ello, indica cómo representarás un estado, cuáles son los estados inicial y final, los operadores disponibles (sin especificar precondiciones ni poscondiciones) y su coste.}}
 
-\begin{section}{Búsqueda en anchura}
+\textit{\textbf{Define formalmente las distintas condiciones que hacen que un estado sea peligroso y representa los 4 primeros niveles del espacio de estados sin incluir los estados peligrosos.}}
 
+\textit{\textbf{El ejercicio se podrá realizar de manera individual o como grupo de prácticas.}}
 
-\end{section}
-
-\begin{section}{Búsqueda en profundidad (limitada)}
-
+En \url{http://freeweb.siol.net/danej/riverIQGame.swf} se puede encontrar la aplicación animada.
 
 
-\end{section}
-
-\begin{section}{Búsqueda $A^*$ con heurística \textit{Kiker}}
-
-
-\end{section}
-\begin{section}{Búsqueda $A^*$ con heurística \textit{Jarras}}
+	
+\section{Conclusiones}
 
 
-\end{section}
-\begin{section}{Notas}
-	Una heurística (informática) es admisible si nunca sobreestima el costo de alcanzar el objetivo, o sea, 
-que en el punto actual la estimación del costo de alcanzar el objetivo nunca es mayor que el menor costo posible.
 
-	Una heurística $h(n)$ es consistente si, para todo nodo $n$ y todo sucesor $n'$ de $n$ generado por cualquier acción $A$, el costo estimado de alcanzar el objetivo desde $n$ no es mayor que el costo de obtener $n'$ más el costo estimado de obtener el objetivo desde $n'$.
-
-	Una heurística $h'(n)$ es consistente si, para cada nodo $n$ y cada sucesor $n'$ de $n$, el coste 
-	estimado de alcanzar el objetivo desde $n$ no es mayor que el coste real de 
-	alcanzar $n'$ más el coste estimado de alcanzar el objetivo desde $n'$.
-		\begin{itemize}
-		\item  $h'(n) <= c(n, n') + h'(n')$ (desigualdad triangular).
-		\item  $h'$  ha de ser localmente consistente con el coste de los arcos.
-		\item Toda heurística consistente también es admisible (pero no al revés).
-		\item Si $h'$ es consistente entonces los valores de $f'$ a lo largo de cualquier 
-		camino no disminuyen ($f'$ monótona no decreciente).
-		\end{itemize}
-
-$$h(n) \le c(n, A, n') + h(n')$$
-\end{section}
+	
 \begin{thebibliography}{9}
 
 \bibitem{aima}
