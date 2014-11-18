@@ -77,6 +77,75 @@
 
 \begin{section}{Introducción: Jarras Demo}
 
+	Vamos a poder realizar tres tipos de operaciones con las jarras:
+	
+	\begin{itemize}
+
+		\item Vaciar jarra totalmente. Deja la jarra sin agua.
+		\item Llenar jarra totalmente. Deja la jarra al máximo de su capacidad.
+		\item Verter una jarra en la otra. Echa agua de una jarra en la otra hasta que la origen se llena 
+			o la destino se llena. No se derrama ninuna gota en el proceso.
+	\end{itemize}
+	El estado va a ser una dupla, cantidad de agua en la jarra de 4 litros y cantidad de agua en la jarra de 3:
+	\begin{itemize} 
+		
+		\item Estado $= (X, Y)$.
+		\item Estado inicial $= (0, 0)$.
+		\item Estado objetivo $= (2, Y)$.
+		
+	\end{itemize}
+	
+	Las operaciones serán, incluyendo precondiciones y postcondiciones:
+		\begin{itemize}
+		\item LL4 $\rightarrow$ Llenar la jarra de 4.
+			\begin{itemize}
+			\item Precondiciones: $ (X, Y)$ : $X < 4$.
+			\item Postcondición: $(4, Y)$.
+			\end{itemize}
+		
+		\item VA4 $\rightarrow$ Vaciar la jarra de 4.
+			\begin{itemize}
+			\item Precondiciones: $(X, Y)$ : $X > 0$.
+			\item Postcondición: $(0, Y)$.
+			\end{itemize}
+
+		\item VE4 $\rightarrow$ verter la jarra 4 en la 3.
+			\begin{itemize}
+			\item Precondiciones: $(X, Y)$ : $X > 0, Y < 3$.
+			\item Postcondiciones: $(X', Y')$ : 
+				\begin{itemize}
+					\item Cabe toda la jarra cuatro:  $(X + Y) <= 3$ ; Final: $X'= 0$, $Y' = X + Y$.
+					\item No cabe entera: $(X + Y) > 3$;	Final: $X'= X - (3 - Y)$, $Y'= 3$.
+				\end{itemize}
+			\end{itemize}
+
+		\item LL3 $\rightarrow$ Llenar la jarra de 3.
+			\begin{itemize}
+			\item Precondiciones: $(X, Y)$ : $Y < 3$.
+			\item Postcondición: $(X, 3)$.
+			\end{itemize}
+		
+		\item VA3 $\rightarrow$ Vaciar la jarra de 3.
+			\begin{itemize}
+			\item Precondiciones: $(X, Y)$ : $Y > 0$.
+			\item Postcondición: $(X, 0)$.
+			\end{itemize}
+		\item VE3 $\rightarrow$ verter la jarra 3 en la 4.
+			\begin{itemize}
+			\item Precondiciones: $(X, Y)$ : $X < 4$, $Y > 0$.
+			\item Postcondiciones: $(X', Y')$ : 
+				\begin{itemize}
+					\item $(X + Y) <= 4$.  Final: $X'= X + Y$, $Y' = 0$.
+					\item $(X + Y) > 4$. Final: $X'= 4$, $Y'= Y - (4 - X)$.
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+	
+	Cada operación que se realiza cuesta 1, luego el coste de una 
+				solución es el número de operaciones hasta que llegas a ella.
+		
+
+		
 \end{section}
 
 \begin{section}{Búsqueda en anchura}
