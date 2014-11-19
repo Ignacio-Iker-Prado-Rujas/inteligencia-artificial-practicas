@@ -158,11 +158,14 @@
 	Action[name==Llenar jarra 3]		\\
 	Action[name==Verter jarra 3] 		\\ 
 	Action[name==Llenar jarra 3]		\\
-	Action[name==Verter jarra 3]		\\	Action[name==Vaciar jarra 4]		\\
+	Action[name==Verter jarra 3]		\\
+	Action[name==Vaciar jarra 4]		\\
 	Action[name==Verter jarra 3]		\\
 	pathCost : 6.0					\\
-	nodesExpanded : 11			\\	queueSize : 1					\\
-	maxQueueSize : 3				}
+	nodesExpanded : 11			\\
+	queueSize : 1					\\
+	maxQueueSize : 3				
+}
 
 La búsqueda en anchura o por niveles, explora nivel a nivel siguiendo el orden de instrucciones dado en \texttt{JarrasActionsFunction}, por ello encuentra la solución que 
 empieza por llenar jarra 3 y no por llenar jarra 4, pues ese movimiento está antes en el \texttt{Set$<$Action$>$}. Además, al ser el coste proporcional a la profundidad, encontramos una solución óptima.
@@ -185,6 +188,8 @@ empieza por llenar jarra 3 y no por llenar jarra 4, pues ese movimiento está an
 	pathCost : 8.0					\\
 	nodesExpanded : 107			\\
 }
+En este problema limitar a 9 la profundidad es una tontería, pues las soluciones están a nivel 6, pero ilustra los nodos que no debería expandir 
+un buen algoritmo: Llenar la jarra 3 y a continuación vaciarla para volverla a llenar evidentemente es estúpido.
 
 \texttt{
 	JarrasDFSDemo(Profundidad)-->	\\
@@ -199,6 +204,7 @@ empieza por llenar jarra 3 y no por llenar jarra 4, pues ese movimiento está an
 	queueSize : 2					\\
 	maxQueueSize : 3				
 }
+La búsqueda en profundidad en este caso nos encuentra la solución de la mejor manera posible, pues expande solo 6 nodos, que son los necesarios para alcanzar la solución.
 
 \end{section}
 
@@ -218,7 +224,8 @@ empieza por llenar jarra 3 y no por llenar jarra 4, pues ese movimiento está an
 	maxQueueSize : 3				
 }
 
-La heurística  \textit{Kiker} no aporta nada respecto de, por ejemplo, la búsqueda en anchura ya que es una heurística bastante mala. Concretamente no es 
+La heurística solo se fija en la jarra de 4, y consiste en la diferencia(en valor absoluto)  de cantidad de agua que hay en la jarra 4 respecto al objetivo(2 litros).
+La heurística  \textit{Kiker} no aporta nada respecto de, por ejemplo, la búsqueda en anchura ya que es una heurística bastante mala. Esto se debe al tipo de problema Concretamente no es 
 una heurística admisible, ya que estando a un nivel de la solución nos da un 2, y estando a tres niveles nos da un 1. Como no es admisible tampoco es consistente.
 
 
@@ -238,8 +245,18 @@ una heurística admisible, ya que estando a un nivel de la solución nos da un 2
 	queueSize : 1					\\
 	maxQueueSize : 3				
 }
+Esta heurística incluye además a la jarra 3 en los cálculos, sin suponer una mejora excesiva. La mejora respecto a \textit{Kiker} consiste en que tiene en cuenta que si alcanzas la cantidad 
+deseada en la jarra de 3, en dos pasos (vaciar jarra 4 y verter jarra 3) vas a alcanzar la solución buscada.
 
 \end{section}
+
+\begin{section}{Heurística solución }
+No hemos sido capaces de encontrar una buena heurística para este problema. Sin embargo, el problema de las jarras3,4 solo tiene 20 estados distintos, y conocemos lo cerca que están de la solución.
+Por ello, la mejor heurística para este problema realmente podemos definirla manualmente para que sea perfecta y encuentre la solución de manera directa. Esto no es posible para problemas más grandes, 
+ya que la heurística solución requiere solucionar el problema previamente.
+
+\end{section}
+
 \begin{section}{Notas}
 	Una heurística (informática) es \textbf{admisible} si nunca sobreestima el costo de alcanzar el objetivo, o sea, 
 que en el punto actual la estimación del costo de alcanzar el objetivo nunca es mayor que el menor costo posible.
