@@ -188,8 +188,9 @@ empieza por llenar jarra 3 y no por llenar jarra 4, pues ese movimiento está an
 	pathCost : 8.0					\\
 	nodesExpanded : 107			\\
 }
+
 En este problema limitar a 9 la profundidad es una tontería, pues las soluciones están a nivel 6, pero ilustra los nodos que no debería expandir 
-un buen algoritmo: Llenar la jarra 3 y a continuación vaciarla para volverla a llenar evidentemente es estúpido.
+un buen algoritmo: llenar la jarra de 3 y a continuación vaciarla para volverla a llenar evidentemente es estúpido.
 
 \texttt{
 	JarrasDFSDemo(Profundidad)-->	\\
@@ -204,7 +205,8 @@ un buen algoritmo: Llenar la jarra 3 y a continuación vaciarla para volverla a 
 	queueSize : 2					\\
 	maxQueueSize : 3				
 }
-La búsqueda en profundidad en este caso nos encuentra la solución de la mejor manera posible, pues expande solo 6 nodos, que son los necesarios para alcanzar la solución.
+
+La búsqueda en profundidad en este caso encuentra la solución de la mejor manera posible, pues expande sólo 6 nodos, que son los necesarios para alcanzar la solución.
 
 \end{section}
 
@@ -224,7 +226,7 @@ La búsqueda en profundidad en este caso nos encuentra la solución de la mejor 
 	maxQueueSize : 3				
 }
 
-La heurística solo se fija en la jarra de 4, y consiste en la diferencia(en valor absoluto)  de cantidad de agua que hay en la jarra 4 respecto al objetivo(2 litros).
+La heurística solo se fija en la jarra de 4, y consiste en la diferencia (en valor absoluto)  de cantidad de agua que hay en la jarra 4 respecto al objetivo (2 litros).
 La heurística  \textit{Kiker} no aporta nada respecto de, por ejemplo, la búsqueda en anchura ya que es una heurística bastante mala. Esto se debe al tipo de problema Concretamente no es 
 una heurística admisible, ya que estando a un nivel de la solución nos da un 2, y estando a tres niveles nos da un 1. Como no es admisible tampoco es consistente.
 
@@ -233,27 +235,34 @@ una heurística admisible, ya que estando a un nivel de la solución nos da un 2
 \begin{section}{Búsqueda $A^*$ con heurística \textit{Jarras}}
 
 \texttt{
-	JarrasAStarDemo2(Jarras heuristic)-->	\\
-	Action[name==Llenar jarra 4]		\\
-	Action[name==Verter jarra 4]		\\
-	Action[name==Vaciar jarra 3]		\\
-	Action[name==Verter jarra 4]		\\
-	Action[name==Llenar jarra 4]		\\
-	Action[name==Verter jarra 4]		\\
-	pathCost : 6.0					\\
-	nodesExpanded : 12			\\
-	queueSize : 1					\\
-	maxQueueSize : 3				
+ 	JarrasAStarDemo2(Jarras heuristic)-->	\\
+ 	Action[name==Llenar jarra 4]	\\
+ 	Action[name==Verter jarra 4]	\\
+ 	Action[name==Vaciar jarra 3]	\\
+ 	Action[name==Verter jarra 4]	\\
+ 	Action[name==Llenar jarra 4]	\\
+	Action[name==Verter jarra 4]	\\
+	pathCost : 6.0	\\
+	nodesExpanded : 11	\\
+	queueSize : 1	\\
+ 	maxQueueSize : 3	 
 }
-Esta heurística incluye además a la jarra 3 en los cálculos, sin suponer una mejora excesiva. La mejora respecto a \textit{Kiker} consiste en que tiene en cuenta que si alcanzas la cantidad 
-deseada en la jarra de 3, en dos pasos (vaciar jarra 4 y verter jarra 3) vas a alcanzar la solución buscada.
+
+Esta heurística está basada en la heurística \textit{Kiker} pero además incluye a la jarra de 3 litros en los cálculos, sin que suponga una mejora excesiva. La mejora respecto a \textit{Kiker} consiste en que tiene en cuenta que si alcanzas la cantidad 
+deseada en la jarra de 3, en dos pasos (vaciar jarra 4 y verter jarra 3) vas a alcanzar la solución buscada. Para ello, calculamos el la diferencia entre el agua de la jarra 3 y el valor que buscamos(en este caso 2) y le sumamos los dos pasos necesarios para trasladar 
+ese agua a la jarra 4. 
+
+Aunque de cara a este problema suponga una mejora mínima, para problemas mayores, con jarras de mayor volumen puede suponer un ahorro importante.
 
 \end{section}
 
-\begin{section}{Heurística solución }
-No hemos sido capaces de encontrar una buena heurística para este problema. Sin embargo, el problema de las jarras3,4 solo tiene 20 estados distintos, y conocemos lo cerca que están de la solución.
-Por ello, la mejor heurística para este problema realmente podemos definirla manualmente para que sea perfecta y encuentre la solución de manera directa. Esto no es posible para problemas más grandes, 
-ya que la heurística solución requiere solucionar el problema previamente.
+\begin{section}{Heurística solución y conclusiones}
+
+No hemos sido capaces de encontrar una buena heurística para este problema. Sin embargo, el problema de las Jarras(3,4) solo tiene 20 estados distintos, por lo que podemos dibujar su árbol de estados y dar los valores para la heurística manualmente en función de lo cerca que estemos de la solución.
+
+Así, definimos una heurística admisible y consistente que de hecho guiará al algoritmo de manera directa a la solución. Esto no es posible para problemas más grandes, ya que la heurística solución requiere obtener la solución previamente.
+
+Por tanto, entendemos que para problemas pequeños como este, un algoritmo sencillo lo resuelve de manera airosa sin necesidad de heurísticas complejas. 
 
 \end{section}
 
@@ -267,7 +276,7 @@ que en el punto actual la estimación del costo de alcanzar el objetivo nunca es
 	estimado de alcanzar el objetivo desde $n$ no es mayor que el coste real de 
 	alcanzar $n'$ más el coste estimado de alcanzar el objetivo desde $n'$.
 		\begin{itemize}
-		\item  $h'(n) <= c(n, n') + h'(n')$ (desigualdad triangular).
+		\item  $h'(n) \le c(n, n') + h'(n')$ (desigualdad triangular).
 		\item  $h'$  ha de ser localmente consistente con el coste de los arcos.
 		\item Toda heurística consistente también es admisible (pero no al revés).
 		\item Si $h'$ es consistente entonces los valores de $f'$ a lo largo de cualquier 
@@ -275,12 +284,6 @@ que en el punto actual la estimación del costo de alcanzar el objetivo nunca es
 		\end{itemize}
 
 $$\boxed{h(n) \le c(n, A, n') + h(n')}$$
-\end{section}
-
-\begin{section}{Conclusiones}
-	
-	
-	
 \end{section}
 
 \begin{thebibliography}{9}
