@@ -149,12 +149,50 @@
 \end{section}
 
 \begin{section}{Búsqueda en anchura}
+	
+JarrasBFSDemo(Anchura)-->
+Action[name==Llenar jarra 3]
+Action[name==Verter jarra 3]
+Action[name==Llenar jarra 3]
+Action[name==Verter jarra 3]
+Action[name==Vaciar jarra 4]
+Action[name==Verter jarra 3]
+pathCost : 6.0
+nodesExpanded : 11
+queueSize : 1
+maxQueueSize : 3
 
 
+La búsqueda en anchura o por niveles, explora nivel a nivel siguiendo el orden de instrucciones dado en JarrasActionsFunction, por ello encuentra la solución que 
+empieza por llenar jarra 3 y no por llenar jarra 4, pues ese movimiento está antes en el Set. Además, al ser el coste proporcional a la profundidad, encontramos una solución óptima.
+ Si hubiese alguna solución a menor profundidad la habría encontrado.
 \end{section}
 
-\begin{section}{Búsqueda en profundidad (limitada)}
+\begin{section}{Búsqueda en profundidad}
 
+JarrasDLSDemo(Profundidad limitada(9))-->
+Action[name==Llenar jarra 3]
+Action[name==Vaciar jarra 3]
+Action[name==Llenar jarra 3]
+Action[name==Verter jarra 3]
+Action[name==Llenar jarra 3]
+Action[name==Verter jarra 3]
+Action[name==Vaciar jarra 4]
+Action[name==Verter jarra 3]
+pathCost : 8.0
+nodesExpanded : 107
+
+JarrasDFSDemo(Profundidad)-->
+Action[name==Llenar jarra 4]
+Action[name==Verter jarra 4]
+Action[name==Vaciar jarra 3]
+Action[name==Verter jarra 4]
+Action[name==Llenar jarra 4]
+Action[name==Verter jarra 4]
+pathCost : 6.0
+nodesExpanded : 6
+queueSize : 2
+maxQueueSize : 3
 
 
 \end{section}
@@ -162,9 +200,37 @@
 \begin{section}{Búsqueda $A^*$ con heurística \textit{Kiker}}
 
 
+
+JarrasAStarDemo(Kiker heuristic)-->
+Action[name==Llenar jarra 4]
+Action[name==Verter jarra 4]
+Action[name==Vaciar jarra 3]
+Action[name==Verter jarra 4]
+Action[name==Llenar jarra 4]
+Action[name==Verter jarra 4]
+pathCost : 6.0
+nodesExpanded : 11
+queueSize : 1
+maxQueueSize : 3
+
+La heurística  \textit{Kiker} no aporta nada respecto por ejemplo a la búsqueda en anchura ya que es una heurística bastante mala. Concretamente no es 
+una heurística admisible, ya que estando a un nivel de la solucíon nos da un 2, y estando a tres niveles nos da un 1. Como no es admisible tampoco es consistente.
+
+
 \end{section}
 \begin{section}{Búsqueda $A^*$ con heurística \textit{Jarras}}
 
+JarrasAStarDemo2(Jarras heuristic)-->
+Action[name==Llenar jarra 4]
+Action[name==Verter jarra 4]
+Action[name==Vaciar jarra 3]
+Action[name==Verter jarra 4]
+Action[name==Llenar jarra 4]
+Action[name==Verter jarra 4]
+pathCost : 6.0
+nodesExpanded : 12
+queueSize : 1
+maxQueueSize : 3
 
 \end{section}
 \begin{section}{Notas}
