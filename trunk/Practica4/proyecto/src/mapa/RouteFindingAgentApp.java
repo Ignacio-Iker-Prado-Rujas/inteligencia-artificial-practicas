@@ -1,3 +1,4 @@
+
 package mapa;
 
 import java.util.ArrayList;
@@ -51,21 +52,21 @@ public class RouteFindingAgentApp extends SimpleAgentApp {
 		private static final long serialVersionUID = 1L;
 
 		public static enum MapType {
-			SPAIN
+			ESPAÑA
 		};
 
 		private MapType usedMap = null;
-		
-		private static String[] SPAIN_DESTS = new String[] {
+		private static String[] ESPAÑA_DESTS = new String[] {
 				"a Burgos", "a Zamora", "a Tomelloso",
-				"a aleatorio" };
-
+				"a Aleatoria" };
 		/** Creates a new frame. */
 		public RouteFindingAgentFrame() {
 			setTitle("RFA - the Route Finding Agent");
 			setSelectorItems(SCENARIO_SEL, new String[] {
-					"Spain, from Madrid",
-					"Spain, from Random" }, 0);
+					"España, desde Madrid", "España, desde Zamora",
+					"España, desde Burgos",
+					"España, desde Tomelloso",
+					"España, desde aleatoria" }, 0);
 			setSelectorItems(SEARCH_MODE_SEL, SearchFactory.getInstance()
 					.getSearchModeNames(), 1); // change the default!
 			setSelectorItems(HEURISTIC_SEL, new String[] { "=0", "SLD" }, 1);
@@ -78,10 +79,10 @@ public class RouteFindingAgentApp extends SimpleAgentApp {
 		 */
 		@Override
 		protected void selectionChanged(String changedSelector) {
-			RouteFindingAgentFrame.MapType mtype =  MapType.SPAIN;
+			RouteFindingAgentFrame.MapType mtype = MapType.ESPAÑA;
 			if (mtype != usedMap) {
 				usedMap = mtype;
-				String[] items = SPAIN_DESTS;					
+				String[] items = ESPAÑA_DESTS;
 				setSelectorItems(DESTINATION_SEL, items, 0);
 			}
 			super.selectionChanged(changedSelector);
@@ -102,11 +103,23 @@ public class RouteFindingAgentApp extends SimpleAgentApp {
 			String agentLoc = null;
 			switch (scenarioIdx) {
 			case 0:
-				SimplifiedRoadMapOfAustralia.initMap(map);
-				agentLoc = SimplifiedRoadMapOfAustralia.MADRID;
+				SimplifiedRoadMapOfSpain.initMap(map);
+				agentLoc = SimplifiedRoadMapOfSpain.MADRID;
 				break;
 			case 1:
-				SimplifiedRoadMapOfAustralia.initMap(map);
+				SimplifiedRoadMapOfSpain.initMap(map);
+				agentLoc = SimplifiedRoadMapOfSpain.ZAMORA;
+				break;
+			case 2:
+				SimplifiedRoadMapOfSpain.initMap(map);
+				agentLoc = SimplifiedRoadMapOfSpain.BURGOS;
+				break;
+			case 3:
+				SimplifiedRoadMapOfSpain.initMap(map);
+				agentLoc = SimplifiedRoadMapOfSpain.TOMELLOSO;
+				break;
+			case 4:
+				SimplifiedRoadMapOfSpain.initMap(map);
 				agentLoc = map.randomlyGenerateDestination();
 				break;
 			}
@@ -115,19 +128,21 @@ public class RouteFindingAgentApp extends SimpleAgentApp {
 			destinations = new ArrayList<String>();
 				switch (destIdx) {
 				case 0:
-					destinations.add(SimplifiedRoadMapOfAustralia.BURGOS);
+					destinations
+							.add(SimplifiedRoadMapOfSpain.BURGOS);
 					break;
 				case 1:
-					destinations.add(SimplifiedRoadMapOfAustralia.ZAMORA);
+					destinations.add(SimplifiedRoadMapOfSpain.ZAMORA);
 					break;
 				case 2:
-					destinations.add(SimplifiedRoadMapOfAustralia.TOMELLOSO);
+					destinations.add(SimplifiedRoadMapOfSpain.TOMELLOSO);
 					break;
 				case 3:
 					destinations.add(map.randomlyGenerateDestination());
 					break;
 				}
 		}
+	
 
 		/**
 		 * Prepares the view for the previously specified scenario and
