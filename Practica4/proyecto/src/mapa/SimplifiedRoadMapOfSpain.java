@@ -10,9 +10,9 @@ import aima.core.environment.map.ExtendableMap;
  * 
  * @author Ruediger Lunde, Enrique Ballesteros and Iker Prado
  */
-public class SimplifiedRoadMapOfAustralia extends ExtendableMap {
+public class SimplifiedRoadMapOfSpain extends ExtendableMap {
 
-	public SimplifiedRoadMapOfAustralia() {
+	public SimplifiedRoadMapOfSpain() {
 		initMap(this);
 	}
 
