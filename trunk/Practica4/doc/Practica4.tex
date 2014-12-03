@@ -22,7 +22,6 @@
 \pagestyle{fancy}
 \fancyfoot{}
 \fancyhead[LO,RE]{Práctica 4}	%encabezado de pares: nombre de la sección
-\fancyhead[RO,LE]{Búsqueda de rutas en un mapa utilizando la librería AIMA}
 \fancyfoot[LE,RO]{\thepage}	%abajo a izqda en pares, derecha en impares: numero de pagina
 %\fancyhead[LE]{\nouppercase{\leftmark}} %cuadro izquierdo de pagina par: parte y contador
 \fancyfoot[CE]{Inteligencia Artificial} 
@@ -79,18 +78,12 @@
 
 \begin{section}{Introducción: Mapa de carreteras}
 
-	\textbf{Problema:} 
-	
-	\textit{El objetivo de esta práctica es aplicar aima.core y aima.gui a la búsqueda de rutas entre capitales de provincias de las comunidades de Castilla-León, Castilla-La Mancha y Madrid. }
-	
-	\textit{Para representar el mapa utiliza un grafo no dirigido con suficiente número de nodos y aristas para que existan rutas alternativas (no es necesario representar todas las ciudades ni todas las carreteras). }
-	
-	\textit{Para construir el mapa de España simplificado empieza eligiendo una serie de capitales de provincia de las regiones indicadas (incluyendo Madrid) y obteniendo sus coordenadas UTM\footnote{Sistema de coordenadas Universal Transversal de Mercator} en aplicaciones específicas como \url{http://www.maps.pixelis.es/}. A partir de estas coordenadas en kilómetros, calcula las coordenadas relativas a la ciudad de Madrid, que se utilizará como punto central de la representación gráfica, restando a las coordenadas de cada ciudad las coordenadas de Madrid. Además extrae de \url{https://maps.google.es/} las longitudes de las rutas directas entre las capitales cercanas entre sí. Una ruta directa entre dos capitales es la que no pasa por ninguna otra capital de provincia. Como máximo se seleccionará una ruta directa entre cada dos capitales, representándola como una arista bidireccional en el grafo.}
+	\textbf{Problema:} \textit{}
 
 
 \end{section}
 
-	\begin{section}{Ciudades y carreteras de España. Coordenadas UTM}
+	\begin{section}{Cidades y carreteras de España. Coordenadas UTM}
 		A partir de las coordenadas UTM de cada ciudad, obtenemos sus coordenadas relativas respecto a Madrid.
 		\begin{itemize}
 		\item Madrid	(440, 4475)		\textrightarrow	(0, 0)
@@ -119,38 +112,37 @@
 		Y desde google maps obtenemos la longitud de las carreteras que las unen. Vamos a poner pocas carreteras para que el análisis sea más sencillo:
 
 			\begin{itemize}
-				\item MADRID-AVILA, 108 km.
-				\item MADRID-SEGOVIA, 93 km.
-				\item MADRID-GUADALAJARA, 60 km.
-				\item MADRID-TOLEDO, 72 km.
-				\item MADRID-CUENCA, 170 km.
-				\item AVILA-SALAMANCA, 110 km.
-				\item SALAMANCA-ZAMORA, 65 km.
-				\item ZAMORA-VALLADOLID, 100 km.
-				\item VALLADOLID-SEGOVIA, 120 km.
-				\item VALLADOLID-PALENCIA, 50 km.
-				\item PALENCIA-BURGOS, 90 km.
-				\item SORIA-BURGOS, 140 km.
-				\item GUADALAJARA-SORIA, 170 km.
-				\item CUENCA-ALBACETE, 160 km.
-				\item TOLEDO-CIUDAD REAL, 120 km.
-				\item CIUDAD REAL-TOMELLOSO, 90 km.
-				\item ALBACETE-TOMELLOSO, 130 km.
+				\item	MADRID-AVILA, 108 km.
+				\item	MADRID-SEGOVIA, 93 km.
+				\item	MADRID-GUADALAJARA, 60 km.
+				\item	MADRID-TOLEDO, 72 km.
+				\item	MADRID-CUENCA, 170 km.
+				\item	AVILA-SALAMANCA, 110 km.
+				\item	SALAMANCA-ZAMORA, 65 km.
+				\item	ZAMORA-VALLADOLID, 100 km.
+				\item	VALLADOLID-SEGOVIA, 120 km.
+				\item	VALLADOLID-PALENCIA, 50 km.
+				\item	PALENCIA-BURGOS, 90 km.
+				\item	SORIA-BURGOS, 140 km.
+				\item	GUADALAJARA-SORIA, 170 km.
+				\item	CUENCA-ALBACETE, 160 km.
+				\item	TOLEDO-CIUDAD REAL, 120 km.
+				\item	CIUDAD REAL-TOMELLOSO, 90 km.
+				\item	ALBACETE-TOMELLOSO, 130 km.
 
 	
 			\end{itemize}
 	\end{section}
 	\begin{section}{ ¿Qué pasaría si añadiéramos al mapa la ciudad de Cáceres. ¿Sería correcta su situación? ¿Por qué?}
 		Al colocar Cáceres con sus coordenadas relativas UTM respecto a Madrid, observamos que su coordenada correspondiente 
-		a la $x$ es positiva: esto quiere decir que en nuestro mapa Cáceres estará a la derecha de Madrid. Por tanto, la situación de Cáceres 
+		a la 'x' es positiva: esto quiere decir que en nuestro mapa Cáceres estará a la derecha de Madrid. Por tanto, la situación de Cáceres 
 		en el mapa no sería correcta.
 
-		Lo primero decir que no solo pasa con Cáceres,  con más ciudades (como Barcelona) también obtenemos unas coordenadas relativas incorrectas. Para explicar por qué ocurre esto basta echar un vistazo a la siguiente imagen que nos muestra los cuadrantes UTM en
+		Lo primero decir que no solo pasa con Cáceres,  con más ciudades (como Barcelona) también obtenemos unas coordenadas relativas 
+		incorrectas. Para explicar por qué ocurre esto basta echar un vistazo a la siguiente imagen que nos muestra los cuadrantes UTM en
 		el mapa.
 
-	\begin{center}
-		\includegraphics[scale=0.45]{mapaUTM}
-	\end{center}
+	\includegraphics[scale=0.45]{mapaUTM}
 
 		Como puede verse, Barcelona y Cáceres están en cuadrantes distintos a Madrid.
 		Esto se debe a que pertenecen a distintos husos. Barcelona está en el huso 31, Madrid en el 30 y Cáceres en el 29. Al cambiar de uso, 
@@ -167,7 +159,7 @@
 		Si salvamos este punto, podríamos aplicar nuestro código de la siguiente forma: cada ciudad pasa a ser una plaza o un cruce de calles. Cada carretera que antes unía ciudades  pasa a ser una calle que une dos 
 		plazas o dos cruces. Ahora tenemos el problema de que la misma calle une plazas consecutivas, pero esto solo afecta si damos nombres a las calles y las carreteras. En nuestra práctica solo identificamos una carretera por 
 		la longitud que tiene y las ciudades que une. De esta manera, una vez identificados los cruces de nuestra ciudad basta unirlo por las calles correspondientes y no tendremos ningún problema.
-		
+
 		Otro tema importante en las ciudades son los semáforos, pero a partir de  la modificación que nos permite incluir el tráfico podemos añadir otra que nos incorpore el tiempo medio en cruzar una calle teniendo en cuenta 
 		los semáforos. 
 
@@ -175,7 +167,6 @@
 
 
 	\end{section}
-	
 \begin{thebibliography}{9}
 
 \bibitem{aima}
@@ -191,4 +182,3 @@
 
 
 \end{document}
-
