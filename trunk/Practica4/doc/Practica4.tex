@@ -91,30 +91,28 @@
 \end{section}
 
 	\begin{section}{Ciudades y carreteras de España. Coordenadas UTM}
-		A partir de las coordenadas UTM de cada ciudad, obtenemos sus coordenadas relativas respecto a Madrid.
-		\begin{itemize}
-		\item Madrid	(440, 4475)		\textrightarrow	(0, 0)
-
-		\item Toledo	(410, 4415)		\textrightarrow	(-30, -60)
-		\item Guadalajara	(485, 4500)	\textrightarrow	(45, 25)
-		\item Cuenca	(570,  4435)		\textrightarrow	(130, -40)
-		\item Albacete	(600, 4315)	\textrightarrow	(160, -160)
-		\item Ciudad Real 	(420, 4315)	\textrightarrow	(-20, -160)
-
-		\item Soria	(540, 4625)		\textrightarrow	(100, 150)
-		\item Palencia	(370, 4650)  	\textrightarrow	(-70, 175)
-		\item Segovia	(405, 4535)	\textrightarrow	(-35, 60)
-		\item Valladolid	(355, 4610)	\textrightarrow	(-85, 135)
-		\item Salamanca	(275, 4540)	\textrightarrow	(-165, 65)
-		\item Burgos	(440, 4690)		\textrightarrow	(0, 215)
-		\item Zamora	(270, 4600)		\textrightarrow	(-170, 125)
-		\item Ávila	(355, 4500)		\textrightarrow	(-85, 25)
-		\item Tomelloso	(500, 4330)  	\textrightarrow	(60, -145)
+		A partir de las coordenadas UTM de cada ciudad, obtenemos sus coordenadas relativas respecto de Madrid.
 		
-		\item Cáceres(725, 4370)		\textrightarrow	(285, -105)	
-		\item Barcelona(430, 4580)	\textrightarrow	(-10, 105)
-
-		\end{itemize}
+		\begin{tabular}{llll}
+		 $\cdot$ Madrid &	(440, 4475)		&\textrightarrow&	(0, 0) \\
+		 $\cdot$ Toledo &	(410, 4415)		&\textrightarrow&	(-30, -60)\\
+		$\cdot$ Guadalajara	& (485, 4500)	&\textrightarrow&	(45, 25)\\
+		$\cdot$  Cuenca &	(570,  4435)	&	\textrightarrow &	(130, -40)\\
+		 $\cdot$ Albacete	&(600, 4315) &	\textrightarrow&	(160, -160)\\
+		 $\cdot$ Ciudad Real &	(420, 4315)&	\textrightarrow &	(-20, -160)\\
+		$\cdot$  Soria&	(540, 4625)	&	\textrightarrow &	(100, 150)\\
+		$\cdot$  Palencia&	(370, 4650)&  	\textrightarrow	& (-70, 175)\\
+		$\cdot$  Segovia&	(405, 4535)&	\textrightarrow	& (-35, 60)\\
+		$\cdot$  Valladolid&	(355, 4610)&	\textrightarrow	& (-85, 135)\\
+		$\cdot$  Salamanca&	(275, 4540)&	\textrightarrow	& (-165, 65)\\
+		$\cdot$  Burgos&	(440, 4690)		& \textrightarrow	& (0, 215)\\
+		$\cdot$  Zamora & 	(270, 4600)	&	\textrightarrow	& (-170, 125)\\
+		 $\cdot$ Ávila	& (355, 4500) &		\textrightarrow& 	(-85, 25)\\
+		$\cdot$  Tomelloso &	(500, 4330) & 	\textrightarrow	 & (60, -145)\\
+		$\cdot$ Cáceres & (725, 4370)	&	\textrightarrow	&(285, -105)\\	
+		$\cdot$ Barcelona & (430, 4580)	& \textrightarrow	& (-10, 105)\\
+		
+		\end{tabular}
 
 		Y desde google maps obtenemos la longitud de las carreteras que las unen. Vamos a poner pocas carreteras para que el análisis sea más sencillo:
 
@@ -136,7 +134,6 @@
 				\item	TOLEDO-CIUDAD REAL, 120 km.
 				\item	CIUDAD REAL-TOMELLOSO, 90 km.
 				\item	ALBACETE-TOMELLOSO, 130 km.
-
 	
 			\end{itemize}
 	\end{section}
@@ -155,7 +152,7 @@
 	\end{center}
 	
 		Como puede verse, Barcelona y Cáceres están en cuadrantes distintos a Madrid.
-		Esto se debe a que pertenecen a distintos husos. Barcelona está en el huso 31, Madrid en el 30 y Cáceres en el 29. Al cambiar de uso, 
+		Esto se debe a que pertenecen a distintos husos. Barcelona está en el huso 31, Madrid en el 30 y Cáceres en el 29. Al cambiar de huso, 
 		las coordenadas UTM pertenecientes a la $x$ cambian. Así, Castellón de la Plana tiene coordenadas (752 ,  4431 ,  30 ) y su puerto (245  ,  4430, 31) 
 		cuando distan 8 kilómetros el uno del otro.
 
@@ -163,46 +160,55 @@
 
 		\begin{section}{Aplica el algoritmo $A^*$ con búsqueda en grafo y la distancia en línea recta como heurística a la búsqueda de rutas entre algunas de las ciudades representadas. Analiza los resultados obtenidos.}
 			Sabemos que la heurística en línea recta es consistente, luego el algoritmo $A^*$ con Graph Search encontrará la solución óptima. Partiendo de esto, vamos a ejecutar varias búsquedas interesantes. 
-			En nuestro mapa, estas son las que implican a Tomelloso, a Burgos y a Zamora, pues hemos puesto dos caminos alternativos para ir a ellas desde Madrid. Veamos qué caminos encuentra y cuántos nodo expande para encontrarlos:
+			En nuestro mapa, estas son las que implican a Tomelloso, a Burgos y a Zamora, pues hemos puesto dos caminos alternativos para ir a ellas desde Madrid. Veamos qué caminos encuentra y cuántos nodos expande para encontrarlos:
 			
-			\begin{itemize}
 				\begin{itemize}
-				\item De Zamora a Tomelloso: No encuentra el camino directamente, sino que expande 10 nodos. Es el caso más interesante.
-
+					\item De Zamora a Tomelloso: No encuentra el camino directamente, sino que expande 10 nodos. Es el caso más interesante.
+					\begin{itemize}
+					
 					\item METRIC[pathCost] = 565.0
 					\item METRIC[maxQueueSize] = 5
 					\item METRIC[queueSize] = 3
 					\item METRIC[nodesExpanded] = 10
+					
+					\end{itemize}
+					
 				\end{itemize}
 
 				\begin{itemize}
-				\item De Burgos a Tomelloso: Al igual que desde Zamora, no encuentra el camino directamente. En ambos casos se debe a la heurística en línea recta. Por ejemplo, Soria está 
-						más cerca en línea recta de Tomelloso que Palencia.
 
+					\item De Burgos a Tomelloso: Al igual que desde Zamora, no encuentra el camino directamente. En ambos casos se debe a la heurística en línea recta. Por ejemplo, Soria está más cerca en línea recta de Tomelloso que Palencia.
+					\begin{itemize}
 					\item METRIC[pathCost]=635.0
 					\item METRIC[maxQueueSize]=4
 					\item METRIC[queueSize]=2
 					\item METRIC[nodesExpanded]=11
+					
+					\end{itemize}
+					
 				\end{itemize}
 			
 
 				\begin{itemize}
+				
 				\item De Madrid a Tomelloso: Ahora encuentra a la primera el camino mínimo.
+					
+					\begin{itemize}
 					\item METRIC[pathCost]=282.0
 					\item METRIC[maxQueueSize]=5
 					\item METRIC[queueSize]=4
 					\item METRIC[nodesExpanded]=4
+					
+					\end{itemize}
 				\end{itemize}
 
 
-				
-			\end{itemize}
-
-				Como las carreteras son bidireccionales encuantra el mismo camino si lo ejecutamos en sentido inverso. Podemos realizar con nuestra aplicación las pruebas que queramos, pero 
+				Como las carreteras son bidireccionales encuentra el mismo camino si lo ejecutamos en sentido inverso. Podemos realizar con nuestra aplicación las pruebas que queramos, pero 
 				la conclusión principal es que la heurística en línea recta funciona de manera suficientemente buena.
 	\end{section}
 	
-	\begin{section}
+	\begin{section}{Indica cómo modificarías el proyecto anterior para que permitiera incluir el tráfico en tiempo real.}
+	
 		Para este apartado tenemos dos opciones: la primera y más simple consiste en tener en cuenta el tráfico en tiempo real y modificar la longitud de las carreteras teniéndolo en cuenta. Sencillamente 
 		si el tráfico es lento para una arista aumentamos su longitud multiplicando por un coeficiente mayor que 1, y si es rápido por un coeficiente menor. Luego ya solo queda lanzar el algoritmo sobre este 
 		nuevo mapa de carreteras.
