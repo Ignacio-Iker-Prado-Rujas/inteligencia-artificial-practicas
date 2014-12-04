@@ -161,8 +161,7 @@
 
 	\end{section}
 
-
-	\begin{section}{Aplica el algoritmo $A^*$ con búsqueda en grafo y la distancia en línea recta como heurística a la búsqueda de rutas entre algunas de las ciudades representadas. Analiza los resultados obtenidos.}
+		\begin{section}{Aplica el algoritmo $A^*$ con búsqueda en grafo y la distancia en línea recta como heurística a la búsqueda de rutas entre algunas de las ciudades representadas. Analiza los resultados obtenidos.}
 			Sabemos que la heurística en línea recta es consistente, luego el algoritmo $A^*$ con Graph Search encontrará la solución óptima. Partiendo de esto, vamos a ejecutar varias búsquedas interesantes. 
 			En nuestro mapa, estas son las que implican a Tomelloso, a Burgos y a Zamora, pues hemos puesto dos caminos alternativos para ir a ellas desde Madrid. Veamos qué caminos encuentra y cuántos nodo expande para encontrarlos:
 			
@@ -202,6 +201,7 @@
 				Como las carreteras son bidireccionales encuantra el mismo camino si lo ejecutamos en sentido inverso. Podemos realizar con nuestra aplicación las pruebas que queramos, pero 
 				la conclusión principal es que la heurística en línea recta funciona de manera suficientemente buena.
 	\end{section}
+	
 	\begin{section}
 		Para este apartado tenemos dos opciones: la primera y más simple consiste en tener en cuenta el tráfico en tiempo real y modificar la longitud de las carreteras teniéndolo en cuenta. Sencillamente 
 		si el tráfico es lento para una arista aumentamos su longitud multiplicando por un coeficiente mayor que 1, y si es rápido por un coeficiente menor. Luego ya solo queda lanzar el algoritmo sobre este 
@@ -214,6 +214,7 @@
 
 	\end{section}
 
+	
 	\begin{section}{¿Cómo se podría aplicar el código desarrollado en esta práctica a un mapa de calles de una ciudad? Describe qué información tendrías que representar y cómo lo harías.}
 		El concepto base es el mismo, por lo que podría aplicarse el mismo código. Esto siendo un mapa simplificado también. Igual que hemos supuesto en nuestro mapa que las carreteras que unen ciudades son
  		bidireccionales y tienen la misma longitud de ida y de vuelta, necesitaríamos que las calles de la ciudad fuesen todas bidireccionales. Este es el mayor problema que presenta el aplicar nuestro código. A diferencia 
@@ -230,8 +231,6 @@
 
 
 	\end{section}
-
-
 \begin{thebibliography}{9}
 
 \bibitem{aima}
