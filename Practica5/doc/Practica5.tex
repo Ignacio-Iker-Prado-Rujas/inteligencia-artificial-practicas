@@ -46,7 +46,7 @@
 \begin{document} 
 \title{\Huge{\textsc{Inteligencia Artificial}} \\
 	\vspace{0.7cm}
-	 \textsc{\Large{Práctica 4}} \\
+	 \textsc{\Large{Práctica 5}} \\
 	\vspace{1.5cm}
 	\includegraphics[scale=0.45]{viaje}}
 \author{\textsc{Grupo 3:}\\
@@ -94,8 +94,13 @@
 	\textit{Permitiremos el viaje en tren,  en avión, en autobús y en coche particular. No se podrán combinar los medios de transporte, por lo que a Canarias solo se podrá viajar a las ciudades con aeropuerto.}
 	
 	Si conseguimos implementar todo lo especificado a continuación, iremos ampliando el diseño de manera incremental.
+	
+	\begin{center}
+	\includegraphics{espiral}
+	\end{center}
+	
 \end{section}
-
+	\newpage
 	\begin{section}{Información sobre viajes disponibles y sus características}
 		La información sobre los viajes debe ser información que pueda obtenerse a partir de bases de datos. No necesariamente de manera directa, pero debe poderse inferir de manera objetiva 
 		a partir de datos que tengamos. La base de datos que vamos a utilizar será una propia creada a partir de los datos de \url{www.wikipedia.org}. 
@@ -129,6 +134,8 @@
 				
 						
 			\end{itemize}
+			
+			\newpage
 			Además, a partir de esta información inferiremos utilizando las siguientes reglas el resto de campos que utilizaremos para
 			recomendar los viajes a nuestros clientes.
 			
@@ -148,6 +155,8 @@
 				\end{itemize}
 		
 	\end{section}
+	
+	\newpage
 	\begin{section}{Información que es necesario obtener del usuario sobre sus necesidades, gustos y limitaciones (económicas, de tiempo, etc.).}
 		Necesitaremos tanta información como sea posible del usuario, pero debe ser información precisa y objetiva. No podemos pedir que se 
 		rellenen todos los campos. Habrá unos datos concretos sobre el cliente y unos datos variables sobre el viaje que desea consultar.
@@ -201,7 +210,7 @@
 				\end{itemize}
 			
 	\end{section}
-
+		\newpage
 		\begin{section}{Reglas de recomendación que pueden utilizarse.}
 			Las reglas de recomendación deben relacionar la información que tenemos sobre los viajes y sus características con la información que tenemos 
 			sobre el usuario.
@@ -215,30 +224,48 @@
 
 					\item Si existe interés en turismo y tiene edad media:
 						\begin{itemize}
-							\item Ciudad $rightarrow$  Si ciudad es destino turístico.
+							\item Ciudad $\rightarrow$  Si ciudad es destino turístico.
 						\end{itemize}
 					\item Si existe interés en aventura y tiene edad media:						
 						\begin{itemize}
-							\item Ciudad $rightarrow$  Si ciudad es destino de aventura.
+							\item Ciudad $\rightarrow$  Si ciudad es destino de aventura.
 						\end{itemize}
 					\item Si existe interés en ocio y tiene edad joven y (Nº niños $=$ 0):
 						\begin{itemize}
-							\item Ciudad $rightarrow$  Si ciudad es destino de ocio o si ciudad es destino fiesta.
+							\item Ciudad $\rightarrow$  Si ciudad es destino de ocio o si ciudad es destino fiesta.
 						\end{itemize}
 					\item Si existe interés en ocio y tiene edad media o mayor:
 						\begin{itemize}
-							\item Ciudad $rightarrow$  Si ciudad es destino de ocio.
+							\item Ciudad $\rightarrow$  Si ciudad es destino de ocio.
 						\end{itemize}
 					\item Si existe discapacidad:						
 						\begin{itemize}
-							\item Ciudad $rightarrow$  Si ciudad está adaptada para discapacitados.
+							\item Ciudad $\rightarrow$  Si ciudad está adaptada para discapacitados.
 						\end{itemize}
 					\item Si existe interés en fiesta y edad media o mayor:
 						\begin{itemize}
-							\item Ciudad $rightarrow$  Si ciudad es destino de ocio.
+							\item Ciudad $\rightarrow$  Si ciudad es destino de ocio.
+						\end{itemize}
+					\item Si existe interés en aventura extremay edad mayor:
+						\begin{itemize}
+							\item Ciudad $\rightarrow$  Si ciudad es destino aventura.
+						\end{itemize}
+					\item Si existe interés en turismo:
+						\begin{itemize}
+							\item Ciudad $\rightarrow$  Si ciudad es destino de turismo o destino de ocio.
+						\end{itemize}
+					\item Si existe interés en gastronomía:
+						\begin{itemize}
+							\item Ciudad $\rightarrow$  Si ciudad es destino de gastronomia.
+						\end{itemize}
+					\item Si Nº personas $>$ 4:
+						\begin{itemize}
+							\item Ciudad $\rightarrow$  Si ciudad es destino de ocio.
 						\end{itemize}
 
 				\end{itemize}
+				
+			\newpage
 			A la hora de recomendar alojamiento, tendremos en cuenta el gasto diario por persona:
 				\begin{itemize}
 					\item Si gasto es bajo: Recomendamos camping.
