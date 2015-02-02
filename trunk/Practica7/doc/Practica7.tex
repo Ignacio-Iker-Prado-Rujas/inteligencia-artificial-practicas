@@ -84,13 +84,39 @@ F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 		y los hecho no se diferencian explícitamente.
 		Por supuesto la sintaxis concreta es diferente: Uso de "\=" para el distinto, de "_",  en Prolog en vez de sus correspondientes en Jess.
 		
-		Una de las diferencias importantes está en la recursión, que en Prolog requiere un
+		Una de las diferencias importantes está en la recursión, que en Prolog requiere colocar la recursión en la parte derecha de la sentencia y en Jess no es estrictamente necesario.
+		
 
 	
 \end{section}
 	\newpage
 	\begin{section}{Algoritmo usado por Prolog}
 
+		Sabemos que Prolog ejecuta de manera procedimental, por lo que ejecuta las operaciones en el orden que están escritas. Cambiando de orden estas operaciones obtenemos primero las siguientes soluciones:
+
+		\begin{subsection}{Ejecuciones con órdenes distintos}
+			Para el orden:  llenar3, llenar4, verter3, verter4, vaciar3, vaciar4.
+
+			[llenar3,llenar4,vaciar3,verter4,vaciar3,verter4,llenar4,verter4] 8
+			[llenar3,llenar4,vaciar3,verter4,vaciar3,verter4,llenar4,verter4,vaciar3] 9
+			[llenar3,llenar4,vaciar3,verter4,vaciar3,verter4,verter3,verter4,llenar4,verter4] 10
+			
+			Encuentra la solución óptima a la decimo séptima.
+
+			Para el orden: llenar3, verter3, vaciar4, llenar4, verter4 vaciar3.(Intentamos obtener cuanto antes una solución óptima)
+
+			Encuentra una solución óptima a la quinta:
+			[llenar3,verter3,llenar3,verter3,vaciar4,verter3]  6
+			
+		\end{subsection}
+
+		Así, observamos que explora en profundidad, pues las soluciones que va encontrando de manera consecutiva tienen las primeras operaciones idénticas. Además, 
+		sigue el orden de exploración en el que colocamos la deficición de las operaciones. Es un método no informado, pues no utilizamos ninguna heurística. Además, la profundidad no está acotada 
+		pues explora hasta haber visitado todos los estados posibles incluso a partir de soluciones encontradas. Lo único que controlamos es que no se repitan estados, pues tendríamos una secuencia infinita 
+		en muchos casos (por ejemplo si las primeras dos operaciones fueses llenar3 y vaciar3, sin control de repeticiones se quedaría alternando entre ambas hasta infinito. Es decir, que sin este control sería una búsqueda 
+		primero en profundidad, pues no encuentra la solución óptima y puede entrar en caminos infinitos. Luego como controlamos las repeticiones es "primero en profundidad + control de repeticiones".
+
+	
 	\end{section}
 
 	
