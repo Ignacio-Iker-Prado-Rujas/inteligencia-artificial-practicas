@@ -78,6 +78,13 @@ F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 
 
 \begin{section}{Diferencias entre Prolog y Jess}
+		En Jess se define un espacio concreto para los hecho iniciales (deffacts ini), en cambio en Prolog no es necesario la parte procedimental. Eso nos permite que 
+		al declarar los hechos iniciales al principio sean los que primero se añadan.
+		Por tanto en Jess distinguimos explícitamente las reglas de los hechos, utilizando el deffrule y dándole un nombre concreto a la regla que puede ser distinto del assert que se cree. En prolog las reglas 
+		y los hecho no se diferencian explícitamente.
+		Por supuesto la sintaxis concreta es diferente: Uso de "\=" para el distinto, de "_",  en Prolog en vez de sus correspondientes en Jess.
+		
+		Una de las diferencias importantes está en la recursión, que en Prolog requiere un
 
 	
 \end{section}
