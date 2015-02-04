@@ -1,9 +1,9 @@
 /*
 Inteligencia Artificial, Practica 7: Segunda parte
-Enrique Ballesteros e Iker Prado Rujas
+Enrique Ballesteros e Ignacio Iker Prado Rujas (Grupo 03)
 */
 
-%RepresentaciÛn de estados
+%Representaci√≥n de estados
 %%	estado(Jarra3, Jarra4)
 %    con Jarra3 cantidad de agua en la jarra 3
 %    y Jarra4 cantidad de agua en jarra 4.
@@ -15,7 +15,7 @@ inicial(estado(0,0)).
 objetivo(estado( _, 2)).
 
 %Definimos los operadores.
-%El orden influir· en la ejecuciÛn.
+%El orden influir√° en la ejecuci√≥n.
 %
 operador(estado(Z, J), estado(3, J), llenar3) :- (Z < 3).
 operador(estado(Z, J), estado(Z, 4), llenar4) :- (J < 4).
@@ -26,7 +26,7 @@ operador(estado(Z, J), (estado(3, X)), verter4) :-  (Z < 3), (J > 0),  X is  J-3
 operador(estado(Z, J), estado(0, J), vaciar3) :- (Z > 0).
 operador(estado(Z, J), estado(Z, 0), vaciar4) :- (J > 0).
 
-%Definimos la funciÛn. Caso base, y caso recursivo:
+%Definimos la funci√≥n. Caso base, y caso recursivo:
 %
 jarras(Estado, _, [], 0) :- objetivo(Estado).
 jarras(Estado, Visitados, [OperadorActual|Operadores], N) :- operador(Estado, EstadoNuevo, OperadorActual),
