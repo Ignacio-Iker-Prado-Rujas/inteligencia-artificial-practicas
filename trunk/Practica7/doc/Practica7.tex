@@ -1,4 +1,4 @@
-F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
+\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 \usepackage[spanish, activeacute]{babel}
 \usepackage[utf8]{inputenc}
 %\usepackage[top=2.5cm, bottom=2.5cm, outer=1.75cm, inner=1.75cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.3cm]{geometry}	%márgenes empequeñecidos
@@ -21,8 +21,8 @@ F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 \renewcommand{\thepage}{\arabic{page}}% Arabic page numbers\fancyhead{}
 \pagestyle{fancy}
 \fancyfoot{}
-\fancyhead[LO,RE]{Práctica 6}	%encabezado de pares: nombre de la sección
-\fancyhead[RO,LE]{Diseño de un agente de viajes}
+\fancyhead[LO,RE]{Práctica 7}	%encabezado de pares: nombre de la sección
+\fancyhead[RO,LE]{Representación de conocimiento en \textbf{Prolog}}
 \fancyfoot[LE,RO]{\thepage}	%abajo a izqda en pares, derecha en impares: numero de pagina
 %\fancyhead[LE]{\nouppercase{\leftmark}} %cuadro izquierdo de pagina par: parte y contador
 \fancyfoot[CE]{Inteligencia Artificial} 
@@ -78,25 +78,27 @@ F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 
 
 \begin{section}{Diferencias entre \textbf{Prolog} y \textbf{Jess}}
-		En \textbf{Jess} se define un espacio concreto para los hecho iniciales (\texttt{deffacts ini}), mientras que en \textbf{Prolog} no es necesario debido a que es procedimental, lo cual nos permite que 
+		En \textbf{Jess} se define un espacio concreto para los hechos iniciales (\texttt{deffacts ini}), mientras que en \textbf{Prolog} no es necesario debido a que es procedimental, lo cual nos permite que 
 		al declarar los hechos iniciales al principio sean estos los que primero se añadan.
-		Por tanto en \textbf{Jess} distinguimos explícitamente las reglas de los hechos, utilizando el deffrule y dándole un nombre concreto a la regla (que puede ser distinto del assert que se defina). En \textbf{Prolog} las reglas 
-		y los hechos no se diferencian explícitamente. De hecho, al escribir  \texttt{dd(juan, maria, rosa, m).} estamos definiendo la regla texttt{dd(juan, maria, rosa, m) :- true.}, que por supuesto se cumple siempre (no tiene premisas).
+		Por tanto en \textbf{Jess} distinguimos explícitamente las reglas de los hechos, utilizando el \texttt{deffrule} y dándole un nombre concreto a la regla (que puede ser distinto del \texttt{assert} que se defina). En \textbf{Prolog} las reglas 
+		y los hechos no se diferencian explícitamente. De hecho, al escribir  \texttt{dd(juan, maria, rosa, m).} estamos definiendo la regla \texttt{dd(juan, maria, rosa, m) :- true.}, que por supuesto se cumple siempre (no tiene premisas).
 		
-		La principal diferencia que hemos notado está en la recursión, que en \textbf{Prolog} requiere colocar la llamada recursiva en la parte derecha de la sentencia (i.e., evitamos la recursión a al izquierda) porque resuelve la recursión en orden. En \textbf{Jess} no es estrictamente necesario hacer esto.
+		La principal diferencia que hemos notado está en la recursión, ya  que en \textbf{Prolog} requiere colocar la llamada recursiva en la parte derecha de la sentencia (i.e., evitamos la recursión a al izquierda) porque resuelve la recursión en orden. En \textbf{Jess} no es estrictamente necesario hacer esto.
       
-      Además, la sintaxis concreta es diferente: en \textbf{Prolog} se usa \texttt{``X \= Y''} para el distinto y \texttt{``_''} para cualquiera. En cambio, en \textbf{Jess}, se utiliza \texttt{test (neq ?x ?y)} y \texttt{?} respectivamente, además de otras diferencias sintánticas más supérfluas. No es baladí mencionar que en \textbf{Jess} el consecuente se encuentra a continuación del antecedente, mientras que en \texttt{Prolog} la conclusión se encuentra antes que las premisas. Esto se debe a que primero permite encadenamiento progresivo y regresivo (aunque sea más fácil usar el progresivo) y el segundo regresivo.
-		
+      Además, la sintaxis concreta es diferente: en \textbf{Prolog} se usa \texttt{X \textbackslash = Y} para el distinto y $\_$ para cualquiera. En cambio, en \textbf{Jess}, se utiliza \texttt{test (neq ?x ?y)} y \texttt{?} respectivamente, además de otras diferencias sintánticas más supérfluas. No es baladí mencionar que en \textbf{Jess} el consecuente se encuentra a continuación del antecedente, mientras que en \texttt{Prolog} la conclusión se encuentra antes que las premisas. Esto se debe a que primero permite encadenamiento progresivo y regresivo (aunque sea más sencillo usar el progresivo) y el segundo regresivo.
 
+\begin{center}
+	\includegraphics[scale=1.25]{prolog}
+\end{center}
 	
 \end{section}
 	\newpage
 	\begin{section}{Algoritmo usado por Prolog}
 
-		Sabemos que \textbf{Prolog} se ejecuta de manera procedimental, por lo que realiza las operaciones en el orden en que están escritas. Cambiando el orden de los operadores obtenemos primero las siguientes soluciones:
+		Sabemos que \textbf{Prolog} se ejecuta de manera procedimental, por lo que realiza las operaciones en el orden en que están escritas. Cambiando el orden de los operadores obtenemos primero diferentes soluciones, que estudiamos a continuación.
 
 		\begin{subsection}{Ejecuciones con órdenes distintos en los operadores}
-			Para el orden \texttt{llenar3, llenar4, verter3, verter4, vaciar3, vaciar4}:
+			Para el orden \texttt{llenar3, llenar4, verter3, verter4, vaciar3, vaciar4} las soluciones sucesivas van aumentando de longitud:
 
 			\texttt{[llenar3,llenar4,vaciar3,verter4,vaciar3,verter4,llenar4,verter4] 8}
          
@@ -104,20 +106,23 @@ F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 			
       \texttt{[llenar3,llenar4,vaciar3,verter4,vaciar3,verter4,verter3,verter4,llenar4,verter4] 10}
 			
-			Encuentra la solución óptima a la decimo séptima.
+			Además, encuentra la solución óptima en el decimo séptimo intento.
 
-			Para el orden \texttt{llenar3, verter3, vaciar4, llenar4, verter4 vaciar3}:
+			Para el orden \texttt{llenar3, verter3, vaciar4, llenar4, verter4 vaciar3} obtenemos la solución óptima en la quinta iteración: 
 			
 			\texttt{[llenar3,verter3,llenar3,verter3,vaciar4,verter3]  6}
          
-      Encuentra una solución óptima a la quinta (intentamos obtener cuanto antes una solución óptima).
 			
 		\end{subsection}
 
-		Así, observamos que explora en profundidad, pues las soluciones que va encontrando de manera consecutiva tienen las primeras operaciones idénticas. Además, 
-		sigue el orden de exploración en el que colocamos la deficición de las operaciones. Es un método no informado, pues no utilizamos ninguna heurística. Además, la profundidad no está acotada 
+		Así, observamos que explora en profundidad con \textit{backtracking}, pues las soluciones que va encontrando de manera consecutiva tienen las primeras operaciones idénticas. Además, 
+		sigue el orden de exploración en el que colocamos la deficición de las operaciones. Es un método no informado, pues no utilizamos ninguna heurística. 
+
+La profundidad no está acotada 
 		pues explora hasta haber visitado todos los estados posibles incluso a partir de soluciones encontradas. Lo único que controlamos es que no se repitan estados, pues en muchos casos podríamos tener una secuencia infinita (por ejemplo si las primeras dos operaciones fueses llenar3 y vaciar3, sin control de repeticiones se quedaría alternando entre ambas sin parar). Es decir, que sin este control sería una búsqueda 
-		primero en profundidad, pues no encuentra la solución óptima y puede entrar en caminos infinitos. Luego como controlamos las repeticiones es ``primero en profundidad $+$ control de repeticiones''.
+		primero en profundidad, pues no encuentra la solución óptima y puede entrar en caminos infinitos. 
+
+Concluímos pues que como controlamos las repeticiones es ``primero en profundidad $+$ control de repeticiones''.
 
 	
 	\end{section}
