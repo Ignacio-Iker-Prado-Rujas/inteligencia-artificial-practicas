@@ -1,6 +1,6 @@
 /*
 Inteligencia Artificial, Practica 7: Primera parte
-Enrique Ballesteros e Iker Prado Rujas
+Enrique Ballesteros e Ignacio Iker Prado Rujas (Grupo 03)
 */
 
 dd(juan, maria, rosa, m).
@@ -9,7 +9,7 @@ dd(jose, laura, pilar, m).
 dd(luis, pilar, miguel, h).
 dd(miguel,isabel,jaime,h).
 dd(pedro, rosa, pablo, h).
-dd(pedro, rosa, begoña, m).
+dd(pedro, rosa, begoÃ±a, m).
 
 padre(X, Y):- dd(X, _, Y, _).
 
