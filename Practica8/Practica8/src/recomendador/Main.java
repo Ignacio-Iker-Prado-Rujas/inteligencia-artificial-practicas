@@ -2,7 +2,9 @@ package recomendador;
 
 /* Ejemplo de programa java que invoca la ejecución del motor de reglas jess con el programa diet.clp*/
 // De esta forma se podría realizar la entrada y salida de datos en Java y el razonamiento en Jess
+import java.util.InputMismatchException;
 import java.util.Iterator;
+import java.util.Scanner;
 
 import jess.Deffacts;
 import jess.Fact;
@@ -38,11 +40,89 @@ public class Main {
 			
 			Deffacts deffacts = new Deffacts("DatosJava", null, miRete);
 			Fact f = new Fact("persona", miRete);
-			f.setSlotValue("nombre", new Value("Rocio", RU.STRING));
-			f.setSlotValue("edad", new Value(30, RU.INTEGER));
-			f.setSlotValue("presupuesto", new Value(1500, RU.INTEGER));
-			f.setSlotValue("intereses", new Value("ocio", RU.STRING));
-			f.setSlotValue("dias", new Value(7, RU.INTEGER));
+			Scanner sc = new Scanner(System.in);
+			
+			String s;
+			int i;
+			boolean correcto = false;
+			while (!correcto){
+				System.out.print("Nombre: ");
+				try{
+					s = sc.nextLine();
+					f.setSlotValue("nombre", new Value(s, RU.SYMBOL));
+					correcto = true;
+				}catch(Exception e){
+					System.out.println("Mal ");
+				}
+			}
+			correcto = false;
+			while (!correcto){
+				System.out.print("Edad: ");
+				if (sc.hasNextInt()){
+					i = sc.nextInt();	
+					if(i>=0){
+						f.setSlotValue("edad", new Value(i, RU.INTEGER));
+						correcto = true;
+					}else
+						System.out.println("Debes tener edad positiva.");
+				}else{
+					System.out.println("Mal puesta la edad.");
+					sc.nextLine();
+				}
+			}
+			correcto = false;
+			while (!correcto){
+				System.out.print("Presupuesto: ");
+				if (sc.hasNextInt()){
+					i = sc.nextInt();
+					if(i>=0){
+						f.setSlotValue("presupuesto", new Value(i, RU.INTEGER));
+						correcto = true;
+						sc.nextLine();
+						
+					}else{
+						System.out.println("Debes tener presupuesto positivo.");
+					}
+				}else{
+					System.out.println("Mal puesta la edad idiota.");
+					sc.nextLine();
+				}				
+			}
+
+			correcto = false;
+			while (!correcto){
+				System.out.print("Intereses: ");
+				try{
+					s = sc.nextLine();
+					f.setSlotValue("intereses", new Value(s, RU.SYMBOL));
+					correcto = true;
+				}catch(Exception e){
+					System.out.println("Mal, por qué tocas? ");
+					e.printStackTrace();
+				}
+			}
+			//Los intereses hay que hacerlos como explica en la diapositiva
+			//de JavaConJess, ya que son un multislot, se tratan con un vector.
+			//Puedes ir preguntando uno a uno por todos los intereses y que se responda s/n
+			//O puedes hacer que los introduzca manualmente hasta que ponga END o lo que sea.
+			
+			correcto = false;
+			while (!correcto){
+				System.out.print("Días: ");
+				if (sc.hasNextInt()){
+					i = sc.nextInt();
+					if(i>=0){
+						f.setSlotValue("dias", new Value(i, RU.INTEGER));
+						correcto = true;
+					}else{
+						System.out.println("Debe ser un número positivo de días.");
+					}
+				}else{
+					System.out.println("Mal puesta la edad idiota.");
+					sc.nextLine();
+				}
+			}
+
 			deffacts.addFact(f);
 			miRete.addDeffacts(deffacts);
 			
@@ -75,6 +155,7 @@ public class Main {
 
 			// Para parar el motor de reglas
 			miRete.halt();
+			sc.close();
 		
 	}
 
