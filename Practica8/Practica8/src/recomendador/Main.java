@@ -187,7 +187,7 @@ public class Main {
 		}
 	}
 	
-	private static void aumentarIntereses(Rete miRete, boolean noQuedanInt) throws JessException{
+	private static void aumentarIntereses(Rete miRete) throws JessException{
 		Iterator<Fact> iterador; 
 		iterador = miRete.listFacts();
 		Fact f;
@@ -198,20 +198,15 @@ public class Main {
 		while (iterador.hasNext()) {
 			f = iterador.next();
 			if (f.getName().equals("MAIN::persona"))
-			{
-				if(!Intereses.quedanIntereses(f.getSlotValue("intereses").listValue(null)))
-					noQuedanInt = true;
-					//Nos hemos quedado sin intereses que añadir)
-				else{	
-					v = f.getSlotValue("intereses");
-					jj = v.listValue(null);
-					Intereses.nuevoInteres(jj);
-					miRete = new Rete();
-					miRete.batch("practica8.clp");
-					Deffacts deffacts = new Deffacts("DatosJava", null, miRete);
-					deffacts.addFact(f);
-					miRete.addDeffacts(deffacts);
-				}
+			{	
+				v = f.getSlotValue("intereses");
+				jj = v.listValue(null);
+				Intereses.nuevoInteres(jj);
+				miRete = new Rete();
+				miRete.batch("practica8.clp");
+				Deffacts deffacts = new Deffacts("DatosJava", null, miRete);
+				deffacts.addFact(f);
+				miRete.addDeffacts(deffacts);
 			}                           
 		}
 		miRete.reset();				 
@@ -233,8 +228,8 @@ public class Main {
 	}
 
 
-	private static void relajarCondiciones(Rete miRete, boolean b) throws JessException{
-			aumentarIntereses(miRete, b);	
+	private static void relajarCondiciones(Rete miRete) throws JessException{
+			aumentarIntereses(miRete);	
 		
 	}
 	public static void extraeHechos(Rete miRete) throws JessException {
@@ -242,10 +237,9 @@ public class Main {
 		// Y de esos hechos quedarnos sólo con el slot edad e imprimir su valor
 		Iterator<Fact> iterador; 
 		Fact f;
-		Value v;
-		boolean defecto = false;
 		PriorityQueue<Fact> p = new PriorityQueue<Fact>(5, new ComparaFacts());
-		while (p.isEmpty()&&(defecto == false)){
+		int i = 0;
+		while (p.isEmpty()&&i<6){
 			iterador = miRete.listFacts();
 			while (iterador.hasNext()) {
 				f = iterador.next();
@@ -255,12 +249,9 @@ public class Main {
 			}
 			if(p.isEmpty()){
 		
-				relajarCondiciones(miRete, defecto);
-			
+				relajarCondiciones(miRete);
+				i++;
 				 
-			}if(defecto == true){
-				//No quedan intereses que añadir.
-				System.out.print("No tenemos ninguna ciudad para recomendarle");
 			}
 		}
 		
@@ -274,6 +265,8 @@ public class Main {
 				mostrarDestino(f);
 			                        
 		}
+		if(i==6)
+			System.out.println("No tenemos un destino que recomendarle");
 	
 
 	}
