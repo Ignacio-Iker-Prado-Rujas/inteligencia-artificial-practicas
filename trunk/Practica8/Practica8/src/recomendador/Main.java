@@ -20,8 +20,9 @@ public class Main {
 	
 	public static void main(String[] args) throws JessException {
 		Scanner sc = new Scanner(System.in);
-		
-		while(true){
+		Boolean terminar =false;
+		while(!terminar){
+			
 			Rete miRete;		
 			miRete = new Rete();
 
@@ -171,8 +172,13 @@ public class Main {
 			// Para parar el motor de reglas
 			miRete.halt();
 			sc.nextLine();
+			System.out.println("Escribe 'salir' si quiere terminar");
+			String respuesta = sc.nextLine();
+			if(respuesta.compareToIgnoreCase("salir")==0)
+				terminar = true;
 			
 		}
+		sc.close();
 	}
 
 
