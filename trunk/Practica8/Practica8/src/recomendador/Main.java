@@ -257,14 +257,7 @@ public class Main {
 		
 		while(!p.isEmpty())				
 			mostrarDestino( p.poll());
-
-		iterador = miRete.listFacts();
-		while (iterador.hasNext()) {
-			f = iterador.next();
-			if (f.getName().equals("MAIN::destino"))
-				mostrarDestino(f);
-			                        
-		}
+		
 		if(i==6)
 			System.out.println("No tenemos un destino que recomendarle");
 	
