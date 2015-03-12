@@ -41,21 +41,28 @@
     ;(persona (nombre maria)(edad 35)(presupuesto 800)(intereses turismo)(dias 7))
     ;(persona (nombre pepe)(edad 65)(presupuesto 500)(dias 2))
   
-    ;(ciudad (nombre segovia)(habitantes 55000)(hoteles 28)
-    ;    (montanya si) (playa no)(centrosComerciales 2)
-     ;   (discotecas 5) (monumentos 7)(balnearios 3)(restaurantes 25))
+   (ciudad (nombre segovia)(habitantes 55000)(hoteles 28)
+       (montanya si) (playa no)(centrosComerciales 2)
+      (discotecas 5) (monumentos 7)(balnearios 3)(restaurantes 25))
     
-   ; (ciudad (nombre valencia)(habitantes 100000)(hoteles 1200)
-    ;    (montanya no) (playa si) (discotecas 7)  (monumentos 30)
-     ;   (restaurantes 300))
+    (ciudad (nombre valencia)(habitantes 100000)(hoteles 1200)
+        (montanya no) (playa si) (discotecas 7)  (monumentos 30)
+       (restaurantes 300))
     
-	;(ciudad (nombre barcelona)(habitantes 500000000)(hoteles 2260)
-     ;   (montanya no) (playa si)(atracciones 4) (centrosComerciales 50)
-    ;(teatros 10) (museos 50) (operas 5)(deportes aventura)(discotecas 30) (monumentos 120) (restaurantes 600)))
+	(ciudad (nombre barcelona)(habitantes 500000000)(hoteles 2260)
+       (montanya no) (playa si)(atracciones 4) (centrosComerciales 50)
+    (teatros 10) (museos 50) (operas 5)(deportes aventura)(discotecas 30) (monumentos 120) (restaurantes 600))
 
-	(ciudad (nombre prueba)(habitantes 10)(hoteles 1)
-       (montanya no) (playa no) (discotecas 0) (tipoDestino fiesta) (monumentos 0)
-       (restaurantes 0)))
+	(ciudad (nombre bilbao)(habitantes 350000)(hoteles 900)
+  (montanya si) (playa si)(centrosComerciales 10)
+  (discotecas 4) (monumentos 3)(balnearios 0)(restaurantes 800))
+  
+(ciudad (nombre santiago)(habitantes 96000)(hoteles 33)
+  (montanya no) (playa no)(centrosComerciales 2)
+  (discotecas 1) (monumentos 10)(balnearios 2)(restaurantes 105)))
+	;(ciudad (nombre prueba)(habitantes 10)(hoteles 1)
+       ;(montanya no) (playa no) (discotecas 0) (tipoDestino fiesta) (monumentos 0)
+       ;(restaurantes 0)))
 ;______________________________Módulo del usuario_________________________
 
 (defmodule usuario )
