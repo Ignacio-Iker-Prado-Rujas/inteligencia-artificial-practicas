@@ -77,13 +77,43 @@
 \newpage
 
 \begin{section}{Cambios realizados con respecto al prototipo anterior}
-		
+		No ha habido grandes cambios en la funcionalidad. Corregimos el haber puesto el rango de edad como
+		 multislot poniéndolo como slot.
+		 
+		 Añadimos varias ciudades nuevas como Santiago y Bilbao.
+		 
+		 Por último corregimos los módulos y creamos correctamente los module.
 	
 	
 \end{section}
 
 \begin{section}{Dos casos de uso}
+	Para la entrada: Nombre: iker. Edad: 34 años. Presupuesto 344€. Intereses en gastronomía y fiesta. Días: 34.
+	Recomienda en orden alfabético descendente: Valencia, Segovia, Santander,  Bilbao y Barcelona. Para ordenar usamos 
+	una cola de prioridad.
 	
+	 La clase ComparaFacts puede editarse fácilmente para emplear cualquier otro método para ordenar a gusto.
+	  
+	 En el siguiente prototipo ya se incluirá una regla que por cada coincidencia etre el tipo de destino y los intereses de 
+	 la persona cree una puntuación, y se permitirá ordenar por ella.
+	 
+	 Además se incluirá la ciudad para el cálculo del transporte, y el precio medio de la ciudad para el cálculo del alojamiento, 
+	 pudiendo descartar ciudades por la falta de presupuesto. Así, a la relajación se le deberá incluir una subida del presupuesto.
+	 De ahí la existencia de la función relajarCondiciones que actualmente no tiene  sentido.
+	 
+	 Ahora un ejemplo en el que realizamos una relajación con el usuario, añadiendo intereses que no tenía. Si con todos los intereses que existen no conseguimos un destino, terminamos sin recomendar nada. Esto cubre el caso de una ciudad sin ningún interés, o el caso de no tener ninguna ciudad en nuestra base de conocimiento:
+	 
+	 Para el usuario Kike, con 80 años, 1580€ , sin ningún interés y 7 días. Solo existe una ciudad que no tiene nada, excepto 
+	 fiesta.
+	 
+	 Realizamos varias relajaciones consecutivas: por tener más de 65 años se añade interén en relax. En la primera 
+	 relajación añadimos el interés ocio. En la segunda añaadimos fiesta, y por tanto encuentra el destino, que nos lo 
+	 recomienda con hotel y tren. 
+	 
+	 La relajación solo se efectúa cuando no hay ninguna recomendación.
+	 
+	 
+	 
 	%Mostrando la entrada y salida pero no los hechos generados en la memoria de trabajo
 	
 \end{section}
