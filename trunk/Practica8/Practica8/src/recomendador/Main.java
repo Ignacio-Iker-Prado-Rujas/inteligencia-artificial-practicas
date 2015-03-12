@@ -19,8 +19,9 @@ public class Main {
 	
 	
 	public static void main(String[] args) throws JessException {
+		Scanner sc = new Scanner(System.in);
 		
-		
+		while(true){
 			Rete miRete;		
 			miRete = new Rete();
 
@@ -42,7 +43,6 @@ public class Main {
 			
 			Deffacts deffacts = new Deffacts("DatosJava", null, miRete);
 			Fact f = new Fact("persona", miRete);
-			Scanner sc = new Scanner(System.in);
 			
 			String s;
 			int i;
@@ -170,8 +170,9 @@ public class Main {
 
 			// Para parar el motor de reglas
 			miRete.halt();
-			sc.close();
-		
+			sc.nextLine();
+			
+		}
 	}
 
 
@@ -186,53 +187,94 @@ public class Main {
 		}
 	}
 	
-	public static void extraeHechos(Rete miRete) {
-		// Ejemplo de cómo podemos seleccionar sólo los hechos de la template usuario
-		// Y de esos hechos quedarnos sólo con el slot edad e imprimir su valor
+	private static void aumentarIntereses(Rete miRete, boolean noQuedanInt) throws JessException{
 		Iterator<Fact> iterador; 
 		iterador = miRete.listFacts();
 		Fact f;
 		Value v;
+		ValueVector jj;
 		
-		PriorityQueue<Fact> p = new PriorityQueue<Fact>(5, new ComparaFacts());
+		
 		while (iterador.hasNext()) {
 			f = iterador.next();
-			if (f.getName().equals("MAIN::destino")){				
-				p.add(f);
+			if (f.getName().equals("MAIN::persona"))
+			{
+				if(!Intereses.quedanIntereses(f.getSlotValue("intereses").listValue(null)))
+					noQuedanInt = true;
+					//Nos hemos quedado sin intereses que añadir)
+				else{	
+					v = f.getSlotValue("intereses");
+					jj = v.listValue(null);
+					Intereses.nuevoInteres(jj);
+					miRete = new Rete();
+					miRete.batch("practica8.clp");
+					Deffacts deffacts = new Deffacts("DatosJava", null, miRete);
+					deffacts.addFact(f);
+					miRete.addDeffacts(deffacts);
+				}
+			}                           
+		}
+		miRete.reset();				 
+	   miRete.setFocus("usuario");
+	   miRete.run();
+	   miRete.setFocus("ciudad");
+	   miRete.run();
+	   miRete.setFocus("destino");
+	   miRete.run();
+	   miRete.setFocus("logistica");
+	   miRete.run();
+	   listaHechos(miRete);
+	}
+	private static void mostrarDestino(Fact f) throws JessException{
+		System.out.print("Nombre: " + f.getSlotValue("nombre"));
+		System.out.print(". Ciudad: " + f.getSlotValue("ciudad"));
+		System.out.print(". Alojamiento: " + f.getSlotValue("alojamiento"));
+		System.out.println(". Transporte: " + f.getSlotValue("transporte"));
+	}
+
+
+	private static void relajarCondiciones(Rete miRete, boolean b) throws JessException{
+			aumentarIntereses(miRete, b);	
+		
+	}
+	public static void extraeHechos(Rete miRete) throws JessException {
+		// Ejemplo de cómo podemos seleccionar sólo los hechos de la template usuario
+		// Y de esos hechos quedarnos sólo con el slot edad e imprimir su valor
+		Iterator<Fact> iterador; 
+		Fact f;
+		Value v;
+		boolean defecto = false;
+		PriorityQueue<Fact> p = new PriorityQueue<Fact>(5, new ComparaFacts());
+		while (p.isEmpty()&&(defecto == false)){
+			iterador = miRete.listFacts();
+			while (iterador.hasNext()) {
+				f = iterador.next();
+				if (f.getName().equals("MAIN::destino")){				
+					p.add(f);
+				}
+			}
+			if(p.isEmpty()){
+		
+				relajarCondiciones(miRete, defecto);
+			
+				 
+			}if(defecto == true){
+				//No quedan intereses que añadir.
+				System.out.print("No tenemos ninguna ciudad para recomendarle");
 			}
 		}
-		while(!p.isEmpty()){
-			try {
-				f = p.poll();
-				System.out.print("Nombre: " + f.getSlotValue("nombre"));
-				System.out.print(". Ciudad: " + f.getSlotValue("ciudad"));
-				System.out.print(". Alojamiento: " + f.getSlotValue("alojamiento"));
-				System.out.println(". Transporte: " + f.getSlotValue("transporte"));
-				
-			} catch (JessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
+		while(!p.isEmpty())				
+			mostrarDestino( p.poll());
+
+		iterador = miRete.listFacts();
 		while (iterador.hasNext()) {
 			f = iterador.next();
 			if (f.getName().equals("MAIN::destino"))
-			{
-				try {
-					v = f.getSlotValue("nombre");
-					System.out.print("Nombre: " + v);
-					v = f.getSlotValue("ciudad");
-					System.out.print(". Ciudad: " + v);
-					v = f.getSlotValue("alojamiento");
-					System.out.print(". Alojamiento: " + v);
-					v = f.getSlotValue("transporte");
-					System.out.println(". Transporte: " + v + ".");
-				} catch (JessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} }                           
+				mostrarDestino(f);
+			                        
 		}
-	}
 	
 
+	}
 }
