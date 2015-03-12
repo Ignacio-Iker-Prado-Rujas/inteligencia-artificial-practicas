@@ -2,8 +2,9 @@ package recomendador;
 
 /* Ejemplo de programa java que invoca la ejecución del motor de reglas jess con el programa diet.clp*/
 // De esta forma se podría realizar la entrada y salida de datos en Java y el razonamiento en Jess
-import java.util.InputMismatchException;
+
 import java.util.Iterator;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 import jess.Deffacts;
@@ -12,6 +13,7 @@ import jess.JessException;
 import jess.RU;
 import jess.Rete;
 import jess.Value;
+import jess.ValueVector;
 
 public class Main { 
 	
@@ -52,7 +54,7 @@ public class Main {
 					f.setSlotValue("nombre", new Value(s, RU.SYMBOL));
 					correcto = true;
 				}catch(Exception e){
-					System.out.println("Mal ");
+					System.out.println("Mal el nombre");
 				}
 			}
 			correcto = false;
@@ -84,22 +86,35 @@ public class Main {
 						System.out.println("Debes tener presupuesto positivo.");
 					}
 				}else{
-					System.out.println("Mal puesta la edad idiota.");
+					System.out.println("Mal puesto el presupuesto.");
 					sc.nextLine();
 				}				
 			}
-
+						
 			correcto = false;
 			while (!correcto){
-				System.out.print("Intereses: ");
-				try{
-					s = sc.nextLine();
-					f.setSlotValue("intereses", new Value(s, RU.SYMBOL));
-					correcto = true;
-				}catch(Exception e){
-					System.out.println("Mal, por qué tocas? ");
-					e.printStackTrace();
+				ValueVector vv = new ValueVector();
+				System.out.print("Escriba un interés, si ha terminado escriba fin (Ocio, gastronomia, fiesta y turismo): ");
+				s = sc.nextLine();
+				while (s.compareToIgnoreCase("fin")!=0){
+					try{
+						if (Intereses.isInterest(s)){
+							if (!vv.contains(new Value(s, RU.SYMBOL))){
+								vv.add(new Value(s, RU.SYMBOL));
+							}else{
+								System.out.println("Ese ya lo has puesto");}
+						}else{
+							System.out.println("Ese interés no existe");}
+						System.out.println("Escriba otro interés o ponga fin");
+						s = sc.nextLine();
+					}catch(Exception e){
+						System.out.println("Mal los intereses ");
+						e.printStackTrace();
+					}
+					
 				}
+				f.setSlotValue("intereses", new Value(vv, RU.LIST));
+				correcto = true;
 			}
 			//Los intereses hay que hacerlos como explica en la diapositiva
 			//de JavaConJess, ya que son un multislot, se tratan con un vector.
@@ -118,7 +133,7 @@ public class Main {
 						System.out.println("Debe ser un número positivo de días.");
 					}
 				}else{
-					System.out.println("Mal puesta la edad idiota.");
+					System.out.println("Mal los días.");
 					sc.nextLine();
 				}
 			}
@@ -170,21 +185,48 @@ public class Main {
 			System.out.println(iterador.next());
 		}
 	}
-
+	
 	public static void extraeHechos(Rete miRete) {
 		// Ejemplo de cómo podemos seleccionar sólo los hechos de la template usuario
 		// Y de esos hechos quedarnos sólo con el slot edad e imprimir su valor
 		Iterator<Fact> iterador; 
 		iterador = miRete.listFacts();
 		Fact f;
-		Value ed;
+		Value v;
+		
+		PriorityQueue<Fact> p = new PriorityQueue<Fact>(5, new ComparaFacts());
 		while (iterador.hasNext()) {
 			f = iterador.next();
-			if (f.getName().equals("MAIN::persona"))
+			if (f.getName().equals("MAIN::destino")){				
+				p.add(f);
+			}
+		}
+		while(!p.isEmpty()){
+			try {
+				f = p.poll();
+				System.out.print("Nombre: " + f.getSlotValue("nombre"));
+				System.out.print(". Ciudad: " + f.getSlotValue("ciudad"));
+				System.out.print(". Alojamiento: " + f.getSlotValue("alojamiento"));
+				System.out.println(". Transporte: " + f.getSlotValue("transporte"));
+				
+			} catch (JessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		while (iterador.hasNext()) {
+			f = iterador.next();
+			if (f.getName().equals("MAIN::destino"))
 			{
 				try {
-					ed = f.getSlotValue("edad");
-					System.out.println("edad " + ed);
+					v = f.getSlotValue("nombre");
+					System.out.print("Nombre: " + v);
+					v = f.getSlotValue("ciudad");
+					System.out.print(". Ciudad: " + v);
+					v = f.getSlotValue("alojamiento");
+					System.out.print(". Alojamiento: " + v);
+					v = f.getSlotValue("transporte");
+					System.out.println(". Transporte: " + v + ".");
 				} catch (JessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

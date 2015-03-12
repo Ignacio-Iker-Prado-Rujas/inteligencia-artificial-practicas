@@ -8,7 +8,7 @@
     (slot presDia (default 0))
     (slot presTransporte (default 0))
     (slot presAlojamiento (default 0))
-    (multislot rangoEdad (default ninguno)))
+    (slot rangoEdad (default ninguno)))
 
 (deftemplate ciudad
 	(slot nombre)
@@ -37,9 +37,9 @@
     (slot transporte))
 
 (deffacts ini
-    (persona (nombre juan)(edad 18)(presupuesto 150)(intereses aventura)(dias 3))
-    (persona (nombre maria)(edad 35)(presupuesto 800)(intereses turismo)(dias 7))
-    (persona (nombre pepe)(edad 65)(presupuesto 500)(dias 2))
+    ;(persona (nombre juan)(edad 18)(presupuesto 150)(intereses aventura)(dias 3))
+    ;(persona (nombre maria)(edad 35)(presupuesto 800)(intereses turismo)(dias 7))
+    ;(persona (nombre pepe)(edad 65)(presupuesto 500)(dias 2))
   
     (ciudad (nombre segovia)(habitantes 55000)(hoteles 28)
         (montanya si) (playa no)(centrosComerciales 2)
