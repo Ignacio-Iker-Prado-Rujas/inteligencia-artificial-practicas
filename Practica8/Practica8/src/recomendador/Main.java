@@ -187,7 +187,7 @@ public class Main {
 		}
 	}
 	
-	private static void aumentarIntereses(Rete miRete) throws JessException{
+	private static Rete aumentarIntereses(Rete miRete) throws JessException{
 		Iterator<Fact> iterador; 
 		iterador = miRete.listFacts();
 		Fact f;
@@ -219,6 +219,7 @@ public class Main {
 	   miRete.setFocus("logistica");
 	   miRete.run();
 	   listaHechos(miRete);
+	   return miRete;
 	}
 	private static void mostrarDestino(Fact f) throws JessException{
 		System.out.print("Nombre: " + f.getSlotValue("nombre"));
@@ -228,8 +229,8 @@ public class Main {
 	}
 
 
-	private static void relajarCondiciones(Rete miRete) throws JessException{
-			aumentarIntereses(miRete);	
+	private static Rete relajarCondiciones(Rete miRete) throws JessException{
+			return aumentarIntereses(miRete);	
 		
 	}
 	public static void extraeHechos(Rete miRete) throws JessException {
@@ -249,7 +250,7 @@ public class Main {
 			}
 			if(p.isEmpty()){
 		
-				relajarCondiciones(miRete);
+				miRete = relajarCondiciones(miRete);
 				i++;
 				 
 			}
