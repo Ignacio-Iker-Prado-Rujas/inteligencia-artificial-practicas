@@ -1,4 +1,4 @@
-; Fri Mar 13 18:55:31 GMT 2015
+; Fri Mar 13 19:08:03 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -7,6 +7,10 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
+	(single-slot Practica9_Class10
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot tipoAlojamiento
 		(type STRING)
 ;+		(value "hotel")
@@ -63,6 +67,10 @@
 (defclass Viaje "Un viaje consta de un destino, un transporte y un alojamiento."
 	(is-a Base)
 	(role concrete)
+	(single-slot Practica9_Class10
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot c%C3%B3digo
 ;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
 		(type STRING)
