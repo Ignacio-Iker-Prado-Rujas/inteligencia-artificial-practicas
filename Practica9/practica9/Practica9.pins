@@ -1,4 +1,32 @@
-; Fri Mar 13 17:55:37 GMT 2015
+; Fri Mar 13 18:44:41 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
+
+([Practica9_Class0] of  Mayoristas
+
+	(descripci%C3%B3n "Te clavan un extra por lo de Pana y otro extra por lo de visión. Teniendo Viajes Marsans para qué quieres esto.")
+	(nombre "Panavisión"))
+
+([Practica9_Class14] of  CadenasHoteleras
+
+	(nombre "Meliá"))
+
+([Practica9_Class17] of  CadenasHoteleras
+
+	(nombre "NH"))
+
+([Practica9_Class18] of  %3AINSTANCE-ANNOTATION
+
+	(%3ACREATION-TIMESTAMP "2015.03.13 18:26:21.971 GMT")
+	(%3ACREATOR "usuario_local"))
+
+([Practica9_Class2] of  Mayoristas
+
+	(descripci%C3%B3n "Nombre cutre donde los haya (igual que el nivel de la empresa).")
+	(nombre "Politours"))
+
+([Practica9_Class3] of  Mayoristas
+
+	(descripci%C3%B3n "Los  de toda la vida.")
+	(nombre "ViajesMarsans"))
