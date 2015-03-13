@@ -1,4 +1,4 @@
-; Fri Mar 13 18:44:41 GMT 2015
+; Fri Mar 13 18:55:31 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -7,6 +7,16 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
+	(single-slot tipoAlojamiento
+		(type STRING)
+;+		(value "hotel")
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot c%C3%B3digo
+;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot descripci%C3%B3n
 ;+		(comment "Breve descripción.")
 		(type STRING)
@@ -52,7 +62,12 @@
 
 (defclass Viaje "Un viaje consta de un destino, un transporte y un alojamiento."
 	(is-a Base)
-	(role concrete))
+	(role concrete)
+	(single-slot c%C3%B3digo
+;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Destino "Consta de un nombre(indica la ciudad) y varias características como si es internacional, si es de tipo montaña, etc."
 	(is-a Base)
@@ -73,3 +88,21 @@
 (defclass Coche
 	(is-a Transporte)
 	(role concrete))
+
+(defclass Alojamiento
+	(is-a Base)
+	(role abstract)
+	(single-slot tipoAlojamiento
+		(type STRING)
+;+		(value "hotel")
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Hotel "Un hotel constarán"
+	(is-a Alojamiento)
+	(role concrete)
+	(single-slot nombre
+;+		(comment "Nombre de la instancia")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
