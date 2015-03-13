@@ -1,4 +1,4 @@
-; Fri Mar 13 18:44:41 GMT 2015
+; Fri Mar 13 18:55:31 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -30,3 +30,11 @@
 
 	(descripci%C3%B3n "Los  de toda la vida.")
 	(nombre "ViajesMarsans"))
+
+([Practica9_Class7] of  Hotel
+
+	(nombre "Meliá Sevilla"))
+
+([Practica9_Class8] of  Hotel
+
+	(nombre "NH Alcafrán"))
