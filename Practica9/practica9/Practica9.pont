@@ -1,4 +1,4 @@
-; Thu Mar 26 12:16:15 GMT 2015
+; Thu Mar 26 12:26:39 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -55,6 +55,16 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot duraci%C3%B3n
+;+		(comment "Duración del viaje en días")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipoGeogr%C3%A1fico
+;+		(comment "Indica el tipo geográfico del destino.\nPuede ser una isla, continente, una península, etc")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot nombre
 ;+		(comment "Nombre de la instancia")
 		(type STRING)
@@ -93,7 +103,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Viaje "Un viaje consta de un destino, un transporte, un alojamiento y un precio."
+(defclass Viaje "Un viaje consta de un destino, un transporte, un alojamiento, un precio y una duración."
 	(is-a Base)
 	(role concrete)
 	(single-slot precio
@@ -105,6 +115,11 @@
 ;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot duraci%C3%B3n
+;+		(comment "Duración del viaje en días")
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot alojamiento
 ;+		(comment "Indica el alojamiento")
@@ -133,6 +148,11 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot tipoGeogr%C3%A1fico
+;+		(comment "Indica el tipo geográfico del destino.\nPuede ser una isla, continente, una península, etc")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot pais
 ;+		(comment "Indica el pais del destino")
 		(type STRING)
@@ -157,6 +177,10 @@
 	(role concrete))
 
 (defclass Coche
+	(is-a Transporte)
+	(role concrete))
+
+(defclass Crucero "El transporte es un crucero. Quiere decir que el viaje es un crucero. Puede implementarse de varias formas alternativas."
 	(is-a Transporte)
 	(role concrete))
 
