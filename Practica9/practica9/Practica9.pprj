@@ -1,4 +1,4 @@
-; Thu Mar 26 19:38:00 GMT 2015
+; Thu Mar 26 19:52:35 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -21,19 +21,19 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Practica9_ProjectKB_Class10211]
-		[Practica9_ProjectKB_Class10212]
-		[Practica9_ProjectKB_Class10213]
-		[Practica9_ProjectKB_Class10214]
-		[Practica9_ProjectKB_Class10215]
-		[Practica9_ProjectKB_Class10216]
-		[Practica9_ProjectKB_Class10217]
-		[Practica9_ProjectKB_Class10218]
-		[Practica9_ProjectKB_Class10219]
-		[Practica9_ProjectKB_Class10220]
-		[Practica9_ProjectKB_Class10221]
-		[Practica9_ProjectKB_Class10222]
-		[Practica9_ProjectKB_Class10223]))
+		[Practica9_ProjectKB_Class10256]
+		[Practica9_ProjectKB_Class10257]
+		[Practica9_ProjectKB_Class10258]
+		[Practica9_ProjectKB_Class10259]
+		[Practica9_ProjectKB_Class10260]
+		[Practica9_ProjectKB_Class10261]
+		[Practica9_ProjectKB_Class10262]
+		[Practica9_ProjectKB_Class10263]
+		[Practica9_ProjectKB_Class10264]
+		[Practica9_ProjectKB_Class10265]
+		[Practica9_ProjectKB_Class10266]
+		[Practica9_ProjectKB_Class10267]
+		[Practica9_ProjectKB_Class10268]))
 
 ([CLSES_TAB] of  Widget
 
@@ -85,8 +85,8 @@
 
 ([KB_828046_Class1] of  Map
 
-	(entries [Practica9_ProjectKB_Class10226])
-	(referenced_maps [Practica9_ProjectKB_Class10224]))
+	(entries [Practica9_ProjectKB_Class10271])
+	(referenced_maps [Practica9_ProjectKB_Class10269]))
 
 ([KB_828046_Class100] of  Property_List
 )
@@ -266,7 +266,7 @@
 ([Practica1_ProjectKB_Class107] of  String
 
 	(name "SearchTab_Query")
-	(string_value "Query Name: DestinosEnAndalucia\nMatch All:true\nLength: 1\nDestino	region	contains	Other:Andalucía	1	\n\nQuery Name: Pregunta1\nMatch All:true\nLength: 2\nViaje	precio	is less than	Other:200	1	\nViaje	destino	contains	Query:DestinosEnAndalucia|DestinosEnAndalucia	1	\n\nQuery Name: HotelesCuatroEstrellas\nMatch All:true\nLength: 1\nHotel	estrellas	is	Other:4	1	\n\nQuery Name: NoAvion\nMatch All:true\nLength: 1\nTransporte	tipoTransporte	does not contain	Other:avión	1	\n\nQuery Name: Pregunta2\nMatch All:true\nLength: 2\nViaje	alojamiento	contains	Query:HotelesCuatroEstrellas|HotelesCuatroEstrellas	1	\nViaje	transporte	contains	Query:NoAvion|NoAvion	1	\n\nQuery Name: AlojamientoLujo\nMatch All:true\nLength: 1\nAlojamiento	estrellas	is greater than	Other:4	1	\n\nQuery Name: AvionVip\nMatch All:true\nLength: 1\nAvion	Vip	is	Other:true	1	\n\nQuery Name: Pregunta4\nMatch All:true\nLength: 2\nViaje	transporte	contains	Query:AvionVip|AvionVip	1	\nViaje	alojamiento	contains	Query:AlojamientoLujo|AlojamientoLujo	1	\n\nQuery Name: Viajes7001000TravelPlan\nMatch All:true\nLength: 3\nViaje	precio	is greater than	Other:700	1	\nViaje	precio	is less than	Other:1000	1	\nViaje	inverse_of_viajesOfertados	contains	Instance:Practica9_Class30003|Travelplan	1	\n\nQuery Name: Pregunta5\nMatch All:true\nLength: 1\nDestino	inverse_of_destino	contains	Query:Viajes7001000TravelPlan|Viajes7001000TravelPlan	1	\n\n"))
+	(string_value "Query Name: DestinosEnAndalucia\nMatch All:true\nLength: 1\nDestino	region	contains	Other:Andalucía	1	\n\nQuery Name: Pregunta1\nMatch All:true\nLength: 2\nViaje	precio	is less than	Other:200	1	\nViaje	destino	contains	Query:DestinosEnAndalucia|DestinosEnAndalucia	1	\n\nQuery Name: HotelesCuatroEstrellas\nMatch All:true\nLength: 1\nHotel	estrellas	is	Other:4	1	\n\nQuery Name: NoAvion\nMatch All:true\nLength: 1\nTransporte	tipoTransporte	does not contain	Other:avión	1	\n\nQuery Name: Pregunta2\nMatch All:true\nLength: 2\nViaje	alojamiento	contains	Query:HotelesCuatroEstrellas|HotelesCuatroEstrellas	1	\nViaje	transporte	contains	Query:NoAvion|NoAvion	1	\n\nQuery Name: AlojamientoLujo\nMatch All:true\nLength: 1\nAlojamiento	estrellas	is greater than	Other:4	1	\n\nQuery Name: AvionVip\nMatch All:true\nLength: 1\nAvion	Vip	is	Other:true	1	\n\nQuery Name: Pregunta4\nMatch All:true\nLength: 2\nViaje	transporte	contains	Query:AvionVip|AvionVip	1	\nViaje	alojamiento	contains	Query:AlojamientoLujo|AlojamientoLujo	1	\n\nQuery Name: Viajes7001000TravelPlan\nMatch All:true\nLength: 3\nViaje	precio	is greater than	Other:700	1	\nViaje	precio	is less than	Other:1000	1	\nViaje	inverse_of_viajesOfertados	contains	Instance:Practica9_Class30003|Travelplan	1	\n\nQuery Name: Pregunta5\nMatch All:true\nLength: 1\nDestino	inverse_of_destino	contains	Query:Viajes7001000TravelPlan|Viajes7001000TravelPlan	1	\n\nQuery Name: DestinoNoEsIsla\nMatch All:true\nLength: 1\nDestino	tipoGeográfico	is	Other:isla	1	\n\nQuery Name: TransporteCrucero\nMatch All:true\nLength: 1\nTransporte	tipoTransporte	is	Other:crucero	1	\n\nQuery Name: ViajesIslasNoCrucero\nMatch All:true\nLength: 2\nViaje	transporte	does not contain	Query:TransporteCrucero|TransporteCrucero	1	\nViaje	destino	contains	Query:DestinoNoEsIsla|DestinoNoEsIsla	1	\n\nQuery Name: Pregunta6\nMatch All:true\nLength: 1\nMayoristas	viajesOfertados	contains	Query:ViajesIslasNoCrucero|ViajesIslasNoCrucero	1	\n\n"))
 
 ([Practica9_ProjectKB_Class10] of  Widget
 
@@ -301,87 +301,169 @@
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
 
-([Practica9_ProjectKB_Class10211] of  String
+([Practica9_ProjectKB_Class10236] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(name "hoteles")
+	(property_list [Practica9_ProjectKB_Class10237])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 200)
+	(x 0)
+	(y 180))
+
+([Practica9_ProjectKB_Class10237] of  Property_List
+)
+
+([Practica9_ProjectKB_Class10238] of  Widget
+
+	(height 120)
+	(is_hidden FALSE)
+	(name "hoteles")
+	(property_list [Practica9_ProjectKB_Class10239])
+	(widget_class_name "edu.stanford.smi.protege.widget.StringListWidget")
+	(width 200)
+	(x 0)
+	(y 180))
+
+([Practica9_ProjectKB_Class10239] of  Property_List
+)
+
+([Practica9_ProjectKB_Class10244] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(name "inverse_of_hoteles")
+	(property_list [Practica9_ProjectKB_Class10245])
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
+	(width 200)
+	(x 0)
+	(y 240))
+
+([Practica9_ProjectKB_Class10245] of  Property_List
+
+	(properties
+		[Practica9_ProjectKB_Class10246]
+		[Practica9_ProjectKB_Class10247]))
+
+([Practica9_ProjectKB_Class10246] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-View References to Value"))
+
+([Practica9_ProjectKB_Class10247] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Instance"))
+
+([Practica9_ProjectKB_Class10248] of  Widget
+
+	(height 120)
+	(is_hidden FALSE)
+	(name "inverse_of_hoteles")
+	(property_list [Practica9_ProjectKB_Class10249])
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
+	(width 200)
+	(x 0)
+	(y 240))
+
+([Practica9_ProjectKB_Class10249] of  Property_List
+
+	(properties
+		[Practica9_ProjectKB_Class10250]
+		[Practica9_ProjectKB_Class10251]))
+
+([Practica9_ProjectKB_Class10250] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-View References to Value"))
+
+([Practica9_ProjectKB_Class10251] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Instance"))
+
+([Practica9_ProjectKB_Class10256] of  String
 
 	(name "CadenasHoteleras")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10212] of  String
+([Practica9_ProjectKB_Class10257] of  String
 
 	(name "Destino")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10213] of  String
+([Practica9_ProjectKB_Class10258] of  String
 
 	(name "Viaje")
 	(string_value "c%C3%B3digo"))
 
-([Practica9_ProjectKB_Class10214] of  String
+([Practica9_ProjectKB_Class10259] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Practica9_ProjectKB_Class10215] of  String
+([Practica9_ProjectKB_Class10260] of  String
 
 	(name "Crucero")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10216] of  String
+([Practica9_ProjectKB_Class10261] of  String
 
 	(name "Hotel")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10217] of  String
+([Practica9_ProjectKB_Class10262] of  String
 
 	(name "Camping")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10218] of  String
+([Practica9_ProjectKB_Class10263] of  String
 
 	(name "Tren")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10219] of  String
+([Practica9_ProjectKB_Class10264] of  String
 
 	(name "Mayoristas")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10220] of  String
+([Practica9_ProjectKB_Class10265] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Practica9_ProjectKB_Class10221] of  String
+([Practica9_ProjectKB_Class10266] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Practica9_ProjectKB_Class10222] of  String
+([Practica9_ProjectKB_Class10267] of  String
 
 	(name "Coche")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10223] of  String
+([Practica9_ProjectKB_Class10268] of  String
 
 	(name "Avion")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10224] of  Map
+([Practica9_ProjectKB_Class10269] of  Map
 
-	(entries [Practica9_ProjectKB_Class10225]))
+	(entries [Practica9_ProjectKB_Class10270]))
 
-([Practica9_ProjectKB_Class10225] of  Map_Entry
+([Practica9_ProjectKB_Class10270] of  Map_Entry
 
 	(key "Practica9_Class18")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "254 125 202 124")
 	(value_class "java.awt.Rectangle"))
 
-([Practica9_ProjectKB_Class10226] of  Map_Entry
+([Practica9_ProjectKB_Class10271] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "Practica9_ProjectKB_Class10224")
+	(value "Practica9_ProjectKB_Class10269")
 	(value_class "java.util.Map"))
 
 ([Practica9_ProjectKB_Class11] of  Property_List
