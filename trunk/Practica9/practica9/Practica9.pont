@@ -1,4 +1,4 @@
-; Thu Mar 26 20:41:00 GMT 2015
+; Thu Mar 26 22:55:26 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -27,14 +27,14 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Practica9_Class20002
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot c%C3%B3digo
 ;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Practica9_Class20002
-		(type STRING)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot precio
 ;+		(comment "Precio del viaje")
@@ -52,16 +52,16 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot viajesOfertados
-		(type INSTANCE)
-;+		(allowed-classes Viaje)
-;+		(inverse-slot inverse_of_viajesOfertados)
-		(create-accessor read-write))
 	(single-slot transporte
 ;+		(comment "Transporte para el viaje, en principio solo se permite uno.")
 		(type INSTANCE)
 ;+		(allowed-classes Transporte)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot viajesOfertados
+		(type INSTANCE)
+;+		(allowed-classes Viaje)
+;+		(inverse-slot inverse_of_viajesOfertados)
 		(create-accessor read-write))
 	(single-slot region
 ;+		(comment "Indica la region del destino")
@@ -164,25 +164,25 @@
 (defclass Viaje "Un viaje consta de un destino, un transporte, un alojamiento, un precio y una duración."
 	(is-a Base)
 	(role concrete)
+	(single-slot precio
+;+		(comment "Precio del viaje")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot duraci%C3%B3n
 ;+		(comment "Duración del viaje en días")
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot precio
-;+		(comment "Precio del viaje")
-		(type FLOAT)
-;+		(cardinality 0 1)
+	(multislot inverse_of_viajesOfertados
+		(type INSTANCE)
+;+		(allowed-classes Mayoristas)
 		(create-accessor read-write))
 	(single-slot alojamiento
 ;+		(comment "Indica el alojamiento")
 		(type INSTANCE)
 ;+		(allowed-classes Alojamiento)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot inverse_of_viajesOfertados
-		(type INSTANCE)
-;+		(allowed-classes Mayoristas)
 		(create-accessor read-write))
 	(single-slot c%C3%B3digo
 ;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
@@ -318,16 +318,16 @@
 (defclass Hotel "Un hotel constarán"
 	(is-a Alojamiento)
 	(role concrete)
+	(single-slot nombre
+;+		(comment "Nombre de la instancia")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot destino
 ;+		(comment "Destino del viaje, en principio solo uno por viaje.")
 		(type INSTANCE)
 ;+		(allowed-classes Destino)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot nombre
-;+		(comment "Nombre de la instancia")
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot tipoAlojamiento
 		(type STRING)
@@ -343,16 +343,16 @@
 (defclass Camping
 	(is-a Alojamiento)
 	(role concrete)
+	(single-slot nombre
+;+		(comment "Nombre de la instancia")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot destino
 ;+		(comment "Destino del viaje, en principio solo uno por viaje.")
 		(type INSTANCE)
 ;+		(allowed-classes Destino)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot nombre
-;+		(comment "Nombre de la instancia")
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot tipoAlojamiento
 		(type STRING)
