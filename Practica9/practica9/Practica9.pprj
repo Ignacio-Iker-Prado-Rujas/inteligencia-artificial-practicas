@@ -1,4 +1,4 @@
-; Thu Mar 26 12:26:39 GMT 2015
+; Thu Mar 26 17:00:18 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -21,14 +21,18 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Practica9_ProjectKB_Class10171]
-		[Practica9_ProjectKB_Class10172]
-		[Practica9_ProjectKB_Class10173]
-		[Practica9_ProjectKB_Class10174]
-		[Practica9_ProjectKB_Class10175]
-		[Practica9_ProjectKB_Class10176]
-		[Practica9_ProjectKB_Class10177]
-		[Practica9_ProjectKB_Class10178]))
+		[Practica9_ProjectKB_Class10242]
+		[Practica9_ProjectKB_Class10243]
+		[Practica9_ProjectKB_Class10244]
+		[Practica9_ProjectKB_Class10245]
+		[Practica9_ProjectKB_Class10246]
+		[Practica9_ProjectKB_Class10247]
+		[Practica9_ProjectKB_Class10248]
+		[Practica9_ProjectKB_Class10249]
+		[Practica9_ProjectKB_Class10250]
+		[Practica9_ProjectKB_Class10251]
+		[Practica9_ProjectKB_Class10252]
+		[Practica9_ProjectKB_Class10253]))
 
 ([CLSES_TAB] of  Widget
 
@@ -70,7 +74,7 @@
 
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_733037_Class3] of  Map
+([KB_018323_Class3] of  Map
 )
 
 ([KB_828046_Class0] of  String
@@ -80,8 +84,8 @@
 
 ([KB_828046_Class1] of  Map
 
-	(entries [Practica9_ProjectKB_Class10181])
-	(referenced_maps [Practica9_ProjectKB_Class10179]))
+	(entries [Practica9_ProjectKB_Class10256])
+	(referenced_maps [Practica9_ProjectKB_Class10254]))
 
 ([KB_828046_Class100] of  Property_List
 )
@@ -261,7 +265,7 @@
 ([Practica1_ProjectKB_Class107] of  String
 
 	(name "SearchTab_Query")
-	(string_value "Query Name: DestinosEnAndalucia\nMatch All:true\nLength: 1\nDestino	region	contains	Other:Andalucía	1	\n\nQuery Name: Pregunta1\nMatch All:true\nLength: 2\nViaje	precio	is less than	Other:200	1	\nViaje	destino	contains	Query:DestinosEnAndalucia|DestinosEnAndalucia	1	\n\n"))
+	(string_value "Query Name: DestinosEnAndalucia\nMatch All:true\nLength: 1\nDestino	region	contains	Other:Andalucía	1	\n\nQuery Name: Pregunta1\nMatch All:true\nLength: 2\nViaje	precio	is less than	Other:200	1	\nViaje	destino	contains	Query:DestinosEnAndalucia|DestinosEnAndalucia	1	\n\nQuery Name: HotelesCuatroEstrellas\nMatch All:true\nLength: 1\nHotel	estrellas	is	Other:4	1	\n\nQuery Name: NoAvion\nMatch All:true\nLength: 1\nTransporte	tipoTransporte	does not contain	Other:avión	1	\n\nQuery Name: Pregunta2\nMatch All:true\nLength: 2\nViaje	alojamiento	contains	Query:HotelesCuatroEstrellas|HotelesCuatroEstrellas	1	\nViaje	transporte	contains	Query:NoAvion|NoAvion	1	\n\n"))
 
 ([Practica9_ProjectKB_Class10] of  Widget
 
@@ -269,76 +273,138 @@
 	(property_list [Practica9_ProjectKB_Class11])
 	(widget_class_name "edu.stanford.smi.protege.widget.ClsesAndInstancesTab"))
 
-([Practica9_ProjectKB_Class10154] of  Widget
+([Practica9_ProjectKB_Class10093] of  Widget
 
 	(height 60)
 	(is_hidden FALSE)
-	(name "duración")
-	(property_list [Practica9_ProjectKB_Class10155])
+	(name "Practica9_Class20002")
+	(property_list [Practica9_ProjectKB_Class10094])
 	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
 	(width 200)
 	(x 0)
 	(y 180))
 
-([Practica9_ProjectKB_Class10155] of  Property_List
+([Practica9_ProjectKB_Class10094] of  Property_List
 )
 
-([Practica9_ProjectKB_Class10171] of  String
+([Practica9_ProjectKB_Class10095] of  Widget
 
-	(name "Destino")
-	(string_value "nombre"))
+	(height 60)
+	(is_hidden FALSE)
+	(name "Practica9_Class20003")
+	(property_list [Practica9_ProjectKB_Class10096])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 200)
+	(x 0)
+	(y 240))
 
-([Practica9_ProjectKB_Class10172] of  String
+([Practica9_ProjectKB_Class10096] of  Property_List
+)
+
+([Practica9_ProjectKB_Class10115] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(name "Vip")
+	(property_list [Practica9_ProjectKB_Class10116])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([Practica9_ProjectKB_Class10116] of  Property_List
+)
+
+([Practica9_ProjectKB_Class10151] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(name "duración")
+	(property_list [Practica9_ProjectKB_Class10152])
+	(widget_class_name "edu.stanford.smi.protege.widget.IntegerFieldWidget")
+	(width 100)
+	(x 0)
+	(y 60))
+
+([Practica9_ProjectKB_Class10152] of  Property_List
+)
+
+([Practica9_ProjectKB_Class10242] of  String
 
 	(name "CadenasHoteleras")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10173] of  String
+([Practica9_ProjectKB_Class10243] of  String
+
+	(name "Destino")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10244] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Practica9_ProjectKB_Class10174] of  String
+([Practica9_ProjectKB_Class10245] of  String
 
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
+	(name "Coche")
+	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10175] of  String
+([Practica9_ProjectKB_Class10246] of  String
 
 	(name "Viaje")
 	(string_value "c%C3%B3digo"))
 
-([Practica9_ProjectKB_Class10176] of  String
+([Practica9_ProjectKB_Class10247] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Practica9_ProjectKB_Class10248] of  String
+
+	(name "Crucero")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10249] of  String
 
 	(name "Hotel")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10177] of  String
+([Practica9_ProjectKB_Class10250] of  String
+
+	(name "Tren")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10251] of  String
+
+	(name "Avion")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10252] of  String
 
 	(name "Mayoristas")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10178] of  String
+([Practica9_ProjectKB_Class10253] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Practica9_ProjectKB_Class10179] of  Map
+([Practica9_ProjectKB_Class10254] of  Map
 
-	(entries [Practica9_ProjectKB_Class10180]))
+	(entries [Practica9_ProjectKB_Class10255]))
 
-([Practica9_ProjectKB_Class10180] of  Map_Entry
+([Practica9_ProjectKB_Class10255] of  Map_Entry
 
 	(key "Practica9_Class18")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "254 125 202 124")
 	(value_class "java.awt.Rectangle"))
 
-([Practica9_ProjectKB_Class10181] of  Map_Entry
+([Practica9_ProjectKB_Class10256] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "Practica9_ProjectKB_Class10179")
+	(value "Practica9_ProjectKB_Class10254")
 	(value_class "java.util.Map"))
 
 ([Practica9_ProjectKB_Class11] of  Property_List

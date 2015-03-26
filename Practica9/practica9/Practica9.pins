@@ -1,4 +1,4 @@
-; Thu Mar 26 12:26:39 GMT 2015
+; Thu Mar 26 17:00:18 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -15,9 +15,12 @@
 
 ([Practica9_Class10002] of  Viaje
 
+	(alojamiento [Practica9_Class30011])
 	(c%C3%B3digo "AE002")
 	(destino [Practica9_Class20004])
-	(precio 54.0))
+	(duraci%C3%B3n 12.0)
+	(precio 1500.0)
+	(transporte [Practica9_Class30010]))
 
 ([Practica9_Class14] of  CadenasHoteleras
 
@@ -37,6 +40,12 @@
 	(descripci%C3%B3n "Nombre cutre donde los haya (igual que el nivel de la empresa).")
 	(nombre "Politours"))
 
+([Practica9_Class20001] of  Hotel
+
+	(destino [Practica9_Class20006])
+	(estrellas 4)
+	(nombre "AC Cádiz"))
+
 ([Practica9_Class20004] of  Destino
 
 	(nombre "Granada")
@@ -45,9 +54,12 @@
 
 ([Practica9_Class20005] of  Viaje
 
+	(alojamiento [Practica9_Class20001])
 	(c%C3%B3digo "AE001")
 	(destino [Practica9_Class20006])
-	(precio 500.0))
+	(duraci%C3%B3n 15.0)
+	(precio 500.0)
+	(transporte [Practica9_Class30005]))
 
 ([Practica9_Class20006] of  Destino
 
@@ -59,7 +71,8 @@
 
 	(nombre "Madrid")
 	(pais "España")
-	(region "Madrid"))
+	(region "Madrid")
+	(tipoGeogr%C3%A1fico "península"))
 
 ([Practica9_Class20008] of  Destino
 
@@ -69,21 +82,30 @@
 
 ([Practica9_Class20009] of  Viaje
 
+	(alojamiento [Practica9_Class30016])
 	(c%C3%B3digo "ME001")
 	(destino [Practica9_Class20007])
-	(precio 56.0))
+	(duraci%C3%B3n 5.0)
+	(precio 56.0)
+	(transporte [Practica9_Class30015]))
 
 ([Practica9_Class20010] of  Viaje
 
+	(alojamiento [Practica9_Class30014])
 	(c%C3%B3digo "MA001")
 	(destino [Practica9_Class20008])
-	(precio 65.0))
+	(duraci%C3%B3n 8.0)
+	(precio 4565.0)
+	(transporte [Practica9_Class30012]))
 
 ([Practica9_Class20011] of  Viaje
 
+	(alojamiento [Practica9_Class7])
 	(c%C3%B3digo "AE003")
 	(destino [Practica9_Class20012])
-	(precio 150.0))
+	(duraci%C3%B3n 5.0)
+	(precio 150.0)
+	(transporte [Practica9_Class30008]))
 
 ([Practica9_Class20012] of  Destino
 
@@ -96,10 +118,81 @@
 	(descripci%C3%B3n "Los  de toda la vida.")
 	(nombre "ViajesMarsans"))
 
+([Practica9_Class30004] of  Destino
+
+	(nombre "Alcafran")
+	(pais "España")
+	(region "Desconocida")
+	(tipoGeogr%C3%A1fico "isla"))
+
+([Practica9_Class30005] of  Avion
+
+	(nombre "avión1")
+	(Vip TRUE))
+
+([Practica9_Class30008] of  Coche
+
+	(nombre "coche1"))
+
+([Practica9_Class30009] of  Crucero
+
+	(nombre "crucero1"))
+
+([Practica9_Class30010] of  Tren
+
+	(nombre "tren1"))
+
+([Practica9_Class30011] of  Hotel
+
+	(destino [Practica9_Class20004])
+	(estrellas 3)
+	(nombre "AC Granada"))
+
+([Practica9_Class30012] of  Avion
+
+	(nombre "AvionMunich1")
+	(Vip TRUE))
+
+([Practica9_Class30013] of  Hotel
+
+	(destino [Practica9_Class20007])
+	(estrellas 4)
+	(nombre "CuatroEstrellasMadrid"))
+
+([Practica9_Class30014] of  Hotel
+
+	(destino [Practica9_Class20008])
+	(estrellas 2)
+	(nombre "HotelMunich1"))
+
+([Practica9_Class30015] of  Avion
+
+	(nombre "avionMadrid")
+	(Vip TRUE))
+
+([Practica9_Class30016] of  Hotel
+
+	(destino [Practica9_Class20007])
+	(estrellas 5)
+	(nombre "Ritch Madrid"))
+
+([Practica9_Class30017] of  Viaje
+
+	(alojamiento [Practica9_Class30013])
+	(c%C3%B3digo "Madrid4estrellasCoche")
+	(destino [Practica9_Class20007])
+	(duraci%C3%B3n 6.0)
+	(precio 254.0)
+	(transporte [Practica9_Class30008]))
+
 ([Practica9_Class7] of  Hotel
 
+	(destino [Practica9_Class20012])
+	(estrellas 3)
 	(nombre "Meliá Sevilla"))
 
 ([Practica9_Class8] of  Hotel
 
+	(destino [Practica9_Class30004])
+	(estrellas 4)
 	(nombre "NH Alcafrán"))
