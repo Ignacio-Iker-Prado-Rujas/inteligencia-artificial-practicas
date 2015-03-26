@@ -1,4 +1,4 @@
-; Thu Mar 26 11:50:03 GMT 2015
+; Thu Mar 26 11:59:00 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -12,6 +12,12 @@
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot transporte
+;+		(comment "Transporte para el viaje, en principio solo se permite uno.")
+		(type INSTANCE)
+;+		(allowed-classes Transporte)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot tipoAlojamiento
 		(type STRING)
 ;+		(value "hotel")
@@ -19,13 +25,20 @@
 		(create-accessor read-write))
 	(single-slot alojamiento
 ;+		(comment "Indica el alojamiento")
-		(type STRING)
+		(type INSTANCE)
+;+		(allowed-classes Alojamiento)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot c%C3%B3digo
 ;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot destino
+;+		(comment "Destino del viaje, en principio solo uno por viaje.")
+		(type INSTANCE)
+;+		(allowed-classes Destino)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot descripci%C3%B3n
 ;+		(comment "Breve descripción.")
@@ -73,19 +86,32 @@
 (defclass Viaje "Un viaje consta de un destino, un transporte, un alojamiento y un precio."
 	(is-a Base)
 	(role concrete)
-	(single-slot c%C3%B3digo
-;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot precio
 ;+		(comment "Precio del viaje")
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot c%C3%B3digo
+;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot alojamiento
 ;+		(comment "Indica el alojamiento")
-		(type STRING)
+		(type INSTANCE)
+;+		(allowed-classes Alojamiento)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot transporte
+;+		(comment "Transporte para el viaje, en principio solo se permite uno.")
+		(type INSTANCE)
+;+		(allowed-classes Transporte)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot destino
+;+		(comment "Destino del viaje, en principio solo uno por viaje.")
+		(type INSTANCE)
+;+		(allowed-classes Destino)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
