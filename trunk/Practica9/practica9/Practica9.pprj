@@ -1,4 +1,4 @@
-; Thu Mar 26 23:10:54 CET 2015
+; Thu Mar 26 23:19:22 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -21,19 +21,19 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Practica9_ProjectKB_Class10278]
-		[Practica9_ProjectKB_Class10279]
-		[Practica9_ProjectKB_Class10280]
-		[Practica9_ProjectKB_Class10281]
-		[Practica9_ProjectKB_Class10282]
-		[Practica9_ProjectKB_Class10283]
-		[Practica9_ProjectKB_Class10284]
-		[Practica9_ProjectKB_Class10285]
-		[Practica9_ProjectKB_Class10286]
-		[Practica9_ProjectKB_Class10287]
-		[Practica9_ProjectKB_Class10288]
-		[Practica9_ProjectKB_Class10289]
-		[Practica9_ProjectKB_Class10290]))
+		[Practica9_ProjectKB_Class10294]
+		[Practica9_ProjectKB_Class10295]
+		[Practica9_ProjectKB_Class10296]
+		[Practica9_ProjectKB_Class10297]
+		[Practica9_ProjectKB_Class10298]
+		[Practica9_ProjectKB_Class10299]
+		[Practica9_ProjectKB_Class10300]
+		[Practica9_ProjectKB_Class10301]
+		[Practica9_ProjectKB_Class10302]
+		[Practica9_ProjectKB_Class10303]
+		[Practica9_ProjectKB_Class10304]
+		[Practica9_ProjectKB_Class10305]
+		[Practica9_ProjectKB_Class10306]))
 
 ([CLSES_TAB] of  Widget
 
@@ -85,8 +85,8 @@
 
 ([KB_828046_Class1] of  Map
 
-	(entries [Practica9_ProjectKB_Class10293])
-	(referenced_maps [Practica9_ProjectKB_Class10291]))
+	(entries [Practica9_ProjectKB_Class10309])
+	(referenced_maps [Practica9_ProjectKB_Class10307]))
 
 ([KB_828046_Class100] of  Property_List
 )
@@ -274,87 +274,87 @@
 	(property_list [Practica9_ProjectKB_Class11])
 	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
 
-([Practica9_ProjectKB_Class10278] of  String
+([Practica9_ProjectKB_Class10294] of  String
 
 	(name "Hotel")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10279] of  String
+([Practica9_ProjectKB_Class10295] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Practica9_ProjectKB_Class10280] of  String
+([Practica9_ProjectKB_Class10296] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Practica9_ProjectKB_Class10281] of  String
+([Practica9_ProjectKB_Class10297] of  String
 
 	(name "Coche")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10282] of  String
+([Practica9_ProjectKB_Class10298] of  String
 
 	(name "Camping")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10283] of  String
+([Practica9_ProjectKB_Class10299] of  String
 
 	(name "Destino")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10284] of  String
+([Practica9_ProjectKB_Class10300] of  String
 
 	(name "Crucero")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10285] of  String
+([Practica9_ProjectKB_Class10301] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Practica9_ProjectKB_Class10286] of  String
+([Practica9_ProjectKB_Class10302] of  String
 
 	(name "Viaje")
 	(string_value "c%C3%B3digo"))
 
-([Practica9_ProjectKB_Class10287] of  String
+([Practica9_ProjectKB_Class10303] of  String
 
 	(name "CadenasHoteleras")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10288] of  String
+([Practica9_ProjectKB_Class10304] of  String
 
 	(name "Mayoristas")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10289] of  String
+([Practica9_ProjectKB_Class10305] of  String
 
 	(name "Tren")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10290] of  String
+([Practica9_ProjectKB_Class10306] of  String
 
 	(name "Avion")
 	(string_value "nombre"))
 
-([Practica9_ProjectKB_Class10291] of  Map
+([Practica9_ProjectKB_Class10307] of  Map
 
-	(entries [Practica9_ProjectKB_Class10292]))
+	(entries [Practica9_ProjectKB_Class10308]))
 
-([Practica9_ProjectKB_Class10292] of  Map_Entry
+([Practica9_ProjectKB_Class10308] of  Map_Entry
 
 	(key "Practica9_Class18")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "254 125 202 124")
 	(value_class "java.awt.Rectangle"))
 
-([Practica9_ProjectKB_Class10293] of  Map_Entry
+([Practica9_ProjectKB_Class10309] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "Practica9_ProjectKB_Class10291")
+	(value "Practica9_ProjectKB_Class10307")
 	(value_class "java.util.Map"))
 
 ([Practica9_ProjectKB_Class11] of  Property_List
