@@ -1,4 +1,4 @@
-; Thu Mar 26 12:16:15 GMT 2015
+; Thu Mar 26 12:26:39 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -78,6 +78,18 @@
 	(c%C3%B3digo "MA001")
 	(destino [Practica9_Class20008])
 	(precio 65.0))
+
+([Practica9_Class20011] of  Viaje
+
+	(c%C3%B3digo "AE003")
+	(destino [Practica9_Class20012])
+	(precio 150.0))
+
+([Practica9_Class20012] of  Destino
+
+	(nombre "Sevilla")
+	(pais "España")
+	(region "Andalucía"))
 
 ([Practica9_Class3] of  Mayoristas
 
