@@ -1,4 +1,4 @@
-; Thu Mar 26 22:55:26 CET 2015
+; Thu Mar 26 23:01:43 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -37,7 +37,9 @@
 ([Practica9_Class14] of  CadenasHoteleras
 
 	(descripci%C3%B3n "Empresa nacional hostelera Meliá")
-	(hoteles [Practica9_Class7])
+	(hoteles
+		[Practica9_Class7]
+		[Practica9_Class30013])
 	(nombre "Meliá"))
 
 ([Practica9_Class17] of  CadenasHoteleras
@@ -86,7 +88,7 @@
 	(inverse_of_viajesOfertados
 		[Practica9_Class30003]
 		[Practica9_Class0])
-	(precio 500.0)
+	(precio 150.0)
 	(transporte [Practica9_Class30005]))
 
 ([Practica9_Class20006] of  Destino
@@ -217,6 +219,7 @@
 
 	(destino [Practica9_Class20004])
 	(estrellas 3)
+	(inverse_of_hoteles [Practica9_Class50009])
 	(nombre "AC Granada"))
 
 ([Practica9_Class30012] of  Avion
@@ -228,6 +231,7 @@
 
 	(destino [Practica9_Class20007])
 	(estrellas 4)
+	(inverse_of_hoteles [Practica9_Class14])
 	(nombre "CuatroEstrellasMadrid"))
 
 ([Practica9_Class30014] of  Hotel
@@ -304,7 +308,9 @@
 ([Practica9_Class50009] of  CadenasHoteleras
 
 	(descripci%C3%B3n "Empresa nacional hostelera AC")
-	(hoteles [Practica9_Class20001])
+	(hoteles
+		[Practica9_Class20001]
+		[Practica9_Class30011])
 	(nombre "AC"))
 
 ([Practica9_Class50010] of  CadenasHoteleras
