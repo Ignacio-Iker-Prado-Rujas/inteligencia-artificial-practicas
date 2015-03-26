@@ -1,4 +1,4 @@
-; Thu Mar 26 20:41:00 GMT 2015
+; Thu Mar 26 22:55:26 CET 2015
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -69,10 +69,13 @@
 
 ([Practica9_Class20004] of  Destino
 
-	(inverse_of_destino [Practica9_Class30011])
+	(inverse_of_destino
+		[Practica9_Class30011]
+		[Practica9_Class10002])
 	(nombre "Granada")
 	(pais "España")
-	(region "Andalucía"))
+	(region "Andalucía")
+	(tipoGeogr%C3%A1fico "península"))
 
 ([Practica9_Class20005] of  Viaje
 
@@ -81,14 +84,16 @@
 	(destino [Practica9_Class20006])
 	(duraci%C3%B3n 15.0)
 	(inverse_of_viajesOfertados
-		[Practica9_Class0]
-		[Practica9_Class30003])
+		[Practica9_Class30003]
+		[Practica9_Class0])
 	(precio 500.0)
 	(transporte [Practica9_Class30005]))
 
 ([Practica9_Class20006] of  Destino
 
-	(inverse_of_destino [Practica9_Class30001])
+	(inverse_of_destino
+		[Practica9_Class30001]
+		[Practica9_Class20005])
 	(nombre "Cádiz")
 	(pais "España")
 	(region "Andalucía"))
@@ -96,10 +101,10 @@
 ([Practica9_Class20007] of  Destino
 
 	(inverse_of_destino
-		[Practica9_Class20009]
 		[Practica9_Class30013]
 		[Practica9_Class30016]
-		[Practica9_Class30017])
+		[Practica9_Class30017]
+		[Practica9_Class20009])
 	(nombre "Madrid")
 	(pais "España")
 	(region "Madrid")
@@ -108,8 +113,8 @@
 ([Practica9_Class20008] of  Destino
 
 	(inverse_of_destino
-		[Practica9_Class20010]
-		[Practica9_Class30014])
+		[Practica9_Class30014]
+		[Practica9_Class20010])
 	(nombre "Munich")
 	(pais "Alemania")
 	(region "Nidea"))
@@ -149,9 +154,9 @@
 ([Practica9_Class20012] of  Destino
 
 	(inverse_of_destino
+		[Practica9_Class7]
 		[Practica9_Class20011]
-		[Practica9_Class40007]
-		[Practica9_Class7])
+		[Practica9_Class40007])
 	(nombre "Sevilla")
 	(pais "España")
 	(region "Andalucía"))
@@ -184,8 +189,8 @@
 ([Practica9_Class30004] of  Destino
 
 	(inverse_of_destino
-		[Practica9_Class40004]
-		[Practica9_Class8])
+		[Practica9_Class8]
+		[Practica9_Class40004])
 	(nombre "Alcafran")
 	(pais "España")
 	(region "Desconocida")
@@ -284,8 +289,8 @@
 ([Practica9_Class50004] of  Destino
 
 	(inverse_of_destino
-		[Practica9_Class10000]
-		[Practica9_Class40001])
+		[Practica9_Class40001]
+		[Practica9_Class10000])
 	(nombre "Bristol")
 	(pais "Reino Unido")
 	(region "Oeste"))
