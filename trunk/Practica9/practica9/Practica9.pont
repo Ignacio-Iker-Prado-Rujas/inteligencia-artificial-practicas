@@ -1,4 +1,4 @@
-; Thu Mar 26 19:38:00 GMT 2015
+; Thu Mar 26 19:52:35 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -20,6 +20,10 @@
 ;+		(comment "Indica el alojamiento")
 		(type INSTANCE)
 ;+		(allowed-classes Alojamiento)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Practica9_Class40005
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Practica9_Class20002
@@ -82,6 +86,12 @@
 ;+		(allowed-classes Viaje)
 ;+		(inverse-slot inverse_of_viajesOfertados)
 		(create-accessor read-write))
+	(single-slot inverse_of_hoteles
+		(type INSTANCE)
+;+		(allowed-classes CadenasHoteleras)
+;+		(cardinality 0 1)
+;+		(inverse-slot hoteles)
+		(create-accessor read-write))
 	(single-slot destino
 ;+		(comment "Destino del viaje, en principio solo uno por viaje.")
 		(type INSTANCE)
@@ -93,6 +103,11 @@
 ;+		(comment "Breve descripción.")
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot hoteles
+		(type INSTANCE)
+;+		(allowed-classes Hotel)
+;+		(inverse-slot inverse_of_hoteles)
 		(create-accessor read-write))
 	(multislot inverse_of_viajesOfertados
 		(type INSTANCE)
@@ -117,10 +132,18 @@
 (defclass CadenasHoteleras "Cadenas hoteleras, cuentan con distintos hoteles por el mundo."
 	(is-a Base)
 	(role concrete)
+	(multislot hoteles
+		(type INSTANCE)
+;+		(allowed-classes Hotel)
+		(create-accessor read-write))
 	(single-slot nombre
 ;+		(comment "Nombre de la instancia")
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Practica9_Class40005
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot descripci%C3%B3n
 ;+		(comment "Breve descripción.")
@@ -312,6 +335,11 @@
 ;+		(comment "Nombre de la instancia")
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot inverse_of_hoteles
+		(type INSTANCE)
+;+		(allowed-classes CadenasHoteleras)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot destino
 ;+		(comment "Destino del viaje, en principio solo uno por viaje.")

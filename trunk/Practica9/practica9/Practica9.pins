@@ -1,4 +1,4 @@
-; Thu Mar 26 19:38:00 GMT 2015
+; Thu Mar 26 19:52:35 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -6,7 +6,8 @@
 ([Practica9_Class0] of  Mayoristas
 
 	(descripci%C3%B3n "Te clavan un extra por lo de Pana y otro extra por lo de visión. Teniendo Viajes Marsans para qué quieres esto.")
-	(nombre "Panavisión"))
+	(nombre "Panavisión")
+	(viajesOfertados [Practica9_Class20005]))
 
 ([Practica9_Class10001] of  %3APAL-CONSTRAINT
 
@@ -19,15 +20,18 @@
 	(c%C3%B3digo "AE002")
 	(destino [Practica9_Class20004])
 	(duraci%C3%B3n 12.0)
+	(inverse_of_viajesOfertados [Practica9_Class2])
 	(precio 1500.0)
 	(transporte [Practica9_Class30010]))
 
 ([Practica9_Class14] of  CadenasHoteleras
 
+	(hoteles [Practica9_Class7])
 	(nombre "Meliá"))
 
 ([Practica9_Class17] of  CadenasHoteleras
 
+	(hoteles [Practica9_Class8])
 	(nombre "NH"))
 
 ([Practica9_Class18] of  %3AINSTANCE-ANNOTATION
@@ -38,7 +42,11 @@
 ([Practica9_Class2] of  Mayoristas
 
 	(descripci%C3%B3n "Nombre cutre donde los haya (igual que el nivel de la empresa).")
-	(nombre "Politours"))
+	(nombre "Politours")
+	(viajesOfertados
+		[Practica9_Class30017]
+		[Practica9_Class10002]
+		[Practica9_Class40007]))
 
 ([Practica9_Class20001] of  Hotel
 
@@ -58,6 +66,7 @@
 	(c%C3%B3digo "AE001")
 	(destino [Practica9_Class20006])
 	(duraci%C3%B3n 15.0)
+	(inverse_of_viajesOfertados [Practica9_Class0])
 	(precio 500.0)
 	(transporte [Practica9_Class30005]))
 
@@ -86,6 +95,7 @@
 	(c%C3%B3digo "ME001")
 	(destino [Practica9_Class20007])
 	(duraci%C3%B3n 5.0)
+	(inverse_of_viajesOfertados [Practica9_Class3])
 	(precio 56.0)
 	(transporte [Practica9_Class30015]))
 
@@ -95,6 +105,7 @@
 	(c%C3%B3digo "MA001")
 	(destino [Practica9_Class20008])
 	(duraci%C3%B3n 8.0)
+	(inverse_of_viajesOfertados [Practica9_Class3])
 	(precio 4565.0)
 	(transporte [Practica9_Class30012]))
 
@@ -104,11 +115,15 @@
 	(c%C3%B3digo "AE003SevillaCoche")
 	(destino [Practica9_Class20012])
 	(duraci%C3%B3n 5.0)
+	(inverse_of_viajesOfertados [Practica9_Class30003])
 	(precio 800.0)
 	(transporte [Practica9_Class30008]))
 
 ([Practica9_Class20012] of  Destino
 
+	(inverse_of_destino
+		[Practica9_Class20011]
+		[Practica9_Class40007])
 	(nombre "Sevilla")
 	(pais "España")
 	(region "Andalucía"))
@@ -116,7 +131,11 @@
 ([Practica9_Class3] of  Mayoristas
 
 	(descripci%C3%B3n "Los  de toda la vida.")
-	(nombre "ViajesMarsans"))
+	(nombre "ViajesMarsans")
+	(viajesOfertados
+		[Practica9_Class20010]
+		[Practica9_Class20009]
+		[Practica9_Class40004]))
 
 ([Practica9_Class30001] of  Camping
 
@@ -135,6 +154,7 @@
 
 ([Practica9_Class30004] of  Destino
 
+	(inverse_of_destino [Practica9_Class40004])
 	(nombre "Alcafran")
 	(pais "España")
 	(region "Desconocida")
@@ -197,17 +217,40 @@
 	(c%C3%B3digo "Madrid4estrellasCoche")
 	(destino [Practica9_Class20007])
 	(duraci%C3%B3n 6.0)
+	(inverse_of_viajesOfertados [Practica9_Class2])
 	(precio 254.0)
+	(transporte [Practica9_Class30008]))
+
+([Practica9_Class40004] of  Viaje
+
+	(alojamiento [Practica9_Class8])
+	(c%C3%B3digo "ToAlcafranNoCruceroSiIsla")
+	(destino [Practica9_Class30004])
+	(duraci%C3%B3n 20.0)
+	(inverse_of_viajesOfertados [Practica9_Class3])
+	(precio 800.0)
+	(transporte [Practica9_Class30010]))
+
+([Practica9_Class40007] of  Viaje
+
+	(alojamiento [Practica9_Class7])
+	(c%C3%B3digo "SevillaMeliaPolitours")
+	(destino [Practica9_Class20012])
+	(duraci%C3%B3n 15.0)
+	(inverse_of_viajesOfertados [Practica9_Class2])
+	(precio 452.0)
 	(transporte [Practica9_Class30008]))
 
 ([Practica9_Class7] of  Hotel
 
 	(destino [Practica9_Class20012])
 	(estrellas 3)
+	(inverse_of_hoteles [Practica9_Class14])
 	(nombre "Meliá Sevilla"))
 
 ([Practica9_Class8] of  Hotel
 
 	(destino [Practica9_Class30004])
 	(estrellas 4)
+	(inverse_of_hoteles [Practica9_Class17])
 	(nombre "NH Alcafrán"))
