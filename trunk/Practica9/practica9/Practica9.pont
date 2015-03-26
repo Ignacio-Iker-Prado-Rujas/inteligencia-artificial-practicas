@@ -1,4 +1,4 @@
-; Thu Mar 26 11:42:36 GMT 2015
+; Thu Mar 26 11:50:03 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -7,13 +7,19 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot Practica9_Class10
-		(type STRING)
+	(single-slot precio
+;+		(comment "Precio del viaje")
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot tipoAlojamiento
 		(type STRING)
 ;+		(value "hotel")
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot alojamiento
+;+		(comment "Indica el alojamiento")
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot c%C3%B3digo
@@ -72,7 +78,13 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Practica9_Class10
+	(single-slot precio
+;+		(comment "Precio del viaje")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot alojamiento
+;+		(comment "Indica el alojamiento")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))

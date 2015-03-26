@@ -1,4 +1,4 @@
-; Thu Mar 26 11:42:36 GMT 2015
+; Thu Mar 26 11:50:03 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -7,6 +7,17 @@
 
 	(descripci%C3%B3n "Te clavan un extra por lo de Pana y otro extra por lo de visión. Teniendo Viajes Marsans para qué quieres esto.")
 	(nombre "Panavisión"))
+
+([Practica9_Class10001] of  %3APAL-CONSTRAINT
+
+	(%3APAL-NAME "AE001")
+	(%3APAL-STATEMENT "(Predicate)"))
+
+([Practica9_Class10002] of  Viaje
+
+	(alojamiento "Hotel")
+	(c%C3%B3digo "AE002")
+	(precio 54.0))
 
 ([Practica9_Class14] of  CadenasHoteleras
 
