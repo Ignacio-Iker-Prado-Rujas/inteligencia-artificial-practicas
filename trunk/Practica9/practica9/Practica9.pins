@@ -1,4 +1,4 @@
-; Thu Mar 26 11:59:00 GMT 2015
+; Thu Mar 26 12:16:15 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -16,6 +16,7 @@
 ([Practica9_Class10002] of  Viaje
 
 	(c%C3%B3digo "AE002")
+	(destino [Practica9_Class20004])
 	(precio 54.0))
 
 ([Practica9_Class14] of  CadenasHoteleras
@@ -35,6 +36,48 @@
 
 	(descripci%C3%B3n "Nombre cutre donde los haya (igual que el nivel de la empresa).")
 	(nombre "Politours"))
+
+([Practica9_Class20004] of  Destino
+
+	(nombre "Granada")
+	(pais "España")
+	(region "Andalucía"))
+
+([Practica9_Class20005] of  Viaje
+
+	(c%C3%B3digo "AE001")
+	(destino [Practica9_Class20006])
+	(precio 500.0))
+
+([Practica9_Class20006] of  Destino
+
+	(nombre "Cádiz")
+	(pais "España")
+	(region "Andalucía"))
+
+([Practica9_Class20007] of  Destino
+
+	(nombre "Madrid")
+	(pais "España")
+	(region "Madrid"))
+
+([Practica9_Class20008] of  Destino
+
+	(nombre "Munich")
+	(pais "Alemania")
+	(region "Nidea"))
+
+([Practica9_Class20009] of  Viaje
+
+	(c%C3%B3digo "ME001")
+	(destino [Practica9_Class20007])
+	(precio 56.0))
+
+([Practica9_Class20010] of  Viaje
+
+	(c%C3%B3digo "MA001")
+	(destino [Practica9_Class20008])
+	(precio 65.0))
 
 ([Practica9_Class3] of  Mayoristas
 
