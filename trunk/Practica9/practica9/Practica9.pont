@@ -1,4 +1,4 @@
-; Fri Mar 13 19:08:03 GMT 2015
+; Thu Mar 26 11:42:36 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -64,17 +64,17 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Viaje "Un viaje consta de un destino, un transporte y un alojamiento."
+(defclass Viaje "Un viaje consta de un destino, un transporte, un alojamiento y un precio."
 	(is-a Base)
 	(role concrete)
-	(single-slot Practica9_Class10
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot c%C3%B3digo
 ;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Practica9_Class10
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Destino "Consta de un nombre(indica la ciudad) y varias características como si es internacional, si es de tipo montaña, etc."
