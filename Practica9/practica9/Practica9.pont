@@ -1,4 +1,4 @@
-; Thu Mar 26 11:59:00 GMT 2015
+; Thu Mar 26 12:16:15 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -10,6 +10,11 @@
 	(single-slot precio
 ;+		(comment "Precio del viaje")
 		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot region
+;+		(comment "Indica la region del destino")
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot transporte
@@ -33,6 +38,11 @@
 ;+		(comment "Ciertas instancias requieres ser identificadas de manera única por un código.")
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot pais
+;+		(comment "Indica el pais del destino")
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot destino
 ;+		(comment "Destino del viaje, en principio solo uno por viaje.")
@@ -117,7 +127,22 @@
 
 (defclass Destino "Consta de un nombre(indica la ciudad) y varias características como si es internacional, si es de tipo montaña, etc."
 	(is-a Base)
-	(role concrete))
+	(role concrete)
+	(single-slot region
+;+		(comment "Indica la region del destino")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot pais
+;+		(comment "Indica el pais del destino")
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombre
+;+		(comment "Nombre de la instancia")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Transporte
 	(is-a Base)

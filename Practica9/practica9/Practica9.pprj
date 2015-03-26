@@ -1,4 +1,4 @@
-; Thu Mar 26 11:59:00 GMT 2015
+; Thu Mar 26 12:16:15 GMT 2015
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -21,13 +21,14 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Practica9_ProjectKB_Class84]
-		[Practica9_ProjectKB_Class85]
-		[Practica9_ProjectKB_Class86]
-		[Practica9_ProjectKB_Class87]
-		[Practica9_ProjectKB_Class88]
-		[Practica9_ProjectKB_Class89]
-		[Practica9_ProjectKB_Class90]))
+		[Practica9_ProjectKB_Class10143]
+		[Practica9_ProjectKB_Class10144]
+		[Practica9_ProjectKB_Class10145]
+		[Practica9_ProjectKB_Class10146]
+		[Practica9_ProjectKB_Class10147]
+		[Practica9_ProjectKB_Class10148]
+		[Practica9_ProjectKB_Class10149]
+		[Practica9_ProjectKB_Class10150]))
 
 ([CLSES_TAB] of  Widget
 
@@ -79,8 +80,8 @@
 
 ([KB_828046_Class1] of  Map
 
-	(entries [Practica9_ProjectKB_Class10093])
-	(referenced_maps [Practica9_ProjectKB_Class91]))
+	(entries [Practica9_ProjectKB_Class10153])
+	(referenced_maps [Practica9_ProjectKB_Class10151]))
 
 ([KB_828046_Class100] of  Property_List
 )
@@ -259,7 +260,8 @@
 
 ([Practica1_ProjectKB_Class107] of  String
 
-	(name "SearchTab_Query"))
+	(name "SearchTab_Query")
+	(string_value "Query Name: DestinosEnAndalucia\nMatch All:true\nLength: 1\nDestino	region	contains	Other:Andalucía	1	\n\nQuery Name: Pregunta1\nMatch All:true\nLength: 2\nViaje	precio	is less than	Other:200	1	\nViaje	destino	contains	Query:DestinosEnAndalucia|DestinosEnAndalucia	1	\n\n"))
 
 ([Practica9_ProjectKB_Class10] of  Widget
 
@@ -267,11 +269,62 @@
 	(property_list [Practica9_ProjectKB_Class11])
 	(widget_class_name "edu.stanford.smi.protege.widget.ClsesAndInstancesTab"))
 
-([Practica9_ProjectKB_Class10093] of  Map_Entry
+([Practica9_ProjectKB_Class10143] of  String
+
+	(name "Destino")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10144] of  String
+
+	(name "CadenasHoteleras")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10145] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Practica9_ProjectKB_Class10146] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Practica9_ProjectKB_Class10147] of  String
+
+	(name "Viaje")
+	(string_value "c%C3%B3digo"))
+
+([Practica9_ProjectKB_Class10148] of  String
+
+	(name "Hotel")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10149] of  String
+
+	(name "Mayoristas")
+	(string_value "nombre"))
+
+([Practica9_ProjectKB_Class10150] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Practica9_ProjectKB_Class10151] of  Map
+
+	(entries [Practica9_ProjectKB_Class10152]))
+
+([Practica9_ProjectKB_Class10152] of  Map_Entry
+
+	(key "Practica9_Class18")
+	(key_class "edu.stanford.smi.protege.model.Frame")
+	(value "254 125 202 124")
+	(value_class "java.awt.Rectangle"))
+
+([Practica9_ProjectKB_Class10153] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "Practica9_ProjectKB_Class91")
+	(value "Practica9_ProjectKB_Class10151")
 	(value_class "java.util.Map"))
 
 ([Practica9_ProjectKB_Class11] of  Property_List
@@ -632,54 +685,8 @@
 ([Practica9_ProjectKB_Class83] of  Property_List
 )
 
-([Practica9_ProjectKB_Class84] of  String
-
-	(name "CadenasHoteleras")
-	(string_value "nombre"))
-
-([Practica9_ProjectKB_Class85] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Practica9_ProjectKB_Class86] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Practica9_ProjectKB_Class87] of  String
-
-	(name "Viaje")
-	(string_value "c%C3%B3digo"))
-
-([Practica9_ProjectKB_Class88] of  String
-
-	(name "Hotel")
-	(string_value "nombre"))
-
-([Practica9_ProjectKB_Class89] of  String
-
-	(name "Mayoristas")
-	(string_value "nombre"))
-
 ([Practica9_ProjectKB_Class9] of  Property_List
 )
-
-([Practica9_ProjectKB_Class90] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Practica9_ProjectKB_Class91] of  Map
-
-	(entries [Practica9_ProjectKB_Class92]))
-
-([Practica9_ProjectKB_Class92] of  Map_Entry
-
-	(key "Practica9_Class18")
-	(key_class "edu.stanford.smi.protege.model.Frame")
-	(value "254 125 202 124")
-	(value_class "java.awt.Rectangle"))
 
 ([Practica9_ProjectKB_Class93] of  Property_List
 
