@@ -83,11 +83,36 @@
 \end{section}
 
 \begin{section}{Apartado 1}
+	Tabla 4x4. Ordenar con itemize o lo que sea para que quede elegante. 
 	
+	 Analiza el archivo citado y contesta las siguientes preguntas: ¿Cuántas instancias hay? ¿Cuántos 
+atributos se utilizan? ¿Por qué atributo queremos aprender a clasificar? 
+- Ejecuta J48 (versión WEKA de C4.5). Utiliza para la validación el “training set”. Incluye en la 
+memoria los resultados obtenidos y la representación gráfica del árbol correspondiente. ¿Cuántas 
+instancias han sido mal clasificadas? ¿Cuántos nodos terminales hay en el árbol? ¿Por qué atributo 
+se clasifica en el primer nivel del árbol? 
+- Vuelve a ejecutar J48 primero con "cross-validation" y después con "percentage split" (con un valor 
+del 66\%) y observa las diferencias. Haz una tabla con el porcentaje de instancias bien clasificadas en 
+cada uno de los tres métodos de validación. Incluye en esa tabla la precisión y el recall para cada 
+uno de los tres métodos. Comenta los resultados obtenidos. ¿Cuál de las tres validaciones te parece 
+más fiable? ¿Por qué? ¿Cuántos falsos negativos (FN) y falsos positivos (FP) se han obtenido con el 
+“percentage split”? 
+
 \end{section}
 
 \begin{section}{Apartado 2}
-	
+	Analiza el dataset. ¿En cuántas clases se clasifican los ejemplares? ¿Cuántos atributos se utilizan? 
+- Aplica el clustering jerárquico a este conjunto de datos para 7 clusters y comenta los resultados 
+obtenidos. ¿Qué clases han quedado mejor clasificadas? 
+- Discretiza los atributos utilizando un filtro supervisado. ¿Qué horquillas se han generado para los 
+valores del Calcio? Vuelve a ejecutar el clustering jerárquico y compara los resultados con los 
+anteriores. ¿Qué clases han quedado mejor clasificadas? 
+- Con los atributos en su estado original, utiliza el algoritmo de clustering EM (Expectation 
+Maximization) y compara con los resultados anteriores. ¿Qué clases han quedado mejor 
+clasificadas? ¿Qué método de los tres anteriores te parece más útil para este ejemplo? ¿Por qué? 
+¿Podríamos haber utilizado un algoritmo de clasificación como J48? ¿Qué habríamos obtenido con 
+los algoritmos de clustering si no tuviéramos el atributo de clase? ¿En qué casos sólo podríamos 
+utilizar clustering?
 \end{section}
 
 	
