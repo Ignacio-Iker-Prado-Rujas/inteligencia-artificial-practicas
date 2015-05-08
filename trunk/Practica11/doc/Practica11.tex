@@ -180,7 +180,7 @@ Weighted Avg.    0.841     0.241      0.842     0.841     0.836      0.888
 		\begin{center}
  			 \begin{tabular}{| c | c | c | c |}
  			   \hline
-			     				       	  & Training set 	& Cross-validation 		& Percentage splilt  \\ \hline
+			     				       	  & Training set 	& Cross-validation 		& Percentage split  \\ \hline
 			    Porcentaje bien clasificadas  	  & 84.1146 \% 	& 73.8281 \%		& 76.2452 \% \\ \hline			 
 			    Recall 			     	  & 0.841  		& 0.738 			& 0.762 \\ \hline 
 			    Precisión			      	  & 0.842  		& 0.735 			& 0.756  \\ \hline \hline
@@ -191,9 +191,12 @@ Weighted Avg.    0.841     0.241      0.842     0.841     0.836      0.888
 		\end{center}
 
 		\begin{itemize}
-			 \item El porcentaje de bien clasificados es mejor en el primer método ¿Cuál de las tres validaciones te parece 
-			más fiable? ¿Por qué? ¿Cuántos falsos negativos (FN) y falsos positivos (FP) se han obtenido con el 
-			“percentage split”? 
+			 \item El porcentaje de bien clasificados es mejor en el primer método, sin embargo hay que explicar por qué es así. El training set crea la clasificación a partir de todos los ejemplos de entrenamiento  y luego la prueba sobre 
+			los mismos ejemplos, por tanto siempre será el mejor método si se aplica sobre esos ejemplos de entrenamiento. Por ello no fijaremos en los otros dos. El percentage split obtiene mejor porcentaje de clasificados, 
+			y también mejor precisión tanto con negativos como con positivos. Lo negativos son más fiable que los positivos, por lo que los positivos deberían ir acompañados de una prueba médica que confirme los resultados.
+			\item  ¿Cuál de las tres validaciones te parece 	más fiable? ¿Por qué? La Cross-validation es más fiable, por lo que un 73\% puede ser un porcentaje de acierto cercano a la realidad. Esto se debe a que la Cross-vallidation obtiene 
+			unos resultados más uniformes que no dependen del orden en que se escojan los ejemplos de entrenamiento, sino que presenta una media entre diez percentage splits.Por tanto es más fiable.
+			 ¿Cuántos falsos negativos (FN) y falsos positivos (FP) se han obtenido con el “percentage split”? Hay 26 falsos negativos y 36 falsos positivos.
 		\end{itemize}
 	
 
