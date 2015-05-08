@@ -96,47 +96,7 @@
 
 === Classifier model (full training set) ===
 
-J48 pruned tree
-------------------
-
-plas <= 127
-|   mass <= 26.4: tested_negative (132.0/3.0)
-|   mass > 26.4
-|   |   age <= 28: tested_negative (180.0/22.0)
-|   |   age > 28
-|   |   |   plas <= 99: tested_negative (55.0/10.0)
-|   |   |   plas > 99
-|   |   |   |   pedi <= 0.561: tested_negative (84.0/34.0)
-|   |   |   |   pedi > 0.561
-|   |   |   |   |   preg <= 6
-|   |   |   |   |   |   age <= 30: tested_positive (4.0)
-|   |   |   |   |   |   age > 30
-|   |   |   |   |   |   |   age <= 34: tested_negative (7.0/1.0)
-|   |   |   |   |   |   |   age > 34
-|   |   |   |   |   |   |   |   mass <= 33.1: tested_positive (6.0)
-|   |   |   |   |   |   |   |   mass > 33.1: tested_negative (4.0/1.0)
-|   |   |   |   |   preg > 6: tested_positive (13.0)
-plas > 127
-|   mass <= 29.9
-|   |   plas <= 145: tested_negative (41.0/6.0)
-|   |   plas > 145
-|   |   |   age <= 25: tested_negative (4.0)
-|   |   |   age > 25
-|   |   |   |   age <= 61
-|   |   |   |   |   mass <= 27.1: tested_positive (12.0/1.0)
-|   |   |   |   |   mass > 27.1
-|   |   |   |   |   |   pres <= 82
-|   |   |   |   |   |   |   pedi <= 0.396: tested_positive (8.0/1.0)
-|   |   |   |   |   |   |   pedi > 0.396: tested_negative (3.0)
-|   |   |   |   |   |   pres > 82: tested_negative (4.0)
-|   |   |   |   age > 61: tested_negative (4.0)
-|   mass > 29.9
-|   |   plas <= 157
-|   |   |   pres <= 61: tested_positive (15.0/1.0)
-|   |   |   pres > 61
-|   |   |   |   age <= 30: tested_negative (40.0/13.0)
-|   |   |   |   age > 30: tested_positive (60.0/17.0)
-|   |   plas > 157: tested_positive (92.0/12.0)
+\includegraphics{arbol}
 
 Number of Leaves  : 	20
 
@@ -144,7 +104,7 @@ Size of the tree : 	39
 	=== Evaluation on training set ===
 	=== Summary ===
 
-Correctly Classified Instances         646               84.1146 %
+Correctly Classified Instances         646               84.1146 \%
 Incorrectly Classified Instances       122               15.8854 \%
 Kappa statistic                          0.6319
 Mean absolute error                      0.2383
@@ -196,7 +156,7 @@ Weighted Avg.    0.841     0.241      0.842     0.841     0.836      0.888
 			y también mejor precisión tanto con negativos como con positivos. Lo negativos son más fiable que los positivos, por lo que los positivos deberían ir acompañados de una prueba médica que confirme los resultados.
 			\item  ¿Cuál de las tres validaciones te parece 	más fiable? ¿Por qué? La Cross-validation es más fiable, por lo que un 73\% puede ser un porcentaje de acierto cercano a la realidad. Esto se debe a que la Cross-vallidation obtiene 
 			unos resultados más uniformes que no dependen del orden en que se escojan los ejemplos de entrenamiento, sino que presenta una media entre diez percentage splits.Por tanto es más fiable.
-			 ¿Cuántos falsos negativos (FN) y falsos positivos (FP) se han obtenido con el “percentage split”? Hay 26 falsos negativos y 36 falsos positivos.
+			 \item ¿Cuántos falsos negativos (FN) y falsos positivos (FP) se han obtenido con el “percentage split”? Hay 26 falsos negativos y 36 falsos positivos.
 		\end{itemize}
 	
 
