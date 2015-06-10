@@ -1,4 +1,4 @@
-frase(Salida) --> ... 
+frase(Salida) --> [Salida].
 % gramática 
  
 consulta:- write('Escribe frase entre corchetes separando palabras con comas '), nl, 
