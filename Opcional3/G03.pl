@@ -20,6 +20,7 @@ pronombre(Persona, Numero) -->
 es_verbo(pint, pintar).
 es_verbo(habl, hablar).
 es_verbo(am, amar).
+es_verbo(compr, comprar).
 
 %verbo( I, T, P, N, [amarás],[]).
 
@@ -51,7 +52,10 @@ es_pronombre(Ellas, 3, plural).
 %si terminan en -a, -as femenino. Si no masculino.
 %el artículo debe concordar con el nombre
 
-articulo(Genero, Numero) --> [A], {es_articulo(A, Genero, Numero)}.
+articulo(Genero, Numero) --> [A],
+					{
+					(A, Genero, Numero)
+					}.
 
 es_articulo(el, masculino, singular).
 es_articulo(la, femenino, singular). 
@@ -75,6 +79,16 @@ es_nombre(jarr).
 es_nombre(puert).
 es_nombre(niñ).
 
+nombre --> [N], 
+			{
+			es_nombre_completo(N)
+			}.
+
+			
+es_nombre_completo(flores).
+es_nombre_completo(corchetes).
+
+
 es_postfijo(o, masculino, singular).
 es_postfijo(a, femenino, singular). 
 es_postfijo(os, masculino, plural).
@@ -88,3 +102,8 @@ complemento -->
 			nombre.	
 				
 frase --> pronombre(Persona, Numero), verbo(_,_,Persona,Numero), complemento.
+
+%La frase consta de pronombre, verbo y un complemento directo. El complemento directo 
+%puede ser un nombre solo o un artículo mas un nombre que concuerden en género y número.
+
+%Los nombres con artículo deben acabar en a, o, as u os.

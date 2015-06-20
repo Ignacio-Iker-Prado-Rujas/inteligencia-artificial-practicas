@@ -14,7 +14,7 @@ public class JarrasHeuristicFunction implements HeuristicFunction {
 		//los dos pasos necesarios para llevar el agua a la jarra 4
 		double valor2 = abs(actualState.getJarra3()-2)+2;
 		
-		return Math.min(valor, valor2);
+		return Math.max(valor, valor2);
 	}
 
 	private double abs(int i) {
