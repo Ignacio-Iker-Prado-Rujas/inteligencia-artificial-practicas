@@ -1,4 +1,4 @@
-F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
+\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 \usepackage[spanish, activeacute]{babel}
 \usepackage[utf8]{inputenc}
 %\usepackage[top=2.5cm, bottom=2.5cm, outer=1.75cm, inner=1.75cm, heightrounded, marginparwidth=2.5cm, marginparsep=0.3cm]{geometry}	%márgenes empequeñecidos
@@ -44,6 +44,7 @@ F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 
 
 \begin{document} 
+
 \title{\Huge{\textsc{Inteligencia Artificial}} \\
 	\vspace{0.7cm}
 	 \textsc{\Large{Práctica 6}} \\
@@ -77,95 +78,115 @@ F\documentclass[11pt, a4paper, spanish, openright, twoside]{book}
 
 
 
-\begin{section}{Diseño del prototipo}
-
-	\begin{subsection}{Identificar todos los conceptos que van a ser utilizados por el sistema.}
-
-		\begin{itemize}
-			\item Precio medio
-			\item Monumentos
-			\item Habitantes			
-			\item Hoteles
-			\item Albergues
-			\item Campings
-			\item Montaña
-			\item Playa
-			\item Parque de atracciones
-			\item Discoteca
-			\item Coche
-			\item Avión
-			\item Autobús
-			\item Tren
-			\item Deporte (Aventura, extremos, naturaleza)
-			\item Balnearios
-			\item Museos
-			\item Operas
-			\item Restaurantes
-			\item Acceso discapacitados
-			\item Destino
-			\item Fácil llegada
-			\item Intereses (Relax,  turismo, aventura, ...)
-			\item Medio transporte
-			\item Alojamiento
-			\item Nombre
-			\item Edad
-			\item Personas
-			\item Niños
-			\item Presupuesto
-			\item Discapacidad
-
-
-
-		\end{itemize}
-
-	 Por ejemplo: destino, transporte, alojamiento, hotel, apartamento, centros comerciales, 
-	discotecas, restaurantes, museos, tipos de destino (cultura, descanso, ocio nocturno, 
-	aventura, niños,...), nombre del	usuario, edad, gustos, restricciones, presupuesto disponible, etc.
-
-	\end{subsection}
-
-	\begin{subsection}{Identificar las relaciones existentes entre los conceptos}
+\begin{section}{Descripción del prototipo}
+	\begin{subsection}{Descripción del funcionamiento}
 	
-	Por ejemplo: hotel es un tipo de alojamiento, Mallorca es un destino de playa,
-	 los usuarios tienen nombre, edad, gustos, presupuesto, etc.).
+	En este primer prototipo pretendemos recomendar paquetes de viaje de manera sencilla relacionando los intereses de una persona con las características de cada ciudad. Los viajes serán de una sola persona, y se podrán realizar en bus, coche o tren.
+Por ahora recomendará los transportes y alojamientos que mejor se ajusten al presupuesto del cliente, y varias ciudades que cumplen los requisitos que se infieran de sus características.
 
-		\begin{itemize}
-			\item Un hotel es un alojamiento.
-			\item 
-			\item 
-			\item 
-			\item 
-			\item 
-			\item 
-			\item 
-			\item 
-			\item 
+Para indicar el transporte y el alojamiento por ahora no se tendrá en cuenta el diferente coste que puedan tener dependiendo de 
+la ciudad. Se dedicará un cuarto del presupuesto del viaje al transporte y un cuarto al alojamiento. La otra mitad será el gasto que podrá realizar el cliente en su estancia. 
 
-			\item 
+Se inferirán los gustos del cliente a partir de sus datos objetivos, teniendo en cuenta los intereses que él mismo apunte.
 
-			
-		\end{itemize}
+La información de las ciudades se inferirá a partir de unos parámetros concretos que es posible obtener objetivamente 
+de nuestra base de conocimiento.
 	\end{subsection}
-
-	\begin{subsection}{Dividir el problema en subproblemas o fases de funcionamiento del sistema.}
-		
-	 Para cada uno de estos subproblemas o fases, expresar con palabras todas las reglas que 
-	van a ser utilizadas en su resolución.
-
-	\end{subsection}
-
-
 	
+	\begin{subsection}{Conocimiento utilizado}
+		Principalmente hemos usado información exacta del número de habitantes y del número de hoteles, datos más sencillos de obtener. El resto de la información está estimada a partir de páginas de ocio y del número de habitantes. También se aporta conocimiento propio de las ciudades.
+
+	\end{subsection}
+	
+	\begin{subsection}{Estructura modular}
+	La estructura modular nos va a permitir explicar también el funcionamiento. Tenemos primero los datos iniciales y las estructuras en el módulo inicial (main). A partir de aquí podemos distinguir tres partes importantes: las reglas que infieren datos sobre el usuario, las reglas que obtienen datos de cada ciudad, y las reglas que determinan el paquete indicado para el usuario a partir de los datos inferidos.
+	
+	El primer módulo (usuario), nos calcula el rango de edad en el que se mueve, el presupuesto diario con el que va a contar, e infiere los intereses que tiene el usuario pero que no ha escrito.
+	
+	El segundo módulo (ciudad), obtiene las características de cada ciudad a partir de los datos iniciales obtenidos de nuestra base del conocimiento.
+	
+	El tercer módulo se divide en tres:
+	\begin{itemize}
+		\item Destino: Recomienda el destino para el usuario. Por ahora pueden ser varios para un mismo usuario.
+		\item Transporte: Recomienda un medio de transporte adecuado al presupuesto del cliente.
+		\item Alojamiento: Infiere del presupuesto y el número de días de estancia el alojamiento adecuado.
+	\end{itemize}
+	
+	\end{subsection}
 \end{section}
 	\newpage
-	\begin{section}{Prototipo}
+	\begin{section}{Ejecución del prototipo}
+	
+	El prototipo vamos a ejecutarlo para tres personas. Una persona joven que está interesada en la aventura, tiene un 
+	presupuesto bajo y quiere irse de viaje un fin de semana. Una persona de edad media interesada en el turismo, que quiere 
+	hacer un viaje de una semana. Y una persona anciana que quiere hacer un viaje de dos días con un gran presupuesto 
+	pero que no tiene ningún interés en concreto:
+		\begin{itemize}
+			\item (persona (nombre juan)(edad 18)(presupuesto 150)(intereses aventura)(dias 3))
+			\item  (persona (nombre maria)(edad 50)(presupuesto 800)(intereses turismo)(dias 7))
+			\item  (persona (nombre pepe)(edad 65)(presupuesto 500)(dias 2))
+	\end{itemize}
+			
+	Tendremos tres ciudades que van a poder ser recomendadas. Segovia, un destino de interés gastronómico y de aventura. 			Valencia, un destino de playa y aventura. Barcelona, una ciudad turística pero con lugar para el relax. Sin embargo, ninguna 			de estas características se incluye inicialmente, sino  que las obtendremos a partir de sus datos objetivos.
+	
+		\begin{itemize}
+			\item     (ciudad (nombre segovia)(habitantes 55000)(hoteles 28)
+        (montanya si) (playa no)(centrosComerciales 2)
+        (discotecas 5) (monumentos 7)(balnearios 3)(restaurantes 25))
+			\item (ciudad (nombre valencia)(habitantes 800000)(hoteles 1200)
+        (montanya no) (playa si) (discotecas 7)  (monumentos 30)
+        (restaurantes 300))
+			\item  
+	(ciudad (nombre barcelona)(habitantes 1600000)(hoteles 2260)
+        (montanya no) (playa si)(atracciones 4) (centrosComerciales 50)
+    (teatros 10) (museos 50) (operas 5)(deportes aventura)(discotecas 30) (monumentos 120) (restaurantes 600)))
+	\end{itemize}
+ 
+ 
+ 	Los intereses inferidos de cada persona nos quedan:
+ 		\begin{itemize}
+			\item Juan: aventura, fiesta y ocio.
+			\item María: turismo.
+			\item Pepe: relax.
+	\end{itemize}
+ 	
+ 	Y las características de cada destino:
+ 	\begin{itemize}
+			\item Segovia: naturaleza, relax, gastronomia y aventura.
+			\item Valencia: aventura, gastronomia y turismo.
+			\item Barcelona: turismo, fiesta, cultura, aventura, gastronomia y ocio.
+	\end{itemize}
+ 	
+	Así, nos quedan las recomendaciones:
+	
+		\begin{itemize}
+			\item destino (nombre pepe) (ciudad segovia) (alojamiento hotel) (transporte tren))
+			 \item destino (nombre maria) (ciudad barcelona) (alojamiento apartamento) (transporte tren))							 \item destino (nombre maria) (ciudad valencia) (alojamiento apartamento) (transporte tren))
+			\item destino (nombre juan) (ciudad barcelona) (alojamiento camping) (transporte bus))			
+			\item destino (nombre juan) (ciudad valencia) (alojamiento camping) (transporte bus))
+			\item destino (nombre juan) (ciudad segovia) (alojamiento camping) (transporte bus))
+	
+	\end{itemize}
+	
+		A pepe le recomienda Segovia, una ciudad para relajarse y comer bien. Esto se debe a su edad y al número de balnearios y restaurantes de Segovia. Además, debido al elevado presupuesto del que dispone le recomienda un hotel y viajar en el ave.
+		
+		Para María, le recomienda tanto Valencia como Barcelona, debido a lo turísticas que son estas ciudades. Aquí encontramos uno de los límites de nuestro programa. Segovia a pesar de contar con pocos monumentos, estos son de gran valor y por ello es una ciudad turística. Sin embargo, debido al análisis cuantitativo no obtenemos el resultado querido. Como cuenta con un presupuesto general alto le recomienda un tren, pero al irse una semana le aconseja mejor un apartamento, más económico que un hotel.
+		
+		A Juan le recomienda ir en bus y alojarse en un camping, pues su presupuesto es muy limitado. Sin embargo, al ser muy joven y buscar aventura le ofrece los tres destinos. En futuras versiones, deberá escoger Barcelona por ajustarse más a lo requerido al ser un destino de fiesta.
+		
+		
+		
+		
 
-		Implementar en Jess el conocimiento identificado en la primera parte. Cada subproblema o
-		fase se implementará en un módulo distinto.
-
-
-		Probar el prototipo con distintos conjuntos de datos. Los resultados obtenidos se incluirán
-		también en la memoria, analizando su validez y proponiendo posibles mejoras.
+	\end{section}
+	
+	\begin{section}{Fuentes de conocimiento}
+		\begin{itemize}
+			\item Hoteles: www.tripadvisor.com, www.viajeselcorteingles.es y www.booking.com
+			\item Habitantes: www.wikipedia.es
+			\item Tipo de ciudad: www.spain.info 
+	\end{itemize}
+		
 
 	\end{section}
 
