@@ -57,7 +57,11 @@
 		consultar_duracion(Salida, evento, Persona, Dia, Mes) :-
 				 evento(Persona, Dia, Mes, _, _,Duracion),
 				 mostrar_duracion(Salida, evento, Persona, Dia, Mes, Duracion).
-			
+				 
+				 
+	%Parte opcional 1			
+		consultar_dia(Salida,Dia,Mes) :-
+				setof((Persona, Dia, Mes, Hora, Minuto, Duracion),cita(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida).
 			
 % Gramática. Tenemos los cuatro tipos de frase que podemos recibir: crear, eliminar, consultar un compromiso y consultar la duración.
 
@@ -68,8 +72,11 @@
 
 		frase(Salida) --> consulta, fecha(Dia, Mes), hora(Hora, Minuto), {consultar(Salida, Dia, Mes, Hora, Minuto)}.
 
+		frase(Salida) --> consulta, fecha(Dia,Mes),!, {consultar_dia(Salida,Dia,Mes)}.
+		
 		frase(Salida) --> consulta_duracion, tipo(Tipo), persona(Persona), fecha(Dia, Mes), {consultar_duracion(Salida, Tipo, Persona, Dia, Mes)}.
 
+		
 
 %Gestion de qué tipo de accion se lleva a cabo(crear o eliminar)
 
@@ -131,10 +138,12 @@
 	mañanas(Dia, Mes) :- hoy(DiaActual, MesActual), es_mes(NumeroMes, MesActual, Limite), DiaActual >= Limite, Dia is 1,
 																es_mes((NumeroMes mod 12)+1, Mes, _). 
 	
-	dias(Dia) --> [el, dia, Dia].
-	dias(Dia) --> [el, Dia].	
-	dias(Dia) --> [Dia].
+	
 
+	dias(Dia) --> [el, dia, Dia].	
+	dias(Dia) --> [el, Dia],! .
+	dias(Dia) --> [Dia],!.
+	
 	mes(Mes, Limite) --> [de, Mes], {es_mes(_, Mes, Limite)}.
 	mes(Mes, Limite) --> [Mes], {es_mes(_, Mes, Limite)}.
 
