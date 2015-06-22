@@ -6,6 +6,12 @@
 :- dynamic reunion/6 .
 :- dynamic evento/6 .
 
+	%	Puedes guardar solo la duración de la consulta, o guardar la consulta y rehacerla
+	%	Si quieres reutilizar preguntas, tienes que guardar todo.
+	
+:- dynamic consulta_guardada/4 .
+	consulta_guardada(empty, empty, 0, empty).
+
 %Cracion de los tres tipos de compromisos que permitimos.
 
 	crear(Salida, cita, Persona, Dia, Mes, Hora, Minuto, Duracion) :- 
@@ -35,16 +41,19 @@
 	%Consulta de compromisos concretos.
 		
 		consultar(Salida, Dia, Mes, Hora, Minuto) :-
-				 cita( Persona, Dia, Mes, Hora, Minuto, Duracion),
-				 mostrar_cita(Salida, Persona, Dia, Mes, Hora, Minuto, Duracion).
+				 cita( Persona, Dia, Mes, Hora, Minuto, _),
+				 guardar_consulta(cita, Persona, Dia, Mes),
+				 mostrar_cita(Salida, Persona).
 				 
 		consultar(Salida, Dia, Mes, Hora, Minuto) :-
-				 reunion( Persona, Dia, Mes, Hora, Minuto, Duracion),
-				 mostrar_reunion(Salida, Persona, Dia, Mes, Hora, Minuto, Duracion).
+				 reunion( Persona, Dia, Mes, Hora, Minuto, _),
+				 guardar_consulta(reunion, Persona, Dia, Mes),
+				 mostrar_reunion(Salida, Persona).
 				 
 		consultar(Salida, Dia, Mes, Hora, Minuto) :-
-				 evento( Persona, Dia, Mes, Hora, Minuto, Duracion),
-				 mostrar_evento(Salida, Persona, Dia, Mes, Hora, Minuto, Duracion).
+				 evento( Persona, Dia, Mes, Hora, Minuto, _),
+				 guardar_consulta(evento, Persona, Dia, Mes),
+				 mostrar_evento(Salida, Persona).
 		
 	%Consulta de la duración de un compromiso: mostrar_duracion(Salida, Tipo, Persona, Dia, Mes, Duracion)
 	
@@ -57,26 +66,52 @@
 		consultar_duracion(Salida, evento, Persona, Dia, Mes) :-
 				 evento(Persona, Dia, Mes, _, _,Duracion),
 				 mostrar_duracion(Salida, evento, Persona, Dia, Mes, Duracion).
-				 
-				 
-	%Parte opcional 1			
+				  
+	%Parte opcional 1	
 		consultar_dia(Salida,Dia,Mes) :-
-				setof((Persona, Dia, Mes, Hora, Minuto, Duracion),cita(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida).
+				setof([cita, con, Persona, el, Dia, de, Mes, a, las, Hora, y, Minuto, minutos, durante, Duracion, minutos],
+						cita(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida1),
+				setof([reunion, con, Persona, el, Dia, de, Mes, a, las, Hora, y, Minuto, minutos, durante, Duracion, minutos],
+						reunion(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida2),
+				setof([evento, con, Persona, el, Dia, de, Mes, a, las, Hora, y, Minuto, minutos, durante, Duracion, minutos],
+						evento(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida3),
+				append(Salida1, Salida2, Salida4),
+				append(Salida4, Salida3, Salida).
+				
+		consultar_dia_tipo(Salida,Tipo,Dia,Mes) :-
+			( 	es_tipo_cita(Tipo) ->
+					setof([cita, con, Persona, el, Dia, de, Mes, a, las, Hora, y, Minuto, minutos, durante, Duracion, minutos],
+							cita(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida);
+				es_tipo_reunion(Tipo) ->
+					setof([reunion, con, Persona, el, Dia, de, Mes, a, las, Hora, y, Minuto, minutos, durante, Duracion, minutos],
+							reunion(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida);
+				es_tipo_evento(Tipo) ->
+					setof([evento, con, Persona, el, Dia, de, Mes, a, las, Hora, y, Minuto, minutos, durante, Duracion, minutos],
+						evento(Persona, Dia, Mes, Hora, Minuto, Duracion),Salida);
+				Salida = 'Error'						
+				),!.
+				
 			
 % Gramática. Tenemos los cuatro tipos de frase que podemos recibir: crear, eliminar, consultar un compromiso y consultar la duración.
 
 		frase(Salida) --> accion(crear), tipo(Tipo), persona(Persona), fecha(Dia, Mes), hora(Hora, Minuto),
 										duracion(Duracion), {crear(Salida, Tipo, Persona, Dia, Mes, Hora, Minuto, Duracion)}.
 										
-		frase(Salida) --> accion(eliminar), tipo(Tipo), persona(Persona), {eliminar(Salida, Tipo, Persona, _, _, _, _, _)}.
+		frase(Salida) --> accion(eliminar), tipo(Tipo), persona(Persona), {eliminar(Salida, Tipo, Persona, _, _, _, _, _)}.		
 
-		frase(Salida) --> consulta, fecha(Dia, Mes), hora(Hora, Minuto), {consultar(Salida, Dia, Mes, Hora, Minuto)}.
-
-		frase(Salida) --> consulta, fecha(Dia,Mes),!, {consultar_dia(Salida,Dia,Mes)}.
+		frase(Salida) --> pregunta_consulta, tipo(Tipo), fecha(Dia,Mes), {consultar_dia_tipo(Salida, Tipo,Dia,Mes)}.
+		
+		frase(Salida) --> pregunta_consulta, fecha(Dia, Mes), hora(Hora, Minuto), {consultar(Salida, Dia, Mes, Hora, Minuto)}.
+		
+		frase(Salida) --> pregunta_consulta, fecha(Dia,Mes), {consultar_dia(Salida,Dia,Mes)}.
 		
 		frase(Salida) --> consulta_duracion, tipo(Tipo), persona(Persona), fecha(Dia, Mes), {consultar_duracion(Salida, Tipo, Persona, Dia, Mes)}.
 
+		frase(Salida) --> consulta_parcial, hora(Hora, Minuto),
+							{ consulta_guardada(_, _, Dia, Mes), consultar(Salida, Dia, Mes, Hora, Minuto)}.
 		
+		frase(Salida) --> consulta_parcial, consulta_duracion,
+							{ consulta_guardada(Tipo, Persona, Dia, Mes), consultar_duracion(Salida, Tipo, Persona, Dia, Mes)}.
 
 %Gestion de qué tipo de accion se lleva a cabo(crear o eliminar)
 
@@ -90,37 +125,56 @@
 
 %Gestionamos qué tipo de compromiso tenemos, y aseguramos la concordancia con los artículos
 
-	tipo(Tipo) --> [Articulo, Tipo], { es_articulo(Articulo, Genero), es_tipo_accion(Tipo, Genero)}. 
-	%Aprovechamos la práctica anterior para meter concordancia
 	tipo(Tipo) --> [Tipo], { es_tipo_accion(Tipo, _)}.
+	tipo(Tipo) --> [Articulo, Tipo],  { es_articulo(Articulo, Genero), es_tipo_accion(Tipo, Genero)}, !. 
+	
+	%Aprovechamos la práctica anterior para meter concordancia
+	
 
 	%Gestión de consulta
 
 	es_tipo_accion(cita, femenino).
 	es_tipo_accion(reunion, femenino).
 	es_tipo_accion(evento, masculino).
-
+	es_tipo_accion(citas, femenino).
+	es_tipo_accion(reuniones, femenino).
+	es_tipo_accion(eventos, masculino).
+	
+	es_tipo_cita(cita).
+	es_tipo_cita(citas).
+	es_tipo_reunion(reunion).
+	es_tipo_reunion(reuniones).
+	es_tipo_evento(evento).
+	es_tipo_evento(eventos).
+	
 	articulo(Genero) --> [A], {es_articulo(A, Genero)}.
+	
 	es_articulo(un, masculino).
 	es_articulo(el, masculino).
 	es_articulo(una, femenino).
 	es_articulo(la, femenino).
+	es_articulo(los, masculino).
+	es_articulo(las, femenino).
 	
 %Preguntas para las consultas.
-	consulta --> [que, hay].
-	consulta --> [que, tengo].
-	consulta_duracion --> [cuanto, durara].
+	
+	pregunta_consulta --> [que, hay], !.
+	pregunta_consulta --> [que, tengo], !.
+	pregunta_consulta --> [dime], !.
+	consulta_duracion --> [cuanto, durara], !.
+	
+	consulta_parcial --> [y], !.
 
 %Persona: Realmente puedes introducir una cita con quien quieras. Si quieres que sea alguien de la agenda, puede añadirse.
 
-	persona(Persona) --> [con, Persona].
-	persona(Persona) --> [de, Persona].
-	persona(Persona) --> [Persona].
+	persona(Persona) --> [con, Persona], !.
+	persona(Persona) --> [de, Persona], !.
+	persona(Persona) --> [Persona], !.
 
 %Gestion de fechas: de manera alternativa puede ponerse hoy o mañana
-	fecha(Dia, Mes) --> [mañana], {mañanas(Dia, Mes)}.
+	fecha(Dia, Mes) --> [mañana], !, {mañanas(Dia, Mes)}.
 	
-	fecha(Dia, Mes) --> [hoy], {hoy(Dia, Mes)}.
+	fecha(Dia, Mes) --> [hoy], !, {hoy(Dia, Mes)}.
 	fecha(Dia, Mes) --> dias(Dia), mes(Mes, Limite), {Dia =< Limite}.
 	
 	%Si no especifica mes nos quedamos con el actual.
@@ -140,12 +194,14 @@
 	
 	
 
-	dias(Dia) --> [el, dia, Dia].	
+	dias(Dia) --> [el, dia, Dia], !.	
 	dias(Dia) --> [el, Dia],! .
+	dias(Dia) --> [del, dia, Dia], !.	
+	dias(Dia) --> [del, Dia],! .
 	dias(Dia) --> [Dia],!.
 	
-	mes(Mes, Limite) --> [de, Mes], {es_mes(_, Mes, Limite)}.
-	mes(Mes, Limite) --> [Mes], {es_mes(_, Mes, Limite)}.
+	mes(Mes, Limite) --> [de, Mes], !, {es_mes(_, Mes, Limite)}.
+	mes(Mes, Limite) --> [Mes], !, {es_mes(_, Mes, Limite)}.
 
 	es_mes(1, enero, 31).
 	es_mes(2, febrero, 28).
@@ -165,11 +221,11 @@
 	hora(Hora, Minuto) --> hora_hora(Hora), hora_minuto(Minuto).
 	hora(Hora, Minuto) --> hora_hora(Hora),{Minuto is 0}.
 
-	hora_hora(Hora) --> [a, las, Hora], {es_hora(Hora)}.
-	hora_hora(Hora) --> [a, las, Hora, horas], {es_hora(Hora)}.
+	hora_hora(Hora) --> [a, las, Hora, horas], !, {es_hora(Hora)}.
+	hora_hora(Hora) --> [a, las, Hora], !, {es_hora(Hora)}.
 
-	hora_minuto(Minuto) --> [y, Minuto, minutos], {es_minuto(Minuto)}.
-	hora_minuto(Minuto) --> [y, Minuto], {es_minuto(Minuto)}.
+	hora_minuto(Minuto) --> [y, Minuto, minutos], !, {es_minuto(Minuto)}.
+	hora_minuto(Minuto) --> [y, Minuto], !, {es_minuto(Minuto)}.
 
 
 	es_hora(Hora) :- Hora >= 0, Hora < 24.
@@ -201,6 +257,14 @@
 	trata(F):- frase(Salida, F, []), write(Salida), nl, consulta. 
 	% tratamiento caso general 
 
+% Guardado de datos para consultas posteriores.
+
+	guardar_consulta(Tipo, Persona, Dia, Mes) :-
+		retractall(consulta_guardada(_, _, _, _)),
+		assert(consulta_guardada(Tipo,Persona, Dia, Mes)).
+
+	
+
 %Gestion de la salida ____________________________________________________
 
 	%Salida para las creaciones (puede mejorarse)
@@ -217,12 +281,12 @@
 	
 	%Salida de todas las consultas
 	
-		mostrar_cita(Salida, Persona, Dia, Mes, Hora, Minuto, Duracion):-
-			append([tienes, una, cita, con, Persona, el, dia, Dia, de, Mes, a ,las, Hora, y, Minuto, de, Duracion, minutos], [], Salida).
-		mostrar_reunion(Salida, Persona, Dia, Mes, Hora, Minuto, Duracion):-
-			append([tienes, una, reunion, con, Persona, el, dia, Dia, de, Mes, a ,las, Hora, y, Minuto, de, Duracion, minutos], [], Salida).
-		mostrar_evento(Salida, Persona, Dia, Mes, Hora, Minuto, Duracion):-
-			append([tienes, un, evento, con, Persona, el, dia, Dia, de, Mes, a ,las, Hora, y, Minuto, de, Duracion, minutos], [], Salida).
+		mostrar_cita(Salida, Persona):-
+			append([tienes, una, cita, con, Persona], [], Salida).
+		mostrar_reunion(Salida, Persona):-
+			append([tienes, una, reunion, con, Persona], [], Salida).
+		mostrar_evento(Salida, Persona):-
+			append([tienes, un, evento, con, Persona], [], Salida).
 			
 	%Muestra la duracion. Puede ser un evento, una cita o una reunion.
 	
@@ -278,17 +342,17 @@
 %	Escribe frase entre corchetes separando palabras con comas 
 %	o lista vacía para parar 
 %	|: [que, tengo, mañana, a, las, 18].
-%	[tienes,una,cita,con,paqui,el,dia,11,de,junio,a,las,18,y,0,de,30,minutos]
+%	[tienes,una,cita,con,paqui]
 
 %	Escribe frase entre corchetes separando palabras con comas 
 %	o lista vacía para parar 
-%	|: [pon, un, evento, con, peter, el, dia, 25, a, las, 11].
+%	|: [pon, un, evento, con, peter].
 %	evento_creado
 
 %	Escribe frase entre corchetes separando palabras con comas 
 %	o lista vacía para parar 
 %	|: [que, tengo, el, dia, 25, a, las, 11].
-%	[tienes,un,evento,con,peter,el,dia,25,de,junio,a,las,11,y,0,de,30,minutos]
+%	[tienes,un,evento,con,peter]
 %
 %	Escribe frase entre corchetes separando palabras con comas 
 %	o lista vacía para parar 
@@ -306,6 +370,48 @@
 %	|: [cuanto, durara, la, cita, con, juan, el, dia, 11].
 %	[tu,cita,con,juan,el,dia,11,de,junio,durara,21,minutos]
 
+%%%%%%% Creamos eventos, reuniones y citas. Para cada día se muestran los tres tipos.
+%	Escribe frase entre corchetes separando palabras con comas 
+%	o lista vacía para parar 
+%	|: [que, hay, el, 24, de, julio].
+%	[[evento,con,juan,el,24,de,julio,a,las,12,y,0,minutos,durante,30,minutos],
+%	[reunion,con,pedro,el,24,de,julio,a,las,8,y,0,minutos,durante,30,minutos],
+%	[cita,con,maria,el,24,de,julio,a,las,4,y,0,minutos,durante,30,minutos]]
+
+%% También podemos preguntar por un tipo en particular.
+
+%	Escribe frase entre corchetes separando palabras con comas 
+%	o lista vacía para parar 
+%	|: [dime, las, citas, del, 24, de, julio].
+%	[[cita,con,maria,el,24,de,julio,a,las,4,y,0,minutos,durante,30,minutos]]
+
+%	Escribe frase entre corchetes separando palabras con comas 
+%	o lista vacía para parar 
+%	|: [dime, las, reuniones, del, 24, de, julio].
+%	[[reunion,con,pedro,el,24,de,julio,a,las,8,y,0,minutos,durante,30,minutos]]
+
+%	Escribe frase entre corchetes separando palabras con comas 
+%	o lista vacía para parar 
+%	|: [dime, los, eventos, del, 24, de, julio].
+%	[[evento,con,juan,el,24,de,julio,a,las,12, y,0,minutos,durante,30,minutos]]
 
 
+%%%%%%%%% Ahora realizamos preguntas parciales.
+%		 La idea es guardar lo necesario para reutilizar funciones ya escritas.
+%		 Las reconsultas pueden no tener sentido porque se muestra todo desde un 
+% 		 inicio, pero si se omitiesen los datos en la salida lo tendría.
 
+%	Escribe frase entre corchetes separando palabras con comas 
+%	o lista vacía para parar 
+%	|: [que, tengo, el, dia, 24, de, julio, a, las, 12].
+%	[tienes,un,evento,con,juan]
+
+%	Escribe frase entre corchetes separando palabras con comas 
+%	o lista vacía para parar 
+%	|: [y, a, las, 8].
+%	[tienes,una,reunion,con,pedro]
+
+%	Escribe frase entre corchetes separando palabras con comas 
+%	o lista vacía para parar 
+%	|: [y, cuanto, durara].
+%	[tu,reunion,con,pedro,el,dia,24,de,julio,durara,30,minutos]
